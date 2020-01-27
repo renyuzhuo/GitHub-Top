@@ -14,7 +14,7 @@ import './index.less'
 class Index extends Component {
 
   config = {
-    navigationBarTitleText: 'Trending',
+    navigationBarTitleText: 'Top',
     enablePullDownRefresh: true
   }
 
@@ -202,118 +202,6 @@ class Index extends Component {
     })
   }
 
-  loadLanguages() {
-    let that = this
-    const db = wx.cloud.database()
-    let openid = getGlobalData('openid')
-    if (!openid) {
-      openid = Taro.getStorageSync('openid')
-    }
-    db.collection('languages')
-      .where({
-        _openid: openid, // 当前用户 openid
-      })
-      .get()
-      .then(res => {
-        console.log(res)
-        if (res.data.length > 0) {
-          setGlobalData('favoriteLanguages', res.data[0].languages)
-          that.updateLanguages()
-        }
-      })
-      .catch(err => {
-        console.error(err)
-      })
-  }
-
-  loadNotice() {
-    let that = this
-    const db = wx.cloud.database()
-    db.collection('notices')
-      .get()
-      .then(res => {
-        console.log('notices', res)
-        if (res.data.length > 0) {
-          const key = 'notice_key_' + res.data[0].notice_id
-          const notice_closed = Taro.getStorageSync(key)
-          that.setState({
-            notice: res.data[0],
-            notice_closed: notice_closed
-          })
-        }
-      })
-      .catch(err => {
-        console.error(err)
-      })
-  }
-
-  loadinterstitialAd() {
-    // 在页面onLoad回调事件中创建插屏广告实例
-    if (wx.createInterstitialAd) {
-      this.interstitialAd = wx.createInterstitialAd({
-        adUnitId: 'adunit-fe997b16f427f91f'
-      })
-      this.interstitialAd.onLoad(() => {
-        console.log('onLoad event emit')
-      })
-      this.interstitialAd.onError((err) => {
-        console.log('onError event emit', err)
-      })
-      this.interstitialAd.onClose((res) => {
-        this.interstitialAd = null
-        console.log('onClose event emit', res)
-      })
-    }
-  }
-
-  updateLanguages() {
-    let favoriteLanguages = getGlobalData('favoriteLanguages')
-    if (favoriteLanguages && favoriteLanguages.length > 0) {
-      let language = favoriteLanguages[0]
-      if (language.name !== 'All') {
-        favoriteLanguages.unshift({
-          "urlParam": "",
-          "name": "All"
-        })
-      }
-      this.setState({
-        range: [
-          [{
-            'name': 'Today',
-            'value': 'daily'
-          },
-          {
-            'name': 'Week',
-            'value': 'weekly'
-          },
-          {
-            'name': 'Month',
-            'value': 'monthly'
-          }],
-          favoriteLanguages
-        ]
-      })
-    } else {
-      this.setState({
-        range: [
-          [{
-            'name': 'Today',
-            'value': 'daily'
-          },
-          {
-            'name': 'Week',
-            'value': 'weekly'
-          },
-          {
-            'name': 'Month',
-            'value': 'monthly'
-          }],
-          languages
-        ]
-      })
-    }
-  }
-
   onTabChange(index) {
     this.setState({
       current: index
@@ -323,8 +211,7 @@ class Index extends Component {
   onShareAppMessage(obj) {
     return {
       title: 'Github 今日热榜，随时随地发现您喜欢的开源项目',
-      path: '/pages/index/index',
-      imageUrl: 'http://img.huangjianke.com/cover.png'
+      path: '/pages/index/index'
     }
   }
 

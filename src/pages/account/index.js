@@ -123,11 +123,8 @@ class Index extends Component {
       break
       case NAVIGATE_TYPE.FEEDBACK: {
         Taro.navigateToMiniProgram({
-          appId: 'wx8abaf00ee8c3202e',
-          extraData: {
-            id: '55362',
-            customData: {}
-          }
+          appId: 'wx0c31d04cc83bd649',
+          path: '/pages/index/contact'
         })
       }
       break

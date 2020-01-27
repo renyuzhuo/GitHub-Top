@@ -1,5 +1,5 @@
 const config = {
-  projectName: 'Gitter',
+  projectName: 'GitHub',
   date: '2019-1-9',
   designWidth: 750,
   deviceRatio: {
@@ -90,7 +90,8 @@ const config = {
           }
         }
       }
-    }
+    },
+    esnextModules: ['taro_rich_text']
   }
 }
 

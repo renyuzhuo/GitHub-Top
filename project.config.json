@@ -1,16 +1,26 @@
 {
 	"miniprogramRoot": "dist/",
-	"projectname": "Gitter",
-	"description": "Gitter",
-	"appid": "wx2252b6835e7eb568",
-	"cloudfunctionRoot": "cloud/functions/",
+	"projectname": "GitHub Hot",
+	"description": "GitHub 热点项目推荐。热点事件发生时，GitHub 是程序员的主战场，我们会做出我们的努力让这个是世界更美好。",
+	"appid": "wxe005f5ed6ab392f8",
 	"setting": {
 		"urlCheck": true,
 		"es6": false,
 		"postcss": false,
 		"minified": false,
 		"newFeature": true,
-		"autoAudits": false
+		"coverView": true,
+		"autoAudits": false,
+		"showShadowRootInWxmlPanel": true,
+		"scopeDataCheck": false,
+		"checkInvalidKey": true,
+		"checkSiteMap": true,
+		"uploadWithSourceMap": true,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		}
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.7.3",

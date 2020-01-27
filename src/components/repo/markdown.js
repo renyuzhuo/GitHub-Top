@@ -12,14 +12,12 @@ const render = new Towxml()
 export default class Markdown extends Component {
   static propTypes = {
     md: PropTypes.string,
-    base: PropTypes.string,
     cache: PropTypes.bool,
     cacheKey: PropTypes.string
   }
 
   static defaultProps = {
     md: null,
-    base: null,
     cache: false,
     cacheKey: null
   }
@@ -56,40 +54,10 @@ export default class Markdown extends Component {
   }
 
   parseReadme() {
-    const { md, base, cache, cacheKey } = this.props
+    const { md, cache, cacheKey } = this.props
     let that = this
     that.setState({
-      fail: false
-    })
-    wx.cloud.callFunction({
-      // 要调用的云函数名称
-      name: 'parse',
-      // 传递给云函数的event参数
-      data: {
-        func: 'parse',
-        type: 'markdown',
-        content: md,
-      }
-    }).then(res => {
-      let data = res.result.data
-      if (base && base.length > 0) {
-        data = render.initData(data, {base: base, app: this.$scope})
-      }
-      that.setState({
-        fail: false,
-        data: data
-      })
-      if (cache) {
-        Taro.setStorage({
-          key: cacheKey,
-          data: data
-        })
-      }
-    }).catch(err => {
-      console.log('cloud', err)
-      that.setState({
-        fail: true
-      })
+      data: render.toJson(md, 'markdown')
     })
   }
 

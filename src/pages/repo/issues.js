@@ -189,6 +189,7 @@ class Issues extends Component {
   }
 
   onTabChange(index) {
+    console.log('click close', index)
     this.setState({
       current: index
     })
