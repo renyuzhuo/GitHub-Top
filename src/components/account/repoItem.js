@@ -31,9 +31,9 @@ export default class RepoItem extends Component {
         {is_bottom_show &&
         <View className='repo_bottom'>
           {
-            item.language.length > 0 &&
+            item.language !=null && item.language.length > 0 &&
             <View className='repo_number_item'>
-              <AtIcon prefixClass='ion' value='ios-radio-button-on' size='16' color='#7f7f7f'/>
+              <AtIcon prefixClass='ion' value='ios-radio-button-on' size='16' color='#7f7f7f' />
               <View className='repo_number_title'>{item.language}</View>
             </View>
           }

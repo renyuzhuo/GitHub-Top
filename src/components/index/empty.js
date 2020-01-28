@@ -12,7 +12,7 @@ export default class Segment extends Component {
   }
 
   static defaultProps = {
-    content: 'Oops! Nothing here...'
+    content: '这里什么也没有...'
   }
 
   componentWillMount() {

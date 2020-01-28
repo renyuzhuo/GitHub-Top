@@ -49,7 +49,7 @@ class Repo extends Component {
   }
 
   componentDidMount() {
-    Taro.showLoading({title: GLOBAL_CONFIG.LOADING_TEXT})
+    Taro.showLoading({ title: GLOBAL_CONFIG.LOADING_TEXT })
     this.getRepo()
   }
 
@@ -85,7 +85,6 @@ class Repo extends Component {
 
   getRepo() {
     let that = this
-    console.log('ryz: ' + this.state.url)
     api.get(this.state.url).then((res)=>{
       if (res.statusCode === HTTP_STATUS.SUCCESS) {
         let baseUrl = 'https://raw.githubusercontent.com/' + res.data.full_name + '/master/'
@@ -95,7 +94,6 @@ class Repo extends Component {
         }, ()=>{
           that.getReadme()
           that.checkStarring()
-          // that.checkWatching()
         })
       } else {
         Taro.showToast({
@@ -123,9 +121,15 @@ class Repo extends Component {
 
   parseReadme() {
     const { readme } = this.state
-    this.setState({
-      md: base64_decode(readme.content)
-    })
+    if (readme.content){
+      this.setState({
+        md: base64_decode(readme.content)
+      })
+    }else{
+      this.setState({
+        md: null
+      })
+    }
   }
 
   checkStarring() {
@@ -145,7 +149,7 @@ class Repo extends Component {
     if (hasLogin()) {
       const { repo } = this.state
       let that = this
-      let url =  '/repos/' + repo.full_name + '/subscription'
+      let url = '/repos/' + repo.full_name + '/subscription'
       api.get(url).then((res)=>{
         that.setState({
           hasWatching: res.statusCode === 200
@@ -155,12 +159,12 @@ class Repo extends Component {
   }
 
   handleStar() {
-    Taro.showLoading({title: GLOBAL_CONFIG.LOADING_TEXT})
+    Taro.showLoading({ title: GLOBAL_CONFIG.LOADING_TEXT })
     const { hasStar, repo } = this.state
     let url = '/user/starred/' + repo.full_name
     let that = this
     if (hasStar) {
-      api.delete(url).then((res)=>{
+      api.delete(url).then((res) => {
         if (res.statusCode === 204) {
           that.getRepo()
         } else {
@@ -171,7 +175,7 @@ class Repo extends Component {
         }
       })
     } else {
-      api.put(url).then((res)=>{
+      api.put(url).then((res) => {
         if (res.statusCode === 204) {
           that.getRepo()
         } else {
@@ -185,14 +189,14 @@ class Repo extends Component {
   }
 
   handleFork() {
-    Taro.showLoading({title: GLOBAL_CONFIG.LOADING_TEXT})
+    Taro.showLoading({ title: GLOBAL_CONFIG.LOADING_TEXT })
     const { repo } = this.state
     let url = '/repos/' + repo.full_name + '/forks'
-    api.post(url).then((res)=>{
+    api.post(url).then((res) => {
       Taro.hideLoading()
       if (res.statusCode === HTTP_STATUS.ACCEPTED) {
         Taro.showToast({
-          title: 'Success!',
+          title: 'Success',
           icon: 'success'
         })
       } else {
@@ -241,19 +245,17 @@ class Repo extends Component {
       }
         break
       default: {
-
       }
     }
   }
 
-  onClickedHome () {
+  onClickedHome() {
     Taro.reLaunch({
       url: '/pages/top/top'
     })
   }
 
   onClickedActionButton(index) {
-    console.log(index)
     const { repo } = this.state
     if (index === 1) {
       this.loadWXACode()
@@ -269,25 +271,8 @@ class Repo extends Component {
     const { repo, url } = this.state
     const path = '/pages/repo/repo?url=' + encodeURI(url) + '&share=true'
     let that = this
-    Taro.showLoading({title: GLOBAL_CONFIG.LOADING_TEXT})
-    wx.cloud.callFunction({
-      // 要调用的云函数名称
-      name: 'wxacode',
-      // 传递给云函数的event参数
-      data: {
-        path: path,
-        name: `${repo.owner.login}_${repo.name}`
-      }
-    }).then(res => {
-      console.log('wxacode', res)
-      if (res.result && res.result.length > 0) {
-        that.generatePoster(res.result[0].tempFileURL)
-      } else {
-        Taro.hideLoading()
-      }
-    }).catch(err => {
-      Taro.hideLoading()
-    })
+    Taro.showLoading({ title: GLOBAL_CONFIG.LOADING_TEXT })
+    that.generatePoster('../../assets/images/code.png')
   }
 
   generatePoster(imgUrl) {
@@ -416,7 +401,7 @@ class Repo extends Component {
         },
         {
           type: 'text',
-          text: '分享自「Gitter」',
+          text: '分享自「GitHub Top」',
           css: {
             bottom: '230rpx',
             left: '350rpx',
@@ -443,13 +428,15 @@ class Repo extends Component {
   }
 
   onPainterFinished() {
-    console.log('onPainterFinished')
     this.setState({
       posterData: null
     })
   }
 
-  render () {
+  loadError(event) {
+  }
+
+  render() {
     const { repo, hasStar, isShare, md, baseUrl, posterData } = this.state
     if (!repo) return <View />
     return (
@@ -477,9 +464,9 @@ class Repo extends Component {
             </View>
             <View className='repo_number_item' onClick={this.handleStar.bind(this)}>
               <AtIcon prefixClass='ion'
-                      value={hasStar ? 'ios-star' : 'ios-star-outline'}
-                      size='25'
-                      color={hasStar ? '#333' : '#333'} />
+                value={hasStar ? 'ios-star' : 'ios-star-outline'}
+                size='25'
+                color={hasStar ? '#333' : '#333'} />
               <Text className='repo_number_title'>{repo.stargazers_count}</Text>
             </View>
             <View className='repo_number_item' onClick={this.handleFork.bind(this)}>
@@ -490,24 +477,24 @@ class Repo extends Component {
           <View className='share_item_view'>
             <View className='repo_share_item'>
               <Button className='action_button'
-                      openType='share'
-                      onClick={this.onClickedActionButton.bind(this, 0)}>
+                openType='share'
+                onClick={this.onClickedActionButton.bind(this, 0)}>
                 <AtIcon prefixClass='ion' value='ios-share-alt' size='25' color='#333' />
-                <Text className='action_button_title'>share</Text>
+                <Text className='action_button_title'>Share</Text>
               </Button>
             </View>
             <View className='repo_share_item'>
               <Button className='action_button'
-                      onClick={this.onClickedActionButton.bind(this, 1)}>
+                onClick={this.onClickedActionButton.bind(this, 1)}>
                 <AtIcon prefixClass='ion' value='md-images' size='22' color='#333' />
-                <Text className='action_button_title'>save</Text>
+                <Text className='action_button_title'>Save</Text>
               </Button>
             </View>
             <View className='repo_share_item'>
               <Button className='action_button'
-                      onClick={this.onClickedActionButton.bind(this, 2)}>
+                onClick={this.onClickedActionButton.bind(this, 2)}>
                 <AtIcon prefixClass='ion' value='ios-link' size='23' color='#333' />
-                <Text className='action_button_title'>copy</Text>
+                <Text className='action_button_title'>Copy</Text>
               </Button>
             </View>
           </View>
@@ -528,14 +515,12 @@ class Repo extends Component {
             <View className='list_title'>Branch</View>
             <View className='list_content'>
               <Text className='list_content_title'>{repo.default_branch}</Text>
-              {/*<AtIcon prefixClass='ion' value='ios-arrow-forward' size='18' color='#7f7f7f' />*/}
             </View>
           </View>
           <View className='repo_info_list'>
             <View className='list_title'>License</View>
             <View className='list_content'>
               <Text className='list_content_title'>{repo.license.spdx_id || '--'}</Text>
-              {/*<AtIcon prefixClass='ion' value='ios-arrow-forward' size='18' color='#7f7f7f' />*/}
             </View>
           </View>
         </View>
@@ -562,9 +547,9 @@ class Repo extends Component {
         {
           md &&
           <View className='markdown'>
-            <Text className='md_title'>README.md</Text>
+            <Text className='md_title'>README</Text>
             <View className='repo_md'>
-              <Markdown md={md} base={baseUrl} />
+              <Markdown md={md} />
             </View>
           </View>
         }
@@ -572,13 +557,13 @@ class Repo extends Component {
           isShare &&
           <View className='home_view' onClick={this.onClickedHome.bind(this)}>
             <AtIcon prefixClass='ion'
-                    value='ios-home'
-                    size='30'
-                    color='#fff' />
+              value='ios-home'
+              size='30'
+              color='#fff' />
           </View>
         }
         {
-          posterData && <Painter style='position:fixed;top:-9999rpx' data={posterData} save onPainterFinished={this.onPainterFinished}/>
+          posterData && <Painter style='position:fixed;top:-9999rpx' data={posterData} save onPainterFinished={this.onPainterFinished.bind(this)} />
         }
       </View>
     )

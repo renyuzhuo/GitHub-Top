@@ -277,7 +277,7 @@ class Repo extends Component {
     const path = '/pages/repo/repo?url=' + encodeURI(url) + '&share=true'
     let that = this
     Taro.showLoading({ title: GLOBAL_CONFIG.LOADING_TEXT })
-    that.generatePoster('../../assets/images/code.jpg')
+    that.generatePoster('../../assets/images/code.png')
   }
 
   generatePoster(imgUrl) {
@@ -433,6 +433,9 @@ class Repo extends Component {
   }
 
   onPainterFinished() {
+    this.setState({
+      posterData: null
+    })
   }
 
   loadError(event) {
@@ -565,7 +568,7 @@ class Repo extends Component {
           </View>
         }
         {
-          posterData && <Painter style='position:fixed;top:-9999rpx' data={posterData} save onPainterFinished={this.onPainterFinished} />
+          posterData && <Painter style='position:fixed;top:-9999rpx' data={posterData} save onPainterFinished={this.onPainterFinished.bind(this)} />
         }
       </View>
     )

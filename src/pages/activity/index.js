@@ -46,11 +46,12 @@ class Index extends Component {
 
     if (!hasLogin()) {
       Taro.showModal({
-        content: 'Login to view yours activity?',
+        title: '请登录',
+        content: '请登录再查看您的活动',
         showCancel: true,
-        cancelText: 'No',
+        cancelText: '再看看',
         cancelColor: '#7f7f7f',
-        confirmText: 'Yeah',
+        confirmText: '登录',
         confirmColor: '#ef5350',
         success(res) {
           if (res.confirm) {
