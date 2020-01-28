@@ -16,6 +16,8 @@ class Index extends Component {
 
   config = {
     navigationBarTitleText: 'Activity',
+    navigationBarBackgroundColor: '#ef5350',
+    navigationBarTextStyle: 'white',
     enablePullDownRefresh: true
   }
 
@@ -49,7 +51,7 @@ class Index extends Component {
         cancelText: 'No',
         cancelColor: '#7f7f7f',
         confirmText: 'Yeah',
-        confirmColor: '#2d8cf0',
+        confirmColor: '#ef5350',
         success(res) {
           if (res.confirm) {
             Taro.navigateTo({

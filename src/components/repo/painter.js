@@ -66,7 +66,7 @@ export default class Painter extends Component {
                 cancelText: '取消',
                 cancelColor: '#7f7f7f',
                 confirmText: '去设置',
-                confirmColor: '#2d8cf0',
+                confirmColor: '#ef5350',
                 success(modalRes) {
                   if (modalRes.confirm) {
                     Taro.openSetting({
@@ -97,7 +97,7 @@ export default class Painter extends Component {
 
   saveImage (filePath) {
     Taro.saveImageToPhotosAlbum({
-      filePath: filePath,  // 此为图片路径
+      filePath: filePath,
       success: (res) => {
         console.log(res)
         Taro.showModal({
@@ -105,7 +105,7 @@ export default class Painter extends Component {
           title: '图片已保存到系统相册',
           content: '快去分享给小伙伴们吧~~',
           confirmText: '我知道了',
-          confirmColor: '#2d8cf0',
+          confirmColor: '#ef5350',
           success() {
           }
         })

@@ -88,7 +88,7 @@ export default class Markdown extends Component {
           </View>
         ) : (
           <View className='loading' onLongClick={this.onTap}>
-            <AtActivityIndicator size={20} color='#2d8cf0' content='loading...' />
+            <AtActivityIndicator size={20} color='#ef5350' content='loading...' />
           </View>
         )
       }

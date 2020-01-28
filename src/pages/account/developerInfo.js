@@ -13,7 +13,7 @@ class DeveloperInfo extends Component {
 
   config = {
     navigationBarTitleText: '',
-    navigationBarBackgroundColor: '#2d8cf0',
+    navigationBarBackgroundColor: '#ef5350',
     navigationBarTextStyle: 'white',
     enablePullDownRefresh: true
   }
@@ -154,7 +154,7 @@ class DeveloperInfo extends Component {
 
   onClickedHome () {
     Taro.reLaunch({
-      url: '/pages/index/index'
+      url: '/pages/top/top'
     })
   }
 

@@ -18,7 +18,7 @@ class Repo extends Component {
   config = {
     navigationBarTitleText: '',
     enablePullDownRefresh: true,
-    navigationBarBackgroundColor: '#2d8cf0',
+    navigationBarBackgroundColor: '#ef5350',
     navigationBarTextStyle: 'white'
   }
 
@@ -31,7 +31,6 @@ class Repo extends Component {
       hasStar: false,
       hasWatching: false,
       isShare: false,
-      loadAd: true,
       baseUrl: null,
       md: null,
       posterData: null
@@ -249,7 +248,7 @@ class Repo extends Component {
 
   onClickedHome () {
     Taro.reLaunch({
-      url: '/pages/index/index'
+      url: '/pages/top/top'
     })
   }
 
@@ -318,7 +317,7 @@ class Repo extends Component {
             width: '650rpx',
             height: '640rpx',
             top: '50rpx',
-            color: '#2d8cf0',
+            color: '#ef5350',
             borderRadius: '20rpx',
           }
         },
@@ -329,7 +328,7 @@ class Repo extends Component {
             width: '650rpx',
             height: '50rpx',
             top: '640rpx',
-            color: '#2d8cf0',
+            color: '#ef5350',
           }
         },
         {
@@ -450,15 +449,8 @@ class Repo extends Component {
     })
   }
 
-  loadError(event) {
-    this.setState({
-      loadAd: false
-    })
-    console.log(event.detail)
-  }
-
   render () {
-    const { repo, hasStar, isShare, md, baseUrl, loadAd, posterData } = this.state
+    const { repo, hasStar, isShare, md, baseUrl, posterData } = this.state
     console.log('posterData', posterData)
     if (!repo) return <View />
     return (
@@ -575,13 +567,6 @@ class Repo extends Component {
             <View className='repo_md'>
               <Markdown md={md} base={baseUrl} />
             </View>
-          </View>
-        }
-        {
-          (md && loadAd) &&
-          <View className='ad'>
-            <Text className='support'>Support Gitter ❤</Text>
-            <Ad unitId='adunit-04a1d10f49572d65' onError={this.loadError.bind(this)} />
           </View>
         }
         {

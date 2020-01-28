@@ -12,7 +12,6 @@ class About extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      loadAd: true,
       config: null
     }
   }
@@ -53,7 +52,7 @@ class About extends Component {
       cancelText: 'No',
       cancelColor: '#7f7f7f',
       confirmText: 'Yeah',
-      confirmColor: '#2d8cf0',
+      confirmColor: '#ef5350',
       success(res) {
         if (res.confirm) {
           Taro.setStorageSync('Authorization', '')
@@ -67,13 +66,6 @@ class About extends Component {
 
   }
 
-  loadError(event) {
-    this.setState({
-      loadAd: false
-    })
-    console.log(event.detail)
-  }
-
   previewImage() {
     const { config } = this.state
     Taro.previewImage({
@@ -82,9 +74,9 @@ class About extends Component {
   }
 
   render() {
-    const { loadAd, config } = this.state
+    const { config } = this.state
     console.log('config', config)
-    let api = 'https://api.github.com/repos/huangjianke/Gitter'
+    let api = 'https://api.github.com/repos/renyuzhuo/GitHub-Hot'
     let url = '/pages/repo/repo?url=' + encodeURI(api)
     return (
       <View className='content'>
@@ -96,7 +88,7 @@ class About extends Component {
         </Text>
         <Navigator url={url}>
           <Text className='link'>
-            https://github.com/huangjianke/Gitter
+            https://github.com/renyuzhuo/GitHub-Hot
           </Text>
         </Navigator>
         <View className='logout' onClick={this.logout.bind(this)}>
@@ -111,14 +103,6 @@ class About extends Component {
                 onClick={this.previewImage}
               />
               <Text className='support_title'>点击长按识别</Text>
-            </View>
-          )
-        }
-        {
-          loadAd && (
-            <View className='ad'>
-              <Text className='support'>Support Gitter ❤</Text>
-              <Ad unitId='adunit-3861174abe44ff28' onError={this.loadError.bind(this)} />
             </View>
           )
         }

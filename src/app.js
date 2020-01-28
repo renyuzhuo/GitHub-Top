@@ -3,7 +3,7 @@ import Taro, { Component } from '@tarojs/taro'
 import { Provider } from '@tarojs/redux'
 import { get as getGlobalData, set as setGlobalData } from './utils/global_data'
 
-import Index from './pages/index'
+import Index from './pages/top'
 
 import configStore from './store'
 
@@ -13,16 +13,15 @@ import './assets/ionicons/css/ionicons.min.css'
 const store = configStore
 
 class App extends Component {
-
+  
   config = {
     pages: [
-      'pages/account/index',
       'pages/top/top',
+      'pages/account/index',
       'pages/repo/issues',
       'pages/login/login',
       'pages/repo/repo',
       'pages/account/about',
-      'pages/index/index',
       'pages/activity/index',
       'pages/account/follow',
       'pages/account/developerInfo',
@@ -49,7 +48,7 @@ class App extends Component {
           text: 'Top',
           iconPath: './assets/images/tab_trend.png',
           selectedIconPath: './assets/images/tab_trend_s.png'
-        }, 
+        },
         {
           pagePath: 'pages/activity/index',
           text: 'Activity',
@@ -64,7 +63,7 @@ class App extends Component {
         }
       ],
       color: '#8a8a8a',
-      selectedColor: '#2d8cf0',
+      selectedColor: '#ef5350',
       backgroundColor: '#ffffff',
       borderStyle: 'white'
     },

@@ -19,7 +19,7 @@ class Repo extends Component {
   config = {
     navigationBarTitleText: '',
     enablePullDownRefresh: true,
-    navigationBarBackgroundColor: '#2d8cf0',
+    navigationBarBackgroundColor: '#ef5350',
     navigationBarTextStyle: 'white'
   }
 
@@ -201,7 +201,7 @@ class Repo extends Component {
       Taro.hideLoading()
       if (res.statusCode === HTTP_STATUS.ACCEPTED) {
         Taro.showToast({
-          title: 'Success!',
+          title: 'Success',
           icon: 'success'
         })
       } else {
@@ -250,14 +250,13 @@ class Repo extends Component {
       }
         break
       default: {
-
       }
     }
   }
 
   onClickedHome() {
     Taro.reLaunch({
-      url: '/pages/index/index'
+      url: '/pages/top/top'
     })
   }
 
@@ -279,24 +278,7 @@ class Repo extends Component {
     const path = '/pages/repo/repo?url=' + encodeURI(url) + '&share=true'
     let that = this
     Taro.showLoading({ title: GLOBAL_CONFIG.LOADING_TEXT })
-    wx.cloud.callFunction({
-      // 要调用的云函数名称
-      name: 'wxacode',
-      // 传递给云函数的event参数
-      data: {
-        path: path,
-        name: `${repo.owner.login}_${repo.name}`
-      }
-    }).then(res => {
-      console.log('wxacode', res)
-      if (res.result && res.result.length > 0) {
-        that.generatePoster(res.result[0].tempFileURL)
-      } else {
-        Taro.hideLoading()
-      }
-    }).catch(err => {
-      Taro.hideLoading()
-    })
+    that.generatePoster('../../assets/images/code.jpg')
   }
 
   generatePoster(imgUrl) {
@@ -326,7 +308,7 @@ class Repo extends Component {
             width: '650rpx',
             height: '640rpx',
             top: '50rpx',
-            color: '#2d8cf0',
+            color: '#ef5350',
             borderRadius: '20rpx',
           }
         },
@@ -337,7 +319,7 @@ class Repo extends Component {
             width: '650rpx',
             height: '50rpx',
             top: '640rpx',
-            color: '#2d8cf0',
+            color: '#ef5350',
           }
         },
         {
@@ -425,7 +407,7 @@ class Repo extends Component {
         },
         {
           type: 'text',
-          text: '分享自「Gitter」',
+          text: '分享自「GitHub Top」',
           css: {
             bottom: '230rpx',
             left: '350rpx',
@@ -452,10 +434,6 @@ class Repo extends Component {
   }
 
   onPainterFinished() {
-    console.log('onPainterFinished')
-    this.setState({
-      posterData: null
-    })
   }
 
   loadError(event) {
@@ -506,21 +484,21 @@ class Repo extends Component {
                 openType='share'
                 onClick={this.onClickedActionButton.bind(this, 0)}>
                 <AtIcon prefixClass='ion' value='ios-share-alt' size='25' color='#333' />
-                <Text className='action_button_title'>share</Text>
+                <Text className='action_button_title'>Share</Text>
               </Button>
             </View>
             <View className='repo_share_item'>
               <Button className='action_button'
                 onClick={this.onClickedActionButton.bind(this, 1)}>
                 <AtIcon prefixClass='ion' value='md-images' size='22' color='#333' />
-                <Text className='action_button_title'>save</Text>
+                <Text className='action_button_title'>Save</Text>
               </Button>
             </View>
             <View className='repo_share_item'>
               <Button className='action_button'
                 onClick={this.onClickedActionButton.bind(this, 2)}>
                 <AtIcon prefixClass='ion' value='ios-link' size='23' color='#333' />
-                <Text className='action_button_title'>copy</Text>
+                <Text className='action_button_title'>Copy</Text>
               </Button>
             </View>
           </View>
