@@ -17,11 +17,12 @@ class App extends Component {
   config = {
     pages: [
       'pages/top/top',
+      
+      'pages/account/about',
       'pages/account/index',
       'pages/repo/issues',
       'pages/login/login',
       'pages/repo/repo',
-      'pages/account/about',
       'pages/activity/index',
       'pages/account/follow',
       'pages/account/developerInfo',
@@ -33,7 +34,8 @@ class App extends Component {
       'pages/repo/contributors',
       'pages/repo/starredRepo',
       'pages/repo/file',
-      'pages/repo/repoEvents'
+      'pages/repo/repoEvents',
+      'pages/search/index'
     ],
     window: {
       backgroundTextStyle: 'dark',
@@ -66,14 +68,9 @@ class App extends Component {
       selectedColor: '#ef5350',
       backgroundColor: '#ffffff',
       borderStyle: 'white'
-    },
-    navigateToMiniProgramAppIdList: [
-      'wx0c31d04cc83bd649'
-    ]
+    }
   }
 
-  // 在 App 类中的 render() 函数没有实际作用
-  // 请勿修改此函数
   render() {
     return (
       <Provider store={store}>

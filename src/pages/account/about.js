@@ -23,21 +23,6 @@ class About extends Component {
   componentWillMount() {
   }
 
-  componentDidMount() {
-    let that = this
-    Taro.getStorage({
-      key: 'config_gitter',
-      success(res) {
-        console.log('config_gitter', res)
-        if (res.data) {
-          that.setState({
-            config: res.data
-          })
-        }
-      }
-    })
-  }
-
   componentWillUnmount() { }
 
   componentDidShow() { }
@@ -45,37 +30,25 @@ class About extends Component {
   componentDidHide() { }
 
   logout() {
-
     Taro.showModal({
-      content: 'Are you sure?',
+      title: '你确定要退出登录吗',
+      content: '退出登录后无法查看活动，提交 Issues 和 Star 项目等',
       showCancel: true,
-      cancelText: 'No',
+      cancelText: '再想想',
       cancelColor: '#7f7f7f',
-      confirmText: 'Yeah',
+      confirmText: '退出',
       confirmColor: '#ef5350',
       success(res) {
         if (res.confirm) {
-          Taro.setStorageSync('Authorization', '')
-          Taro.setStorageSync('userInfo', null)
+          Taro.clearStorage()
           Taro.navigateBack()
-        } else if (res.cancel) {
-          console.log('用户点击取消')
         }
       }
     })
 
   }
 
-  previewImage() {
-    const { config } = this.state
-    Taro.previewImage({
-      urls: [config.support_url]
-    })
-  }
-
   render() {
-    const { config } = this.state
-    console.log('config', config)
     let api = 'https://api.github.com/repos/renyuzhuo/GitHub-Hot'
     let url = '/pages/repo/repo?url=' + encodeURI(api)
     return (
@@ -84,7 +57,7 @@ class About extends Component {
           className='logo'
           src={require('../../assets/images/logo.png')} />
         <Text className='version'>
-          Gitter v1.3.2
+          GitHub Hot V1.0.0
         </Text>
         <Navigator url={url}>
           <Text className='link'>
@@ -94,18 +67,7 @@ class About extends Component {
         <View className='logout' onClick={this.logout.bind(this)}>
           Logout
         </View>
-        {
-          config.support && (
-            <View className='support_view'>
-              <Text className='support_title'>Support Gitter ❤</Text>
-              <Image className='support_image'
-                src={config.support_url}
-                onClick={this.previewImage}
-              />
-              <Text className='support_title'>点击长按识别</Text>
-            </View>
-          )
-        }
+        <Button className='contact' open-type="contact">直接与我联系</Button>
       </View>
     )
   }

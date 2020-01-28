@@ -121,13 +121,6 @@ class Index extends Component {
         this.handleStar()
       }
       break
-      case NAVIGATE_TYPE.FEEDBACK: {
-        Taro.navigateToMiniProgram({
-          appId: 'wx0c31d04cc83bd649',
-          path: '/pages/index/contact'
-        })
-      }
-      break
       default: {
       }
     }
@@ -202,7 +195,7 @@ class Index extends Component {
                 !hasStar && (
                   <View className='list_view'>
                     <View className='list' onClick={this.handleNavigate.bind(this, NAVIGATE_TYPE.STAR)}>
-                      <View className='list_title'>Star GitHub Hot ❤</View>
+                      <View className='list_title'>Star GitHub Hot ❤️</View>
                       <AtIcon prefixClass='ion' value='ios-arrow-forward' size='18' color='#7f7f7f' />
                     </View>
                   </View>
@@ -237,10 +230,6 @@ class Index extends Component {
                 </View>
               </View>
               <View className='list_view'>
-                <View className='list' onClick={this.handleNavigate.bind(this, NAVIGATE_TYPE.FEEDBACK)}>
-                  <View className='list_title'>Feedback</View>
-                  <AtIcon prefixClass='ion' value='ios-arrow-forward' size='18' color='#7f7f7f' />
-                </View>
                 <View className='list' onClick={this.handleNavigate.bind(this, NAVIGATE_TYPE.ABOUT)}>
                   <View className='list_title'>About</View>
                   <AtIcon prefixClass='ion' value='ios-arrow-forward' size='18' color='#7f7f7f' />

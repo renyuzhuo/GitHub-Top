@@ -30,6 +30,7 @@ class Issues extends Component {
       fixed: false,
       openList: [],
       closedList: [],
+      tempList: [],
       open_page: 1,
       close_page: 1,
       open_status: REFRESH_STATUS.NORMAL,
@@ -189,22 +190,22 @@ class Issues extends Component {
   }
 
   onTabChange(index) {
-    console.log('click close', index)
     this.setState({
       current: index
     })
   }
 
   render () {
+    console.log('In Render: ' + current)
     const { openList, closedList, isUser, fixed, current, open_status, close_status } = this.state
+    console.log('In Render2: ' + current)
     const count = current === 0 ? openList.length : closedList.length
     return (
       <View className='content'>
         <View className={fixed ? 'segment-fixed' : ''}>
           <Segment tabList={['OPEN', 'CLOSED']}
                    current={current}
-                   showAction={false}
-                   onTabChange={this.onTabChange}
+                   onTabChange={this.onTabChange.bind(this)}
           />
         </View>
         {

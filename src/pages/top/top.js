@@ -11,11 +11,10 @@ import Painter from '../../components/repo/painter'
 
 import api from '../../service/api'
 
-import './top.less'
+import '../repo/repo.less'
 
 class Repo extends Component {
 
-  /* 页面配置 */
   config = {
     navigationBarTitleText: '',
     enablePullDownRefresh: true,
@@ -23,7 +22,6 @@ class Repo extends Component {
     navigationBarTextStyle: 'white'
   }
 
-  /* 整个页面的数据 */
   constructor(props) {
     super(props)
     this.state = {
@@ -80,7 +78,7 @@ class Repo extends Component {
     const { repo, url } = this.state
     let path = '/pages/repo/repo?url=' + encodeURI(url) + '&share=true'
     return {
-      title: `「${repo.name}」★${repo.stargazers_count} - 来自GitHub的开源项目，快来看看吧~~`,
+      title: `「${repo.name}」★${repo.stargazers_count} - GitHub 最新最热开源项目`,
       path: path
     }
   }
@@ -519,14 +517,12 @@ class Repo extends Component {
             <View className='list_title'>Branch</View>
             <View className='list_content'>
               <Text className='list_content_title'>{repo.default_branch}</Text>
-              {/*<AtIcon prefixClass='ion' value='ios-arrow-forward' size='18' color='#7f7f7f' />*/}
             </View>
           </View>
           <View className='repo_info_list'>
             <View className='list_title'>License</View>
             <View className='list_content'>
               <Text className='list_content_title'>{repo.license.spdx_id || '--'}</Text>
-              {/*<AtIcon prefixClass='ion' value='ios-arrow-forward' size='18' color='#7f7f7f' />*/}
             </View>
           </View>
         </View>
@@ -553,7 +549,7 @@ class Repo extends Component {
         {
           md &&
           <View className='markdown'>
-            <Text className='md_title'>README.md</Text>
+            <Text className='md_title'>README</Text>
             <View className='repo_md'>
               <Markdown md={md} />
             </View>
