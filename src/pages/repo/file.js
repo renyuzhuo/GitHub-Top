@@ -11,7 +11,9 @@ import './file.less'
 class File extends Component {
 
   config = {
-    navigationBarTitleText: ''
+    navigationBarTitleText: 'Code',
+    navigationBarBackgroundColor: '#ef5350',
+    navigationBarTextStyle: 'white'
   }
 
   constructor(props) {

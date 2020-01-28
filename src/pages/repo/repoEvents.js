@@ -15,6 +15,8 @@ class RepoEvents extends Component {
 
   config = {
     navigationBarTitleText: 'Events',
+    navigationBarBackgroundColor: '#ef5350',
+    navigationBarTextStyle: 'white',
     enablePullDownRefresh: true
   }
 

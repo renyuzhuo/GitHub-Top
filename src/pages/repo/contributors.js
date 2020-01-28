@@ -13,7 +13,9 @@ import './contentList.less'
 class Contributors extends Component {
 
   config = {
-    navigationBarTitleText: 'Contributors'
+    navigationBarTitleText: 'Contributors',
+    navigationBarBackgroundColor: '#ef5350',
+    navigationBarTextStyle: 'white'
   }
 
   constructor(props) {

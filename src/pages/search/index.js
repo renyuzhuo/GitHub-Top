@@ -10,7 +10,9 @@ import './index.less'
 class Index extends Component {
 
   config = {
-    navigationBarTitleText: 'Search'
+    navigationBarTitleText: 'Search',
+    navigationBarBackgroundColor: '#ef5350',
+    navigationBarTextStyle: 'white'
   }
 
   constructor(props) {

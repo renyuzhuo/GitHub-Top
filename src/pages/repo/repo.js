@@ -451,7 +451,6 @@ class Repo extends Component {
 
   render () {
     const { repo, hasStar, isShare, md, baseUrl, posterData } = this.state
-    console.log('posterData', posterData)
     if (!repo) return <View />
     return (
       <View className='content'>

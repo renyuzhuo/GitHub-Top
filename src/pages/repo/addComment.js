@@ -11,7 +11,9 @@ import './addComment.less'
 class AddComment extends Component {
 
   config = {
-    navigationBarTitleText: 'New Comment'
+    navigationBarTitleText: 'New Comment',
+    navigationBarBackgroundColor: '#ef5350',
+    navigationBarTextStyle: 'white'
   }
 
   constructor(props) {

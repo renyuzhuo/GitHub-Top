@@ -17,6 +17,8 @@ class Issues extends Component {
 
   config = {
     navigationBarTitleText: 'Issues',
+    navigationBarBackgroundColor: '#ef5350',
+    navigationBarTextStyle: 'white',
     enablePullDownRefresh: true
   }
 
@@ -196,9 +198,7 @@ class Issues extends Component {
   }
 
   render () {
-    console.log('In Render: ' + current)
     const { openList, closedList, isUser, fixed, current, open_status, close_status } = this.state
-    console.log('In Render2: ' + current)
     const count = current === 0 ? openList.length : closedList.length
     return (
       <View className='content'>

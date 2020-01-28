@@ -15,6 +15,8 @@ class IssueDetail extends Component {
 
   config = {
     navigationBarTitleText: 'Issue Comments',
+    navigationBarBackgroundColor: '#ef5350',
+    navigationBarTextStyle: 'white',
     enablePullDownRefresh: true
   }
 

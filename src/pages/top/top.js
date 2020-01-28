@@ -85,12 +85,15 @@ class Repo extends Component {
 
   getRepo() {
     Taro.request({
-      url: 'https://api.renyuzhuo.cn/index.json'
+      url: 'https://api.renyuzhuo.cn/index.json?random=' + Math.random()
     })
       .then(json => {
-        console.log(json.data)
-        console.log(json.data)
         this.state.url = json.data.url
+
+        this.setState({
+          repo: json.data
+        })
+
         let that = this
         api.get(this.state.url).then((res) => {
           if (res.statusCode === HTTP_STATUS.SUCCESS) {
@@ -101,7 +104,6 @@ class Repo extends Component {
             }, () => {
               that.getReadme()
               that.checkStarring()
-              // that.checkWatching()
             })
           } else {
             Taro.showToast({
@@ -259,7 +261,6 @@ class Repo extends Component {
   }
 
   onClickedActionButton(index) {
-    console.log(index)
     const { repo } = this.state
     if (index === 1) {
       this.loadWXACode()
@@ -435,7 +436,6 @@ class Repo extends Component {
   }
 
   loadError(event) {
-    console.log(event.detail)
   }
 
   render() {

@@ -6,7 +6,9 @@ import './about.less'
 class About extends Component {
 
   config = {
-    navigationBarTitleText: 'About'
+    navigationBarTitleText: '关于',
+    navigationBarBackgroundColor: '#ef5350',
+    navigationBarTextStyle: 'white'
   }
 
   constructor(props) {
@@ -64,10 +66,8 @@ class About extends Component {
             https://github.com/renyuzhuo/GitHub-Hot
           </Text>
         </Navigator>
-        <View className='logout' onClick={this.logout.bind(this)}>
-          Logout
-        </View>
-        <Button className='contact' open-type="contact">直接与我联系</Button>
+        <View className='logout' onClick={this.logout.bind(this)}>退出</View>
+        <Button className='contact' open-type="contact">与我联系</Button>
       </View>
     )
   }

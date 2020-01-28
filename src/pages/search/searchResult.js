@@ -15,7 +15,9 @@ import api from "../../service/api";
 class SearchResult extends Component {
 
   config = {
-    enablePullDownRefresh: true
+    enablePullDownRefresh: true,
+    navigationBarBackgroundColor: '#ef5350',
+    navigationBarTextStyle: 'white'
   }
 
   constructor(props) {

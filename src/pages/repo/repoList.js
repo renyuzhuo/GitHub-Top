@@ -14,6 +14,8 @@ class RepoList extends Component {
 
   config = {
     navigationBarTitleText: 'Repos',
+    navigationBarBackgroundColor: '#ef5350',
+    navigationBarTextStyle: 'white',
     enablePullDownRefresh: true,
   }
 

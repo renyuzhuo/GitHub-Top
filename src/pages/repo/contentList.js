@@ -10,7 +10,9 @@ import './contentList.less'
 class ContentList extends Component {
 
   config = {
-    navigationBarTitleText: ''
+    navigationBarTitleText: 'Code',
+    navigationBarBackgroundColor: '#ef5350',
+    navigationBarTextStyle: 'white'
   }
 
   constructor(props) {

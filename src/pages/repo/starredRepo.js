@@ -13,6 +13,8 @@ class StarredRepo extends Component {
 
   config = {
     navigationBarTitleText: 'Starred Repos',
+    navigationBarBackgroundColor: '#ef5350',
+    navigationBarTextStyle: 'white',
     enablePullDownRefresh: true
   }
 

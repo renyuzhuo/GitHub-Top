@@ -11,7 +11,9 @@ import './addIssue.less'
 class AddIssue extends Component {
 
   config = {
-    navigationBarTitleText: 'New Issue'
+    navigationBarTitleText: 'New Issue',
+    navigationBarBackgroundColor: '#ef5350',
+    navigationBarTextStyle: 'white'
   }
 
   constructor(props) {
