@@ -37,7 +37,7 @@ class Repo extends Component {
     }
   }
 
-  componentWillReceiveProps (nextProps) {
+  componentWillReceiveProps(nextProps) {
   }
 
   componentWillMount() {
@@ -50,6 +50,9 @@ class Repo extends Component {
 
   componentDidMount() {
     Taro.showLoading({ title: GLOBAL_CONFIG.LOADING_TEXT })
+    this.setState({
+      repo: null
+    })
     this.getRepo()
   }
 
@@ -57,15 +60,18 @@ class Repo extends Component {
     this.getRepo()
   }
 
-  componentWillUnmount () { }
+  componentWillUnmount() { }
 
-  componentDidShow () { }
+  componentDidShow() { }
 
-  componentDidHide () { }
+  componentDidHide() { }
 
   onPageScroll(e) {
     let title = ''
     const { repo } = this.state
+    if (!repo) {
+      return
+    }
     if (e.scrollTop > 0) {
       title = repo.name
     }
@@ -76,6 +82,12 @@ class Repo extends Component {
 
   onShareAppMessage(obj) {
     const { repo, url } = this.state
+    if (!repo) {
+      return {
+        title: 'GitHub 最新最热开源项目',
+        path: 'pages/top/top'
+      }
+    }
     let path = '/pages/repo/repo?url=' + encodeURI(url) + '&share=true'
     return {
       title: `「${repo.name}」★${repo.stargazers_count} - GitHub 最新最热开源项目`,
@@ -85,13 +97,13 @@ class Repo extends Component {
 
   getRepo() {
     let that = this
-    api.get(this.state.url).then((res)=>{
+    api.get(this.state.url).then((res) => {
       if (res.statusCode === HTTP_STATUS.SUCCESS) {
         let baseUrl = 'https://raw.githubusercontent.com/' + res.data.full_name + '/master/'
         that.setState({
           repo: res.data,
           baseUrl: baseUrl
-        }, ()=>{
+        }, () => {
           that.getReadme()
           that.checkStarring()
         })
@@ -108,12 +120,15 @@ class Repo extends Component {
 
   getReadme() {
     const { repo } = this.state
+    if (!repo) {
+      return
+    }
     let url = '/repos/' + repo.full_name + '/readme'
     let that = this
-    api.get(url).then((res)=>{
+    api.get(url).then((res) => {
       that.setState({
         readme: res.data
-      }, ()=>{
+      }, () => {
         that.parseReadme()
       })
     })
@@ -135,9 +150,12 @@ class Repo extends Component {
   checkStarring() {
     if (hasLogin()) {
       const { repo } = this.state
+      if (!repo) {
+        return
+      }
       let that = this
       let url = '/user/starred/' + repo.full_name
-      api.get(url).then((res)=>{
+      api.get(url).then((res) => {
         that.setState({
           hasStar: res.statusCode === 204
         })
@@ -148,9 +166,12 @@ class Repo extends Component {
   checkWatching() {
     if (hasLogin()) {
       const { repo } = this.state
+      if (!repo) {
+        return
+      }
       let that = this
       let url = '/repos/' + repo.full_name + '/subscription'
-      api.get(url).then((res)=>{
+      api.get(url).then((res) => {
         that.setState({
           hasWatching: res.statusCode === 200
         })
@@ -161,6 +182,9 @@ class Repo extends Component {
   handleStar() {
     Taro.showLoading({ title: GLOBAL_CONFIG.LOADING_TEXT })
     const { hasStar, repo } = this.state
+    if (!repo) {
+      return
+    }
     let url = '/user/starred/' + repo.full_name
     let that = this
     if (hasStar) {
@@ -191,6 +215,9 @@ class Repo extends Component {
   handleFork() {
     Taro.showLoading({ title: GLOBAL_CONFIG.LOADING_TEXT })
     const { repo } = this.state
+    if (!repo) {
+      return
+    }
     let url = '/repos/' + repo.full_name + '/forks'
     api.post(url).then((res) => {
       Taro.hideLoading()
@@ -210,6 +237,9 @@ class Repo extends Component {
 
   handleNavigate(type) {
     const { repo } = this.state
+    if (!repo) {
+      return
+    }
     switch (type) {
       case NAVIGATE_TYPE.USER: {
         Taro.navigateTo({
@@ -257,6 +287,9 @@ class Repo extends Component {
 
   onClickedActionButton(index) {
     const { repo } = this.state
+    if (!repo) {
+      return
+    }
     if (index === 1) {
       this.loadWXACode()
     } else if (index === 2) {
@@ -401,7 +434,7 @@ class Repo extends Component {
         },
         {
           type: 'text',
-          text: '分享自「GitHub Top」',
+          text: '分享自「GitHub Hot」',
           css: {
             bottom: '230rpx',
             left: '350rpx',
@@ -438,13 +471,12 @@ class Repo extends Component {
 
   render() {
     const { repo, hasStar, isShare, md, baseUrl, posterData } = this.state
-    if (!repo) return <View />
     return (
       <View className='content'>
         <View className='repo_bg_view'>
-          <Text className='repo_info_title'>{repo.name}</Text>
+          <Text className='repo_info_title'>{repo ? repo.name : '获取信息中...'}</Text>
           {
-            repo.fork &&
+            repo && repo.fork &&
             <View className='fork'>
               <AtIcon prefixClass='ion' value='ios-git-network' size='15' color='#fff' />
               <Navigator url={'/pages/repo/repo?url=' + encodeURI(repo.parent.url)}>
@@ -454,24 +486,24 @@ class Repo extends Component {
               </Navigator>
             </View>
           }
-          <Text className='repo_info_desc'>{repo.description || 'no description'}</Text>
+          <Text className='repo_info_desc'>{repo.description || '下拉刷新'}</Text>
         </View>
         <View className='repo_number_view'>
           <View className='repo_number_item_view'>
             <View className='repo_number_item'>
               <AtIcon prefixClass='ion' value='ios-eye' size='25' color='#333' />
-              <Text className='repo_number_title'>{repo.subscribers_count}</Text>
+              <Text className='repo_number_title'>{repo ? repo.subscribers_count : 0}</Text>
             </View>
             <View className='repo_number_item' onClick={this.handleStar.bind(this)}>
               <AtIcon prefixClass='ion'
                 value={hasStar ? 'ios-star' : 'ios-star-outline'}
                 size='25'
                 color={hasStar ? '#333' : '#333'} />
-              <Text className='repo_number_title'>{repo.stargazers_count}</Text>
+              <Text className='repo_number_title'>{repo ? repo.stargazers_count : 0}</Text>
             </View>
             <View className='repo_number_item' onClick={this.handleFork.bind(this)}>
               <AtIcon prefixClass='ion' value='ios-git-network' size='25' color='#333' />
-              <Text className='repo_number_title'>{repo.forks_count}</Text>
+              <Text className='repo_number_title'>{repo ? repo.forks_count : 0}</Text>
             </View>
           </View>
           <View className='share_item_view'>

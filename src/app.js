@@ -46,7 +46,7 @@ class App extends Component {
       list: [
         {
           pagePath: 'pages/top/top',
-          text: 'Top',
+          text: 'Hot',
           iconPath: './assets/images/tab_trend.png',
           selectedIconPath: './assets/images/tab_trend_s.png'
         },
