@@ -91,7 +91,7 @@ class ContentList extends Component {
         {
           dataList.map((item, index) => {
             return (
-              <View key={index} onClick={this.handleItemClick.bind(this, item)}>
+              <View key={item.id} onClick={this.handleItemClick.bind(this, item)}>
                 <ContentListItem item={item} />
               </View>
             )

@@ -26,6 +26,7 @@ const config = {
   },
   copy: {
     patterns: [
+      { from: 'src/assets/images/code.png', to: 'dist/assets/images/code.png' }
     ],
     options: {
     }

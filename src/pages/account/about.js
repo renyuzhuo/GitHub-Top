@@ -20,7 +20,6 @@ class About extends Component {
 
   componentWillReceiveProps(nextProps) {
     console.log(this.props, nextProps)
-    require('../../assets/images/code.png')
   }
 
   componentWillMount() {

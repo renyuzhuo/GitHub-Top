@@ -137,7 +137,7 @@ class Follow extends Component {
     const { dataList, refresh_status } = this.state
     const itemList = dataList.map((item, index) => {
       return (
-        <View onClick={this.handleClickedItem.bind(this, item)} key={index}>
+        <View onClick={this.handleClickedItem.bind(this, item)} key={item.id}>
           <FollowItem item={item} />
         </View>
       )

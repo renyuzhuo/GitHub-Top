@@ -118,7 +118,7 @@ class Contributors extends Component {
           dataList.length > 0 ? (
             dataList.map((item, index)=>{
               return (
-                <View key={index} onClick={this.handleClickedItem.bind(this, item)}>
+                <View key={item.id} onClick={this.handleClickedItem.bind(this, item)}>
                   <FollowItem item={item} />
                 </View>
               )

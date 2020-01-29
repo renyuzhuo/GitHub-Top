@@ -118,7 +118,7 @@ class RepoList extends Component {
     const { repos, refresh_status } = this.state
     const repoList = repos.map((item, index) => {
       return (
-        <View onClick={this.handleClickedItem.bind(this, item)} key={index}>
+        <View onClick={this.handleClickedItem.bind(this, item)} key={item.id}>
           <RepoItem item={item} />
           </View>
       )

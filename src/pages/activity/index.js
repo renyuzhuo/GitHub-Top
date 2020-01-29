@@ -158,7 +158,7 @@ class Index extends Component {
           list.length > 0 ? (
             list.map((item, index)=>{
               return (
-                <View key={index} className='list_view'>
+                <View key={item.id} className='list_view'>
                   <ActivityItem item={item} />
                 </View>
               )

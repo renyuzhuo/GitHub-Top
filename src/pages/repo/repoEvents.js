@@ -114,7 +114,7 @@ class RepoEvents extends Component {
           dataList.length > 0 ? (
             dataList.map((item, index)=>{
               return (
-                <View key={index}>
+                <View key={item.id}>
                   <ActivityItem item={item} />
                 </View>
               )

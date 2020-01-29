@@ -151,7 +151,7 @@ class IssueDetail extends Component {
         {
           comments.map((item, index) => {
             return (
-              <IssueCommentItem item={item} key={index} />
+              <IssueCommentItem item={item} key={item.id} />
             )
           })
         }

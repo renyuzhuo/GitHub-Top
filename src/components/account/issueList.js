@@ -29,7 +29,7 @@ export default class IssueList extends Component {
         {
           itemList.map((item, index) => {
             return (
-              <View onClick={this.handleClicked.bind(this, item)} key={index}>
+              <View onClick={this.handleClicked.bind(this, item)} key={item.id}>
                 <IssueItem item={item} />
               </View>
             )

@@ -23,7 +23,7 @@ export default class SearchHistory extends Component {
   render() {
     const { items, onTagClick } = this.props
     const list = items.map((name, index) => {
-      return <View key={index} className='tag-item'>
+      return <View key={name.id} className='tag-item'>
         <AtTag circle active onClick={onTagClick.bind(this)} name={name}>{name}</AtTag>
       </View>
     })

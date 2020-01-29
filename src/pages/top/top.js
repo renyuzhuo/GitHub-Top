@@ -1,5 +1,5 @@
 import Taro, { Component } from '@tarojs/taro'
-import { View, Text, Button, Navigator, Ad } from '@tarojs/components'
+import { View, Text, Button, Navigator} from '@tarojs/components'
 import { GLOBAL_CONFIG } from '../../constants/globalConfig'
 import { AtIcon } from 'taro-ui'
 import { base64_decode } from '../../utils/base64'
