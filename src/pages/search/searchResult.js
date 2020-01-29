@@ -279,7 +279,7 @@ class SearchResult extends Component {
       case 0: {
         list = repos.map((item, index) => {
           return (
-            <View onClick={this.handleClickedRepoItem.bind(this, item)} key={index}>
+            <View onClick={this.handleClickedRepoItem.bind(this, item)} key={item.id}>
               <RepoItem item={item}/>
             </View>
           )
@@ -289,7 +289,7 @@ class SearchResult extends Component {
       case 1: {
         list = users.map((item, index) => {
           return (
-            <View onClick={this.handleClickedUserItem.bind(this, item)} key={index}>
+            <View onClick={this.handleClickedUserItem.bind(this, item)} key={item.id}>
               <FollowItem item={item}/>
             </View>
           )
@@ -302,7 +302,7 @@ class SearchResult extends Component {
         <View className={fixed ? 'search-segment-fixed' : ''}>
           <Segment tabList={['REPO', 'USER']}
                    current={current}
-                   onTabChange={this.onTabChange}
+                   onTabChange={this.onTabChange.bind(this)}
           />
         </View>
         {

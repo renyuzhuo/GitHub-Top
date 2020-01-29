@@ -8,10 +8,12 @@ import './searchBar.less'
 export default class SearchBar extends Component {
 
   static propTypes = {
+    onFocus: PropTypes.func,
     onClickSearch: PropTypes.func,
   }
 
   static defaultProps = {
+    onFocus: () => { },
     onClickSearch: () => {}
   }
 
@@ -19,7 +21,7 @@ export default class SearchBar extends Component {
   }
 
   render() {
-    const { onClickSearch } = this.props
+    const { onFocus, onClickSearch } = this.props
     return (
       <View className='content'>
         <View className='search-bar-bg'>
@@ -28,7 +30,7 @@ export default class SearchBar extends Component {
                  type='text'
                  placeholder='Search what you want...'
                  confirmType='search'
-                 focus
+                 onFocus={onFocus.bind(this)}
                  onConfirm={onClickSearch.bind(this)}
           />
           <View className='icon' />

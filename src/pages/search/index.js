@@ -89,7 +89,7 @@ class Index extends Component {
 
   onTagClick (item) {
     this.updateHistory(item.name)
-    let url = '/pages/search/searchResult?value=' + encodeURI(item.name)
+    let url = './searchResult?value=' + encodeURI(item.name)
     Taro.navigateTo({
       url: url
     })
@@ -110,13 +110,13 @@ class Index extends Component {
     return (
       <View className='content'>
         <View className='search-bar-fixed'>
-          <SearchBar onClickSearch={this.onClickSearch} />
+          <SearchBar onClickSearch={this.onClickSearch.bind(this)} />
         </View>
         {
           history.length > 0 &&
           <View className='search-history-bg'>
             <View className='search-history'>
-              <SearchHistory items={history} onTagClick={this.onTagClick}/>
+              <SearchHistory items={history} onTagClick={this.onTagClick.bind(this)}/>
             </View>
             <View className='clear' onClick={this.clear_history.bind(this)}>Clear All</View>
           </View>

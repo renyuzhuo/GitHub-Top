@@ -67,7 +67,7 @@ class AddIssue extends Component {
     } else {
       Taro.showLoading({title: GLOBAL_CONFIG.LOADING_TEXT})
       let url = '/repos/' + this.state.repo +  '/issues'
-      let source = '\n\n\n\n[**从 GitHub Hot 小程序客户端提交**](https://github.com/renyuzhuo/GitHub-Hot)\n\n![](https://api.renyuzhuo.cn/code-small.jpg)'
+      let source = '\n\n[**提交自 GitHub Hot 小程序**](https://github.com/renyuzhuo/GitHub-Hot)'
       let body = ''
       if (comment.length > 0) {
         body = comment + source

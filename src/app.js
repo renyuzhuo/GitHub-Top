@@ -17,6 +17,8 @@ class App extends Component {
   config = {
     pages: [
       'pages/top/top',
+      'pages/history/history',
+      'pages/search/index',
       'pages/account/about',
       'pages/account/index',
       'pages/repo/issues',
@@ -34,7 +36,7 @@ class App extends Component {
       'pages/repo/starredRepo',
       'pages/repo/file',
       'pages/repo/repoEvents',
-      'pages/search/index'
+      'pages/search/searchResult',
     ],
     window: {
       backgroundTextStyle: 'dark',
@@ -50,6 +52,12 @@ class App extends Component {
           iconPath: './assets/images/tab_trend.png',
           selectedIconPath: './assets/images/tab_trend_s.png'
         },
+        {
+          pagePath: 'pages/history/history',
+          text: 'History',
+          iconPath: './assets/images/tab_history.png',
+          selectedIconPath: './assets/images/tab_history_s.png'
+        }, 
         {
           pagePath: 'pages/activity/index',
           text: 'Activity',
