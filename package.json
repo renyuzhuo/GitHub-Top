@@ -4,7 +4,8 @@
   "private": true,
   "description": "GitHub 热点项目推荐。热点事件发生时，GitHub 是程序员的主战场，我们会做出我们的努力让这个是世界更美好。",
   "scripts": {
-    "build:weapp": "taro build --type weapp",
+    "weapp": "taro build --type weapp;rm -fr dist/components/towxml/;cp -R src/components/towxml/ ./dist/components/towxml;",
+    "build:weapp": "taro build --type weapp;rm -fr dist/components/towxml/;cp -R src/components/towxml/ ./dist/components/towxml;",
     "build:swan": "taro build --type swan",
     "build:alipay": "taro build --type alipay",
     "build:tt": "taro build --type tt",
@@ -36,8 +37,7 @@
     "redux": "^4.0.0",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
-    "taro-ui": "^1.5.4",
-    "taro_rich_text": "^1.1.3"
+    "taro-ui": "^1.5.4"
   },
   "devDependencies": {
     "@tarojs/plugin-babel": "1.3.36",
