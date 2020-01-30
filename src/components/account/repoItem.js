@@ -19,6 +19,7 @@ export default class RepoItem extends Component {
   render() {
     const { item } = this.props
     if (!item) return <View/>
+    let is_show_update = item.updated_at ? true : false
     let update_time = ' ' + timeago(Date.parse(new Date(item.updated_at)))
     let is_bottom_show = (item.language && item.language.length > 0 || item.stargazers_count > 0 || item.forks_count > 0)
     return (
@@ -53,10 +54,17 @@ export default class RepoItem extends Component {
           }
         </View>
         }
-        <View className='update_view'>
-          <AtIcon prefixClass='ion' value='ios-trending-up' size='15' color='#ff4949'/>
-          <View className='update_date'>updated{update_time}</View>
-        </View>
+        {
+          is_show_update &&
+          <View className='update_view'>
+            <AtIcon prefixClass='ion' value='ios-trending-up' size='15' color='#ff4949' />
+            <View className='update_date'>updated{update_time}</View>
+          </View>
+        }
+        {
+          !is_show_update &&
+          <View className='empty-place-holder' />
+        }
       </View>
     )
   }

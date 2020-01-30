@@ -18,15 +18,14 @@ class App extends Component {
     pages: [
       'pages/top/top',
       'pages/history/history',
-      'pages/search/index',
+      'pages/activity/index',
+      'pages/login/login',
+
       'pages/account/about',
       'pages/account/index',
+
       'pages/repo/issues',
-      'pages/login/login',
       'pages/repo/repo',
-      'pages/activity/index',
-      'pages/account/follow',
-      'pages/account/developerInfo',
       'pages/repo/contentList',
       'pages/repo/issueDetail',
       'pages/repo/addIssue',
@@ -36,6 +35,11 @@ class App extends Component {
       'pages/repo/starredRepo',
       'pages/repo/file',
       'pages/repo/repoEvents',
+
+      'pages/account/follow',
+      'pages/account/developerInfo',
+
+      'pages/search/index',
       'pages/search/searchResult',
     ],
     window: {

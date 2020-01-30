@@ -33,7 +33,8 @@ class Repo extends Component {
       isShare: false,
       baseUrl: null,
       md: null,
-      posterData: null
+      posterData: null,
+      body: null
     }
   }
 
@@ -96,14 +97,15 @@ class Repo extends Component {
   }
 
   getRepo() {
-    Taro.request({
-      url: 'https://api.renyuzhuo.cn/index.json?random=' + Math.random()
-    })
+    api.get(
+      'https://api.github.com/repos/renyuzhuo/GitHub-Hot/issues?filter=created&page=1&per_page=1&labels=Top&state=open'
+    )
       .then(json => {
-        this.state.url = json.data.url
+        let repo = JSON.parse(json.data[0].body)
+        this.state.url = repo.url
 
         this.setState({
-          repo: json.data
+          repo: repo
         })
 
         let that = this
