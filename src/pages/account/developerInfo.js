@@ -72,7 +72,7 @@ class DeveloperInfo extends Component {
   checkFollowing() {
     if (hasLogin()) {
       let that = this
-      const { username } = this.state
+      const { username} = this.state
       let url = '/user/following/' + username
       api.get(url).then((res)=>{
         Taro.stopPullDownRefresh()

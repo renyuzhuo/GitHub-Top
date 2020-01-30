@@ -194,9 +194,15 @@ class SearchResult extends Component {
   }
 
   handleClickedUserItem(item) {
-    Taro.navigateTo({
-      url: '/pages/account/developerInfo?username=' + item.login
-    })
+    if (item.type === 'User') {
+      Taro.navigateTo({
+        url: '/pages/account/developerInfo?username=' + item.login
+      })
+    } else if (item.type === 'Organization') {
+      Taro.navigateTo({
+        url: '/pages/account/organitionInfo?username=' + item.login
+      })
+    }
   }
 
   onPageScroll(obj) {

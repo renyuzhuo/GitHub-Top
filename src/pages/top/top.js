@@ -4,10 +4,11 @@ import { GLOBAL_CONFIG } from '../../constants/globalConfig'
 import { AtIcon } from 'taro-ui'
 import { base64_decode } from '../../utils/base64'
 import { hasLogin } from '../../utils/common'
-import { HTTP_STATUS } from '../../constants/status'
+import { HTTP_STATUS, REFRESH_STATUS } from '../../constants/status'
 import { NAVIGATE_TYPE } from '../../constants/navigateType'
 import Markdown from '../../components/repo/markdown'
 import Painter from '../../components/repo/painter'
+import LoadMore from '../../components/common/loadMore'
 
 import api from '../../service/api'
 
@@ -255,9 +256,15 @@ class Repo extends Component {
     }
     switch (type) {
       case NAVIGATE_TYPE.USER: {
-        Taro.navigateTo({
-          url: '/pages/account/developerInfo?username=' + repo.owner.login
-        })
+        if (repo.owner.type === 'User'){
+          Taro.navigateTo({
+            url: '/pages/account/developerInfo?username=' + repo.owner.login
+          })
+        } else if (repo.owner.type === 'Organization') {
+          Taro.navigateTo({
+            url: '/pages/account/organitionInfo?username=' + repo.owner.login
+          })
+        }
       }
         break
       case NAVIGATE_TYPE.REPO_CONTENT_LIST: {
@@ -610,6 +617,7 @@ class Repo extends Component {
         {
           posterData && <Painter style='position:fixed;top:-9999rpx' data={posterData} save onPainterFinished={this.onPainterFinished.bind(this)} />
         }
+        <LoadMore status={REFRESH_STATUS.NO_MORE_DATA} />
       </View>
     )
   }

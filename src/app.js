@@ -37,6 +37,7 @@ class App extends Component {
       'pages/repo/repoEvents',
 
       'pages/account/follow',
+      'pages/account/organitionInfo',
       'pages/account/developerInfo',
 
       'pages/search/index',
