@@ -476,6 +476,17 @@ class Repo extends Component {
   loadError(event) {
   }
 
+  onClickHomepage() {
+    const { repo } = this.state
+    let that = this
+    if (!repo) {
+      return
+    }
+    Taro.setClipboardData({
+      data: that.state.repo.homepage
+    })
+  }
+
   render() {
     const { repo, hasStar, isShare, md, baseUrl, posterData } = this.state
     return (
@@ -556,6 +567,15 @@ class Repo extends Component {
               <Text className='list_content_title'>{repo.default_branch}</Text>
             </View>
           </View>
+          {
+            repo && repo.homepage &&
+            <View className='repo_info_list'>
+              <View className='list_title'>Homepage</View>
+              <View className='list_content'>
+                <Text className='list_content_title' onClick={this.onClickHomepage.bind(this)} >{repo.homepage.length > 25 ? repo.homepage.slice(0, 20) + '...' : repo.homepage}</Text>
+              </View>
+            </View>
+          }
           <View className='repo_info_list'>
             <View className='list_title'>License</View>
             <View className='list_content'>

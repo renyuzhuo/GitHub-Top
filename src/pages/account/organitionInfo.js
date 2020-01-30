@@ -1,5 +1,5 @@
 import Taro, { Component } from '@tarojs/taro'
-import {Image, Text, View, Button} from '@tarojs/components'
+import { Image, Text, View, Button } from '@tarojs/components'
 import { GLOBAL_CONFIG } from '../../constants/globalConfig'
 import { AtAvatar, AtIcon } from 'taro-ui'
 import { NAVIGATE_TYPE } from '../../constants/navigateType'
@@ -7,7 +7,7 @@ import { hasLogin } from '../../utils/common'
 import api from '../../service/api'
 
 import './organitionInfo.less'
-import {baseUrl} from "../../service/config";
+import { baseUrl } from "../../service/config";
 
 class OrganitionInfo extends Component {
 
@@ -27,7 +27,7 @@ class OrganitionInfo extends Component {
     }
   }
 
-  componentWillReceiveProps (nextProps) {
+  componentWillReceiveProps(nextProps) {
     console.log(this.props, nextProps)
   }
 
@@ -40,15 +40,15 @@ class OrganitionInfo extends Component {
   }
 
   componentDidMount() {
-    Taro.showLoading({title: GLOBAL_CONFIG.LOADING_TEXT})
+    Taro.showLoading({ title: GLOBAL_CONFIG.LOADING_TEXT })
     this.getOrganitionInfo()
   }
 
-  componentWillUnmount () { }
+  componentWillUnmount() { }
 
-  componentDidShow () { }
+  componentDidShow() { }
 
-  componentDidHide () { }
+  componentDidHide() { }
 
   onPullDownRefresh() {
     this.getOrganitionInfo()
@@ -58,7 +58,7 @@ class OrganitionInfo extends Component {
     const { username } = this.state
     let that = this
     let url = '/users/' + username
-    api.get(url).then((res)=>{
+    api.get(url).then((res) => {
       that.setState({
         organitionInfo: res.data
       })
@@ -87,9 +87,31 @@ class OrganitionInfo extends Component {
     }
   }
 
-  onClickedHome () {
+  onClickedHome() {
     Taro.reLaunch({
       url: '/pages/top/top'
+    })
+  }
+
+  onClickBlog() {
+    const { organitionInfo } = this.state
+    let that = this
+    if (!organitionInfo || !organitionInfo.blog) {
+      return
+    }
+    Taro.setClipboardData({
+      data: organitionInfo.blog
+    })
+  }
+
+  onClickEmail(){
+    const { organitionInfo } = this.state
+    let that = this
+    if (!organitionInfo || !organitionInfo.email) {
+      return
+    }
+    Taro.setClipboardData({
+      data: organitionInfo.email
     })
   }
 
@@ -98,9 +120,9 @@ class OrganitionInfo extends Component {
     if (!organitionInfo) return <View />
     return (
       <View className='content'>
-        <Image className='account_bg' src={require('../../assets/images/account_bg.png')}/>
+        <Image className='account_bg' src={require('../../assets/images/account_bg.png')} />
         <View className='user_info'>
-          <AtAvatar className='avatar' circle image={organitionInfo.avatar_url}/>
+          <AtAvatar className='avatar' circle image={organitionInfo.avatar_url} />
           <Text className='username'>
             {organitionInfo.name || organitionInfo.login}
           </Text>
@@ -115,11 +137,11 @@ class OrganitionInfo extends Component {
         <View className='list_view'>
           <View className='list'>
             <View className='list_title'>Email</View>
-            <View className='list_content'>{organitionInfo.email.length > 0 ? organitionInfo.email : '--'}</View>
+            <View className='list_content' onClick={this.onClickEmail.bind(this)}>{organitionInfo.email.length > 0 ? organitionInfo.email : '--'}</View>
           </View>
           <View className='list'>
             <View className='list_title'>Blog</View>
-            <View className='list_content'>{organitionInfo.blog.length > 0 ? organitionInfo.blog : '--'}</View>
+            <View className='list_content' onClick={this.onClickBlog.bind(this)}>{organitionInfo.blog.length > 0 ? (organitionInfo.blog.length > 25 ? organitionInfo.blog.slice(0, 20) + '...' : organitionInfo.blog) : '--'}</View>
           </View>
           <View className='list'>
             <View className='list_title'>Location</View>
@@ -131,9 +153,9 @@ class OrganitionInfo extends Component {
           isShare &&
           <View className='home_view' onClick={this.onClickedHome.bind(this)}>
             <AtIcon prefixClass='ion'
-                    value='ios-home'
-                    size='30'
-                    color='#fff' />
+              value='ios-home'
+              size='30'
+              color='#fff' />
           </View>
         }
       </View>

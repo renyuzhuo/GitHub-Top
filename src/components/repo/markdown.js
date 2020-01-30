@@ -61,7 +61,7 @@ export default class Markdown extends Component {
     })
   }
 
-  onTap (e) {
+  onTap(e) {
     if (e.currentTarget.dataset._el.tag === 'image') {
       Taro.previewImage({
         urls: [e.currentTarget.dataset._el.attr.src]
@@ -80,18 +80,18 @@ export default class Markdown extends Component {
     }
     return (
       <View>
-      {
-        data ? (
-          <View>
-            <import src='../towxml/entry.wxml' />
-            <template is='entry' data='{{...data}}' />
-          </View>
-        ) : (
-          <View className='loading' onLongClick={this.onTap}>
-            <AtActivityIndicator size={20} color='#ef5350' content='loading...' />
-          </View>
-        )
-      }
+        {
+          data ? (
+            <View>
+              <import src='../towxml/entry.wxml' />
+              <template is='entry' data='{{...data}}' />
+            </View>
+          ) : (
+              <View className='loading' onLongClick={this.onTap}>
+                <AtActivityIndicator size={20} color='#ef5350' content='loading...' />
+              </View>
+            )
+        }
       </View>
     )
   }

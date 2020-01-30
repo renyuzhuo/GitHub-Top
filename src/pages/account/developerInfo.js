@@ -165,6 +165,28 @@ class DeveloperInfo extends Component {
     })
   }
 
+  onClickBlog() {
+    const { developerInfo } = this.state
+    let that = this
+    if (!developerInfo || !developerInfo.blog) {
+      return
+    }
+    Taro.setClipboardData({
+      data: developerInfo.blog
+    })
+  }
+
+  onClickEmail() {
+    const { developerInfo } = this.state
+    let that = this
+    if (!developerInfo || !developerInfo.email) {
+      return
+    }
+    Taro.setClipboardData({
+      data: developerInfo.email
+    })
+  }
+
   render() {
     const { developerInfo, isFollowed, isShare, isMe } = this.state
     if (!developerInfo) return <View />
@@ -219,11 +241,11 @@ class DeveloperInfo extends Component {
         <View className='list_view'>
           <View className='list'>
             <View className='list_title'>Email</View>
-            <View className='list_content'>{developerInfo.email.length > 0 ? developerInfo.email : '--'}</View>
+            <View className='list_content' onClick={this.onClickEmail.bind(this)}>{developerInfo.email.length > 0 ? developerInfo.email : '--'}</View>
           </View>
           <View className='list'>
             <View className='list_title'>Blog</View>
-            <View className='list_content'>{developerInfo.blog.length > 0 ? developerInfo.blog : '--'}</View>
+            <View className='list_content' onClick={this.onClickBlog.bind(this)}>{developerInfo.blog.length > 0 ? (developerInfo.blog.length > 25 ? developerInfo.blog.slice(0, 20) + '...' : developerInfo.blog) : '--'}</View>
           </View>
           <View className='list'>
             <View className='list_title'>Company</View>

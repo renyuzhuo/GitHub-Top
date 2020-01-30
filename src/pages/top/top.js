@@ -1,5 +1,5 @@
 import Taro, { Component } from '@tarojs/taro'
-import { View, Text, Button, Navigator} from '@tarojs/components'
+import { View, Text, Button, Navigator } from '@tarojs/components'
 import { GLOBAL_CONFIG } from '../../constants/globalConfig'
 import { AtIcon } from 'taro-ui'
 import { base64_decode } from '../../utils/base64'
@@ -71,7 +71,7 @@ class Repo extends Component {
   onPageScroll(e) {
     let title = ''
     const { repo } = this.state
-    if (!repo){
+    if (!repo) {
       return
     }
     if (e.scrollTop > 0) {
@@ -85,7 +85,7 @@ class Repo extends Component {
   onShareAppMessage(obj) {
     const { repo, url } = this.state
     if (!repo) {
-      return{
+      return {
         title: 'GitHub 最新最热开源项目',
         path: 'pages/top/top'
       }
@@ -150,11 +150,11 @@ class Repo extends Component {
 
   parseReadme() {
     const { readme } = this.state
-    if (readme.content){
+    if (readme.content) {
       this.setState({
         md: base64_decode(readme.content)
       })
-    }else{
+    } else {
       this.setState({
         md: null
       })
@@ -196,7 +196,7 @@ class Repo extends Component {
   handleStar() {
     Taro.showLoading({ title: GLOBAL_CONFIG.LOADING_TEXT })
     const { hasStar, repo } = this.state
-    if (!repo){
+    if (!repo) {
       return
     }
     let url = '/user/starred/' + repo.full_name
@@ -256,7 +256,7 @@ class Repo extends Component {
     }
     switch (type) {
       case NAVIGATE_TYPE.USER: {
-        if (repo.owner.type === 'User'){
+        if (repo.owner.type === 'User') {
           Taro.navigateTo({
             url: '/pages/account/developerInfo?username=' + repo.owner.login
           })
@@ -489,12 +489,23 @@ class Repo extends Component {
   loadError(event) {
   }
 
+  onClickHomepage() {
+    const { repo } = this.state
+    let that = this
+    if (!repo) {
+      return
+    }
+    Taro.setClipboardData({
+      data: that.state.repo.homepage
+    })
+  }
+
   render() {
     const { repo, hasStar, isShare, md, baseUrl, posterData } = this.state
     return (
       <View className='content'>
         <View className='repo_bg_view'>
-          <Text className='repo_info_title'>{ repo ? repo.name : '获取信息中...' }</Text>
+          <Text className='repo_info_title'>{repo ? repo.name : '获取信息中...'}</Text>
           {
             repo && repo.fork &&
             <View className='fork'>
@@ -512,7 +523,7 @@ class Repo extends Component {
           <View className='repo_number_item_view'>
             <View className='repo_number_item'>
               <AtIcon prefixClass='ion' value='ios-eye' size='25' color='#333' />
-              <Text className='repo_number_title'>{repo ? repo.subscribers_count : 0 }</Text>
+              <Text className='repo_number_title'>{repo ? repo.subscribers_count : 0}</Text>
             </View>
             <View className='repo_number_item' onClick={this.handleStar.bind(this)}>
               <AtIcon prefixClass='ion'
@@ -523,7 +534,7 @@ class Repo extends Component {
             </View>
             <View className='repo_number_item' onClick={this.handleFork.bind(this)}>
               <AtIcon prefixClass='ion' value='ios-git-network' size='25' color='#333' />
-              <Text className='repo_number_title'>{ repo ? repo.forks_count : 0}</Text>
+              <Text className='repo_number_title'>{repo ? repo.forks_count : 0}</Text>
             </View>
           </View>
           <View className='share_item_view'>
@@ -560,7 +571,7 @@ class Repo extends Component {
             </View>
           </View>
           <View className='repo_info_list' onClick={this.handleNavigate.bind(this, NAVIGATE_TYPE.REPO_CONTENT_LIST)}>
-            <View className='list_title'>View Code</View>
+            <View className='list_title'>Code</View>
             <AtIcon prefixClass='ion' value='ios-arrow-forward' size='18' color='#7f7f7f' />
           </View>
           <View className='repo_info_list'>
@@ -569,6 +580,15 @@ class Repo extends Component {
               <Text className='list_content_title'>{repo.default_branch}</Text>
             </View>
           </View>
+          {
+            repo && repo.homepage &&
+            <View className='repo_info_list'>
+              <View className='list_title'>Homepage</View>
+              <View className='list_content'>
+                <Text className='list_content_title' onClick={this.onClickHomepage.bind(this)} >{repo.homepage.length > 25 ? repo.homepage.slice(0, 20) + '...' : repo.homepage}</Text>
+              </View>
+            </View>
+          }
           <View className='repo_info_list'>
             <View className='list_title'>License</View>
             <View className='list_content'>
