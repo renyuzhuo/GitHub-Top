@@ -130,7 +130,7 @@ class Index extends Component {
                 <AtIcon className='icon' value='search' size='18' color='#666' />
                 <Input className='search-bar'
                   disabled='true'
-                  placeholder='Search project'
+                  placeholder='Search All GitHub'
                   onClick={this.onClick.bind(this)}
                 />
               </View>

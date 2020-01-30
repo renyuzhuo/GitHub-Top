@@ -24,7 +24,8 @@ class DeveloperInfo extends Component {
       username: '',
       developerInfo: null,
       isFollowed: false,
-      isShare: false
+      isShare: false,
+      isMe: false
     }
   }
 
@@ -61,7 +62,8 @@ class DeveloperInfo extends Component {
     let url = '/users/' + username
     api.get(url).then((res)=>{
       that.setState({
-        developerInfo: res.data
+        developerInfo: res.data,
+        isMe: res.data.id === Taro.getStorageSync('myId')
       }, ()=>{
         that.checkFollowing()
       })
@@ -72,7 +74,12 @@ class DeveloperInfo extends Component {
   checkFollowing() {
     if (hasLogin()) {
       let that = this
-      const { username} = this.state
+      const { username, isMe } = this.state
+
+      if (isMe){
+        return
+      }
+
       let url = '/user/following/' + username
       api.get(url).then((res)=>{
         Taro.stopPullDownRefresh()
@@ -159,7 +166,7 @@ class DeveloperInfo extends Component {
   }
 
   render() {
-    const { developerInfo, isFollowed, isShare } = this.state
+    const { developerInfo, isFollowed, isShare, isMe } = this.state
     if (!developerInfo) return <View />
     return (
       <View className='content'>
@@ -191,7 +198,7 @@ class DeveloperInfo extends Component {
           </View>
           <View className='button_view'>
             {
-              developerInfo.type === 'User' &&
+              developerInfo.type === 'User' && !isMe &&
               <Button className='button' onClick={this.handleFollow.bind(this)}>
                 {isFollowed ? 'Unfollow' : 'Follow'}
               </Button>
