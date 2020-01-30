@@ -1,7 +1,7 @@
 import Taro, { Component } from '@tarojs/taro'
 import { View } from '@tarojs/components'
 import { GLOBAL_CONFIG } from '../../constants/globalConfig'
-import { AtTextarea } from 'taro-ui'
+import { AtTextarea, AtCheckbox } from 'taro-ui'
 import { HTTP_STATUS } from '../../constants/status'
 
 import api from '../../service/api'
@@ -11,21 +11,26 @@ import './addComment.less'
 class AddComment extends Component {
 
   config = {
-    navigationBarTitleText: 'New Comment',
+    navigationBarTitleText: 'Comment',
     navigationBarBackgroundColor: '#ef5350',
     navigationBarTextStyle: 'white'
   }
 
   constructor(props) {
     super(props)
+    let checkedList = Taro.getStorageSync('issueEnd')
     this.state = {
       url: null,
-      comment: null
+      comment: null,
+      checkedList: checkedList ? checkedList : ['open']
     }
+    this.checkboxOption = [{
+      value: 'open',
+      label: '末尾自动添加: 提交自 GitHub Hot'
+    }]
   }
 
-  componentWillReceiveProps (nextProps) {
-    console.log(this.props, nextProps)
+  componentWillReceiveProps(nextProps) {
   }
 
   componentWillMount() {
@@ -38,33 +43,38 @@ class AddComment extends Component {
   componentDidMount() {
   }
 
-  componentWillUnmount () { }
+  componentWillUnmount() { }
 
-  componentDidShow () { }
+  componentDidShow() { }
 
-  componentDidHide () { }
+  componentDidHide() { }
 
-  handleTextareaChange (event) {
+  handleTextareaChange(event) {
     this.setState({
       comment: event.target.value
     })
   }
 
-  handleSubmit () {
-    const { comment, url } = this.state
+  handleSubmit() {
+    const { comment, url, checkedList } = this.state
     if (comment.length === 0) {
       Taro.showToast({
-        title: 'Please input Comment',
+        title: '评论不可为空',
         icon: 'none'
       })
     } else {
-      Taro.showLoading({title: GLOBAL_CONFIG.LOADING_TEXT})
-      let source = '\n\n[**提交自 GitHub Hot 小程序**](https://github.com/renyuzhuo/GitHub-Hot)'
-      let body =  comment + source
+      Taro.showLoading({ title: GLOBAL_CONFIG.LOADING_TEXT })
+      let source = '[**提交自 GitHub Hot 小程序**](https://github.com/renyuzhuo/GitHub-Hot)'
+
+      let body = comment
+      if (checkedList.length !== 0) {
+        body = body + '\n\n' + source
+      }
+
       let params = {
         body: body
       }
-      api.post(url, params).then((res)=>{
+      api.post(url, params).then((res) => {
         if (res.statusCode === HTTP_STATUS.CREATED) {
           Taro.navigateBack()
         } else {
@@ -78,13 +88,20 @@ class AddComment extends Component {
     }
   }
 
-  render () {
+  onChangeEnd(value) {
+    Taro.setStorageSync('issueEnd', value)
+    this.setState({
+      checkedList: value
+    })
+  }
+
+  render() {
     return (
       <View className='content'>
         <View className='issue_comment'>
           <AtTextarea
             className='input_comment'
-            height={200}
+            height={'300px'}
             count={false}
             maxlength={10000}
             value={this.state.comment}
@@ -92,8 +109,15 @@ class AddComment extends Component {
             placeholder='Leave a comment...'
           />
         </View>
+        <View className='issue_comment'>
+          <AtCheckbox
+            options={this.checkboxOption}
+            selectedList={this.state.checkedList}
+            onChange={this.onChangeEnd.bind(this)}
+          />
+        </View>
         <View className='submit' onClick={this.handleSubmit.bind(this)}>
-          Submit new comment
+          提交
         </View>
       </View>
 
