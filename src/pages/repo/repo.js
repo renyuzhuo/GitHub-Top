@@ -1,5 +1,5 @@
 import Taro, { Component } from '@tarojs/taro'
-import { View, Text, Button, Navigator, Ad } from '@tarojs/components'
+import { View, Text, Button, Navigator } from '@tarojs/components'
 import { GLOBAL_CONFIG } from '../../constants/globalConfig'
 import { AtIcon } from 'taro-ui'
 import { base64_decode } from '../../utils/base64'
@@ -33,7 +33,6 @@ class Repo extends Component {
       hasWatching: false,
       isShare: false,
       baseUrl: null,
-      md: null,
       posterData: null
     }
   }
@@ -91,32 +90,48 @@ class Repo extends Component {
     }
     let path = '/pages/repo/repo?url=' + encodeURI(url) + '&share=true'
     return {
-      title: `「${repo.name}」★${repo.stargazers_count} - GitHub 最新最热开源项目`,
+      title: `「${repo.name}」★${repo.star} - GitHub 最新最热开源项目`,
       path: path
     }
   }
 
   getRepo() {
-    let that = this
-    api.get(this.state.url).then((res) => {
-      if (res.statusCode === HTTP_STATUS.SUCCESS) {
-        let baseUrl = 'https://raw.githubusercontent.com/' + res.data.full_name + '/master/'
-        that.setState({
-          repo: res.data,
-          baseUrl: baseUrl
-        }, () => {
-          that.getReadme()
-          that.checkStarring()
+        let that = this
+        api.get(this.state.url).then((res) => {
+          if (res.statusCode === HTTP_STATUS.SUCCESS) {
+            let baseUrl = 'https://raw.githubusercontent.com/' + res.data.full_name + '/master/'
+            let project = res.data
+            that.setState({
+              repo: {
+                name: project.name,
+                full_name: project.full_name,
+                description: project.description,
+                url: project.url,
+                homepage: project.homepage,
+                star: project.stargazers_count,
+                watchers_count: project.watchers_count,
+                forks: project.forks_count,
+                license: project.license,
+                watch: project.subscribers_count,
+                owner: {
+                  login: project.owner.login,
+                  type: project.owner.type
+                }
+              },
+              baseUrl: baseUrl
+            }, () => {
+              that.getReadme()
+              that.checkStarring()
+            })
+          } else {
+            Taro.showToast({
+              icon: 'none',
+              title: res.data.message
+            })
+          }
+          Taro.stopPullDownRefresh()
+          Taro.hideLoading()
         })
-      } else {
-        Taro.showToast({
-          icon: 'none',
-          title: res.data.message
-        })
-      }
-      Taro.stopPullDownRefresh()
-      Taro.hideLoading()
-    })
   }
 
   getReadme() {
@@ -127,25 +142,18 @@ class Repo extends Component {
     let url = '/repos/' + repo.full_name + '/readme'
     let that = this
     api.get(url).then((res) => {
-      that.setState({
-        readme: res.data
-      }, () => {
-        that.parseReadme()
-      })
+      console.log(res.data)
+      let readme = res.data.content
+      if (readme) {
+        this.setState({
+          readme: base64_decode(readme)
+        })
+      } else {
+        this.setState({
+          readme: null
+        })
+      }
     })
-  }
-
-  parseReadme() {
-    const { readme } = this.state
-    if (readme.content){
-      this.setState({
-        md: base64_decode(readme.content)
-      })
-    }else{
-      this.setState({
-        md: null
-      })
-    }
   }
 
   checkStarring() {
@@ -371,7 +379,7 @@ class Repo extends Component {
         },
         {
           type: 'text',
-          text: `Stars：★${repo.stargazers_count}  ${repo.stargazers_count > 99 ? '🔥' : ''}`,
+          text: `Stars：★${repo.star}  ${repo.star > 99 ? '🔥' : ''}`,
           css: {
             top: '150rpx',
             left: '80rpx',
@@ -488,7 +496,7 @@ class Repo extends Component {
   }
 
   render() {
-    const { repo, hasStar, isShare, md, baseUrl, posterData } = this.state
+    const { repo, hasStar, isShare, readme, baseUrl, posterData } = this.state
     return (
       <View className='content'>
         <View className='repo_bg_view'>
@@ -510,18 +518,18 @@ class Repo extends Component {
           <View className='repo_number_item_view'>
             <View className='repo_number_item'>
               <AtIcon prefixClass='ion' value='ios-eye' size='25' color='#333' />
-              <Text className='repo_number_title'>{repo ? repo.subscribers_count : 0}</Text>
+              <Text className='repo_number_title'>{repo ? repo.watch : 0}</Text>
             </View>
             <View className='repo_number_item' onClick={this.handleStar.bind(this)}>
               <AtIcon prefixClass='ion'
                 value={hasStar ? 'ios-star' : 'ios-star-outline'}
                 size='25'
                 color={hasStar ? '#333' : '#333'} />
-              <Text className='repo_number_title'>{repo ? repo.stargazers_count : 0}</Text>
+              <Text className='repo_number_title'>{repo ? repo.star : 0}</Text>
             </View>
             <View className='repo_number_item' onClick={this.handleFork.bind(this)}>
               <AtIcon prefixClass='ion' value='ios-git-network' size='25' color='#333' />
-              <Text className='repo_number_title'>{repo ? repo.forks_count : 0}</Text>
+              <Text className='repo_number_title'>{repo ? repo.forks : 0}</Text>
             </View>
           </View>
           <View className='share_item_view'>
@@ -558,7 +566,7 @@ class Repo extends Component {
             </View>
           </View>
           <View className='repo_info_list' onClick={this.handleNavigate.bind(this, NAVIGATE_TYPE.REPO_CONTENT_LIST)}>
-            <View className='list_title'>View Code</View>
+            <View className='list_title'>Code</View>
             <AtIcon prefixClass='ion' value='ios-arrow-forward' size='18' color='#7f7f7f' />
           </View>
           <View className='repo_info_list'>
@@ -604,11 +612,11 @@ class Repo extends Component {
           </View>
         </View>
         {
-          md &&
+          readme &&
           <View className='markdown'>
             <Text className='md_title'>README</Text>
             <View className='repo_md'>
-              <Markdown md={md} />
+              <Markdown md={readme} />
             </View>
           </View>
         }
