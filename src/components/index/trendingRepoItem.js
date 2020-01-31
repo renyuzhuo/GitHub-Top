@@ -39,7 +39,7 @@ export default class TrendingRepoItem extends Component {
        <View className='repo_desc'>{item.description}</View>
        <View className='number_info'>
          {
-           item.language.length > 0 &&
+           item.language &&
            <View className='number_item'>
              <AtIcon prefixClass='ion' value='ios-radio-button-on' size='15' color={item.languageColor} />
              <Text className='number_title'>{item.language}</Text>

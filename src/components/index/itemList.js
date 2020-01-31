@@ -43,7 +43,7 @@ export default class ItemList extends Component {
       case 0: {
         list = itemList.map((item, index) => {
           return (
-            <View key={index} onClick={this.handleRepoClicked.bind(this, item)}>
+            <View key={item.id} onClick={this.handleRepoClicked.bind(this, item)}>
               <TrendingRepoItem item={item} categoryType={categoryType} />
             </View>
           )
@@ -52,7 +52,7 @@ export default class ItemList extends Component {
       case 1: {
         list = itemList.map((item, index) => {
           return (
-            <View key={index} onClick={this.handleDeveloperClicked.bind(this, item)}>
+            <View key={item.id} onClick={this.handleDeveloperClicked.bind(this, item)}>
               <TrendingDeveloperItem item={item} />
             </View>
           )

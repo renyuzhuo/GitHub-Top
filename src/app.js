@@ -13,11 +13,12 @@ import './assets/ionicons/css/ionicons.min.css'
 const store = configStore
 
 class App extends Component {
-  
+
   config = {
     pages: [
       'pages/top/top',
       'pages/history/history',
+      'pages/trending/trending',
       'pages/activity/index',
       'pages/login/login',
 
@@ -62,13 +63,19 @@ class App extends Component {
           text: 'History',
           iconPath: './assets/images/tab_history.png',
           selectedIconPath: './assets/images/tab_history_s.png'
-        }, 
+        },
+        {
+          pagePath: 'pages/trending/trending',
+          text: 'Trending',
+          iconPath: './assets/images/tab_trending.png',
+          selectedIconPath: './assets/images/tab_trending_s.png'
+        },
         {
           pagePath: 'pages/activity/index',
           text: 'Activity',
           iconPath: './assets/images/tab_news.png',
           selectedIconPath: './assets/images/tab_news_s.png'
-        }, 
+        },
         {
           pagePath: 'pages/account/index',
           text: 'Me',
