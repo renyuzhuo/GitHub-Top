@@ -46,14 +46,14 @@ class App extends Component {
     window: {
       backgroundTextStyle: 'dark',
       navigationBarBackgroundColor: '#fff',
-      navigationBarTitleText: 'GitHub Hot',
+      navigationBarTitleText: 'GitHub Top',
       navigationBarTextStyle: 'black'
     },
     tabBar: {
       list: [
         {
           pagePath: 'pages/top/top',
-          text: 'Hot',
+          text: 'Top',
           iconPath: './assets/images/tab_trend.png',
           selectedIconPath: './assets/images/tab_trend_s.png'
         },

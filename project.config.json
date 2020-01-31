@@ -1,8 +1,8 @@
 {
 	"miniprogramRoot": "dist/",
-	"projectname": "GitHub Hot",
+	"projectname": "GitHub Top",
 	"description": "GitHub 热点项目推荐。热点事件发生时，GitHub 是程序员的主战场，我们会做出我们的努力让这个是世界更美好。",
-	"appid": "wxe005f5ed6ab392f8",
+	"appid": "wxaec6f747fd3e7171",
 	"setting": {
 		"urlCheck": true,
 		"es6": false,
@@ -26,6 +26,11 @@
 	"libVersion": "2.7.3",
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
+	"scripts": {
+		"beforeCompile": "rm -fr dist/components/towxml/;cp -R src/components/towxml/ ./dist/components/towxml;",
+		"beforePreview": "",
+		"beforeUpload": ""
+	},
 	"condition": {
 		"search": {
 			"current": -1,

@@ -98,9 +98,14 @@ class Repo extends Component {
   }
 
   getRepo() {
-    api.get(
-      'https://api.github.com/repos/renyuzhuo/GitHub-Hot/issues?filter=created&page=1&per_page=1&labels=Top&state=open'
-    )
+    let params = {
+      page: 1,
+      labels: 'Top',
+      state: 'open',
+      per_page: 1
+    }
+
+    api.get('https://api.github.com/repos/renyuzhuo/GitHub-Top/issues', params)
       .then(json => {
         let repo = JSON.parse(json.data[0].body)
         this.state.url = repo.url
@@ -454,7 +459,7 @@ class Repo extends Component {
         },
         {
           type: 'text',
-          text: '分享自「GitHub Hot」',
+          text: '分享自「GitHub Top」',
           css: {
             bottom: '230rpx',
             left: '350rpx',

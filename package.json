@@ -2,7 +2,7 @@
   "name": "GitHubHot",
   "version": "1.0.0",
   "private": true,
-  "description": "GitHub 热点项目推荐。热点事件发生时，GitHub 是程序员的主战场，我们会做出我们的努力让这个是世界更美好。",
+  "description": "GitHub 热点项目推荐。热点事件发生时，GitHub 是程序员的主战场，我们会做出我们的努力，让这个世界更美好。",
   "scripts": {
     "weapp": "taro build --type weapp;rm -fr dist/components/towxml/;cp -R src/components/towxml/ ./dist/components/towxml;",
     "build:weapp": "taro build --type weapp",

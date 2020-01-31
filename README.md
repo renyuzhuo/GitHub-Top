@@ -1,4 +1,4 @@
-# GitHub Hot
+# GitHub Top
 
 本项目为 GitHub 热点项目微信小程序客户端，首页推荐一个热点项目，这个项目往往是社会热门事件所催生的一个项目，如 [996.ICU](https://github.com/996icu/996.ICU)，[wuhan2020](https://github.com/wuhan2020/wuhan2020)，所推荐项目标准为：**积极、健康、热点、具有一定进步性**。
 

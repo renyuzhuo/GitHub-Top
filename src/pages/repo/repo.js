@@ -441,7 +441,7 @@ class Repo extends Component {
         },
         {
           type: 'text',
-          text: '分享自「GitHub Hot」',
+          text: '分享自「GitHub Top」',
           css: {
             bottom: '230rpx',
             left: '350rpx',

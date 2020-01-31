@@ -51,7 +51,7 @@ class About extends Component {
   }
 
   render() {
-    let api = 'https://api.github.com/repos/renyuzhuo/GitHub-Hot'
+    let api = 'https://api.github.com/repos/renyuzhuo/GitHub-Top'
     let url = '/pages/repo/repo?url=' + encodeURI(api)
     return (
       <View className='content'>
@@ -59,11 +59,11 @@ class About extends Component {
           className='logo'
           src={require('../../assets/images/logo.png')} />
         <Text className='version'>
-          GitHub Hot V1.0.5
+          GitHub Top V1.0.5
         </Text>
         <Navigator url={url}>
           <Text className='link'>
-            https://github.com/renyuzhuo/GitHub-Hot
+            https://github.com/renyuzhuo/GitHub-Top
           </Text>
         </Navigator>
         <View className='logout' onClick={this.logout.bind(this)}>退出</View>

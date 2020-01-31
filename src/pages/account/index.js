@@ -69,7 +69,7 @@ class Index extends Component {
   checkStarring() {
     if (hasLogin()) {
       let that = this
-      let url = '/user/starred/renyuzhuo/GitHub-Hot'
+      let url = '/user/starred/renyuzhuo/GitHub-Top'
       api.get(url).then((res)=>{
         that.setState({
           hasStar: res.statusCode === 204
@@ -134,7 +134,7 @@ class Index extends Component {
 
   handleStar() {
     Taro.showLoading({title: GLOBAL_CONFIG.LOADING_TEXT})
-    let url = '/user/starred/renyuzhuo/GitHub-Hot'
+    let url = '/user/starred/renyuzhuo/GitHub-Top'
     api.put(url).then((res)=>{
       Taro.hideLoading()
       if (res.statusCode === 204) {
@@ -195,7 +195,7 @@ class Index extends Component {
                 !hasStar && (
                   <View className='list_view'>
                     <View className='list' onClick={this.handleNavigate.bind(this, NAVIGATE_TYPE.STAR)}>
-                      <View className='list_title'>Star GitHub Hot ❤️</View>
+                      <View className='list_title'>Star GitHub Top ❤️</View>
                       <AtIcon prefixClass='ion' value='ios-arrow-forward' size='18' color='#7f7f7f' />
                     </View>
                   </View>

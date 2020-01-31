@@ -28,7 +28,7 @@ class AddIssue extends Component {
 
     this.checkboxOption = [{
       value: 'open',
-      label: '末尾自动添加: 提交自 GitHub Hot'
+      label: '末尾自动添加: 提交自 GitHub Top'
     }]
   }
 
@@ -73,7 +73,7 @@ class AddIssue extends Component {
     } else {
       Taro.showLoading({ title: GLOBAL_CONFIG.LOADING_TEXT })
       let url = '/repos/' + this.state.repo + '/issues'
-      let source = '[**提交自 GitHub Hot 小程序**](https://github.com/renyuzhuo/GitHub-Hot)'
+      let source = '[**提交自 GitHub Top 小程序**](https://github.com/renyuzhuo/GitHub-Top)'
       let body = ''
       if (comment.length > 0) {
         if (checkedList.length === 0) {

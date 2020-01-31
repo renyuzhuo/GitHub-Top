@@ -78,7 +78,7 @@ class Index extends Component {
 
     let projects = index == 1 ? [] : repo
 
-    api.get('https://api.github.com/repos/renyuzhuo/GitHub-Hot/issues', params).then(json=>{
+    api.get('https://api.github.com/repos/renyuzhuo/GitHub-Top/issues', params).then(json=>{
       Taro.stopPullDownRefresh()
 
       let issues = json.data
