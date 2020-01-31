@@ -111,7 +111,7 @@ class Login extends Component {
           Taro.setStorageSync('Authorization', '')
         } else {
           Taro.eventCenter.trigger('login_success')
-          Taro.setStorageSync('userInfo', res.data)
+          Taro.setStorageSync('login', res.data.login)
           Taro.setStorageSync('myId', res.data.id)
           Taro.navigateBack()
         }

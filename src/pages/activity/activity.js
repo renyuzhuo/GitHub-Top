@@ -99,8 +99,8 @@ class Index extends Component {
     let url = '/events'
     let that = this
     if (hasLogin()) {
-      let userInfo =  Taro.getStorageSync('userInfo')
-      url = '/users/' + userInfo.login + '/received_events'
+      let login = Taro.getStorageSync('login')
+      url = '/users/' + login + '/received_events'
     }else{
       refresh_status: REFRESH_STATUS.REFRESHING
       Taro.stopPullDownRefresh()
