@@ -13,6 +13,7 @@ import LoadMore from '../../components/common/loadMore'
 import api from '../../service/api'
 
 import '../repo/repo.less'
+import './top.less'
 
 class Repo extends Component {
 
@@ -35,7 +36,8 @@ class Repo extends Component {
       baseUrl: null,
       md: null,
       posterData: null,
-      body: null
+      body: null,
+      notification: null
     }
   }
 
@@ -56,6 +58,30 @@ class Repo extends Component {
       repo: null
     })
     this.getRepo()
+    this.getNotification()
+  }
+
+  getNotification() {
+    let that = this
+
+    let np = {
+      all: false
+    }
+    api.get('/notifications', np).then(json => {
+      if (json.data.length > 0) {
+        let notice = json.data[0]
+        let lastNoticeId = Taro.getStorageSync('lastNoticeId')
+        console.log('ryz', notice)
+        if (notice.id > lastNoticeId) {
+          that.setState({
+            notification: {
+              id: notice.id,
+              content: notice.subject.title
+            }
+          })
+        }
+      }
+    })
   }
 
   onPullDownRefresh() {
@@ -505,11 +531,27 @@ class Repo extends Component {
     })
   }
 
+  onCloseNotification() {
+    const { notification } = this.state
+    Taro.setStorageSync('lastNoticeId', notification.id)
+    this.setState({
+      notification: null
+    })
+  }
+
   render() {
-    const { repo, hasStar, isShare, md, baseUrl, posterData } = this.state
+    const { repo, hasStar, isShare, md, baseUrl, posterData, notification } = this.state
     return (
       <View className='content'>
         <View className='repo_bg_view'>
+          {
+            notification &&
+            <View className='notification'>
+              <AtIcon className='notification-bell' value='bell' size='20px' />
+              <Text className='notification-text'>{notification.content}</Text>
+              <AtIcon className='notification-close' value='close-circle' size='20px' onClick={this.onCloseNotification.bind(this)} />
+            </View>
+          }
           <Text className='repo_info_title'>{repo ? repo.name : '获取信息中...'}</Text>
           {
             repo && repo.fork &&
