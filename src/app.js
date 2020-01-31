@@ -19,11 +19,12 @@ class App extends Component {
       'pages/top/top',
       'pages/history/history',
       'pages/trending/trending',
-      'pages/activity/index',
+      'pages/activity/activity',
       'pages/login/login',
 
-      'pages/account/about',
       'pages/account/index',
+
+      'pages/about/about',
 
       'pages/repo/issues',
       'pages/repo/repo',
@@ -71,7 +72,7 @@ class App extends Component {
           selectedIconPath: './assets/images/tab_trending_s.png'
         },
         {
-          pagePath: 'pages/activity/index',
+          pagePath: 'pages/activity/activity',
           text: 'Activity',
           iconPath: './assets/images/tab_news.png',
           selectedIconPath: './assets/images/tab_news_s.png'

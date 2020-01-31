@@ -10,7 +10,7 @@ import LoadMore from '../../components/common/loadMore'
 
 import api from '../../service/api'
 
-import './index.less'
+import './activity.less'
 
 class Index extends Component {
 

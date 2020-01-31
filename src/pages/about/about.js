@@ -59,7 +59,7 @@ class About extends Component {
           className='logo'
           src={require('../../assets/images/logo.png')} />
         <Text className='version'>
-          GitHub Top V1.0.5
+          GitHub Top V1.0.9
         </Text>
         <Navigator url={url}>
           <Text className='link'>
