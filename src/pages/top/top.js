@@ -160,6 +160,7 @@ class Repo extends Component {
                 forks: project.forks_count,
                 license: project.license,
                 watch: project.subscribers_count,
+                issues: project.open_issues_count,
                 owner: {
                   login: project.owner.login,
                   type: project.owner.type
@@ -660,8 +661,8 @@ class Repo extends Component {
             <View className='list_title'>Issues</View>
             <View className='list_content'>
               {
-                repo.open_issues_count > 0 &&
-                <View className='tag'>{repo.open_issues_count}</View>
+                repo.issues > 0 &&
+                <View className='tag'>{repo.issues}</View>
               }
               <AtIcon prefixClass='ion' value='ios-arrow-forward' size='18' color='#7f7f7f' />
             </View>
