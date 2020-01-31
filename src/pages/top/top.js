@@ -62,6 +62,10 @@ class Repo extends Component {
   }
 
   getNotification() {
+    if (!hasLogin()) {
+      return
+    }
+
     let that = this
 
     let np = {
@@ -548,7 +552,7 @@ class Repo extends Component {
             notification &&
             <View className='notification'>
               <AtIcon className='notification-bell' value='bell' size='20px' />
-              <Text className='notification-text'>{notification.content}</Text>
+              <Text className='notification-text'>{notification.content.length > 21 ? notification.content.slice(0, 20) : notification.content}</Text>
               <AtIcon className='notification-close' value='close-circle' size='20px' onClick={this.onCloseNotification.bind(this)} />
             </View>
           }
