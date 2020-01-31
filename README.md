@@ -19,7 +19,7 @@ GitHub 小程序有很多，但推荐热点项目的往往是拉取 [GitHub Tren
 
 ## 小程序码（近期开发完成，暂未审核通过，先请试用体验版）
 
-<img width='200' src='https://api.renyuzhuo.cn/code.jpg'><br/><img width='200' src='https://user-images.githubusercontent.com/7275046/73465085-d08b7580-43ba-11ea-9b9d-e5af4c6a8a73.png'>
+<img width='200' src='https://api.renyuzhuo.cn/code.jpg'><br/><img width='200' src='https://user-images.githubusercontent.com/7275046/73512828-14679480-4426-11ea-8870-096d6e52f82c.png'>
 
 ## 预览截图
 
