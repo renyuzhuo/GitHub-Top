@@ -23,7 +23,7 @@ GitHub 小程序有很多，但推荐热点项目的往往是拉取 [GitHub Tren
 
 ## 预览截图
 
-<img width='240' src='./screenshot/p1.png'><img width='240' src='./screenshot/p2.png'><img width='240' src='./screenshot/p3.png'><img width='240' src='./screenshot/p4.png'>
+<img width='240' src='https://api.renyuzhuo.cn/screenshot/p0.png'><img width='240' src='https://api.renyuzhuo.cn/screenshot/p1.png'><img width='240' src='https://api.renyuzhuo.cn/screenshot/p2.png'><img width='240' src='https://api.renyuzhuo.cn/screenshot/p3.png'><img width='240' src='https://api.renyuzhuo.cn/screenshot/p4.png'><img width='240' src='https://api.renyuzhuo.cn/screenshot/p5.png'>
 
 <details>
 
