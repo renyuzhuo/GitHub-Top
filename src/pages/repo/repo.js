@@ -96,43 +96,43 @@ class Repo extends Component {
   }
 
   getRepo() {
-        let that = this
-        api.get(this.state.url).then((res) => {
-          if (res.statusCode === HTTP_STATUS.SUCCESS) {
-            let baseUrl = 'https://raw.githubusercontent.com/' + res.data.full_name + '/master/'
-            let project = res.data
-            that.setState({
-              repo: {
-                name: project.name,
-                full_name: project.full_name,
-                description: project.description,
-                url: project.url,
-                homepage: project.homepage,
-                star: project.stargazers_count,
-                watchers_count: project.watchers_count,
-                forks: project.forks_count,
-                license: project.license,
-                watch: project.subscribers_count,
-                issue: project.open_issues_count,
-                owner: {
-                  login: project.owner.login,
-                  type: project.owner.type
-                }
-              },
-              baseUrl: baseUrl
-            }, () => {
-              that.getReadme()
-              that.checkStarring()
-            })
-          } else {
-            Taro.showToast({
-              icon: 'none',
-              title: res.data.message
-            })
-          }
-          Taro.stopPullDownRefresh()
-          Taro.hideLoading()
+    let that = this
+    api.get(this.state.url).then((res) => {
+      if (res.statusCode === HTTP_STATUS.SUCCESS) {
+        let baseUrl = 'https://raw.githubusercontent.com/' + res.data.full_name + '/master/'
+        let project = res.data
+        that.setState({
+          repo: {
+            name: project.name,
+            full_name: project.full_name,
+            description: project.description,
+            url: project.url,
+            homepage: project.homepage,
+            star: project.stargazers_count,
+            watchers_count: project.watchers_count,
+            forks: project.forks_count,
+            license: project.license,
+            watch: project.subscribers_count,
+            issue: project.open_issues_count,
+            owner: {
+              login: project.owner.login,
+              type: project.owner.type
+            }
+          },
+          baseUrl: baseUrl
+        }, () => {
+          that.getReadme()
+          that.checkStarring()
         })
+      } else {
+        Taro.showToast({
+          icon: 'none',
+          title: res.data.message
+        })
+      }
+      Taro.stopPullDownRefresh()
+      Taro.hideLoading()
+    })
   }
 
   getReadme() {
@@ -146,9 +146,18 @@ class Repo extends Component {
       console.log(res.data)
       let readme = res.data.content
       if (readme) {
-        this.setState({
-          readme: base64_decode(readme)
-        })
+        let con = base64_decode(readme)
+        if (con.length > 16000) {
+          con = con.slice(0, 15000) + '\n\n---\n**README 过长，由于内存会占用过多，小程序闪退，因此无法完全显示，仅显示前 15000 字符。\n如仍需查看，请到上面 Code 中查看 README 文件。 😞**\n*—— By GitHub Top*'
+          this.setState({
+            readme: con
+          })
+        } else {
+          this.setState({
+            readme: con
+          })
+        }
+
       } else {
         this.setState({
           readme: null
@@ -621,6 +630,7 @@ class Repo extends Component {
             </View>
           </View>
         }
+
         {
           isShare &&
           <View className='home_view' onClick={this.onClickedHome.bind(this)}>
