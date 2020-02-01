@@ -22,9 +22,9 @@ export default class IssueLabels extends Component {
       <View className='content'>
         {
           items.map((item, index) => {
-            let customStyle = `background-color: #${item.color}; border: none;`
+            let customStyle = 'background-color: #ffffff;border-color:#f0f0f0; color: #7f7f7f;'
             return (
-              <View key={index} className='tag'>
+              <View key={item.id} className='tag'>
                 <AtTag circle active type='primary' size='small' customStyle={customStyle}>
                   {item.name}
                 </AtTag>
@@ -35,5 +35,4 @@ export default class IssueLabels extends Component {
       </View>
     )
   }
-
 }

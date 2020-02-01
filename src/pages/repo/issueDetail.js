@@ -10,6 +10,7 @@ import LoadMore from '../../components/common/loadMore'
 
 import api from '../../service/api'
 import './issueDetail.less'
+import IssueLabels from '../../components/account/issueLabels'
 
 class IssueDetail extends Component {
 
@@ -134,6 +135,12 @@ class IssueDetail extends Component {
       <View className='content'>
         <View className='title_view'>
           <Text className='title'>{'#' + issue.number + ' ' + issue.title}</Text>
+          {
+            issue.labels.length > 0 &&
+            <View className='labels'>
+              <IssueLabels items={issue.labels} />
+            </View>
+          }
           {
             issue.body.length > 0 ? (
               <View className='markdown'>
