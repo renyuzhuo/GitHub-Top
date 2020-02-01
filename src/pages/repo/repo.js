@@ -33,7 +33,8 @@ class Repo extends Component {
       hasWatching: false,
       isShare: false,
       baseUrl: null,
-      posterData: null
+      posterData: null,
+      isShowCopyRepoJson: false
     }
   }
 
@@ -117,7 +118,8 @@ class Repo extends Component {
             owner: {
               login: project.owner.login,
               type: project.owner.type
-            }
+            },
+            isShowCopyRepoJson: Taro.getStorageSync('myId') === 7275046
           },
           baseUrl: baseUrl
         }, () => {
@@ -505,8 +507,18 @@ class Repo extends Component {
     })
   }
 
+  onClickCopyJson() {
+    const { name, full_name, owner, description, url } = this.state.repo
+    let json = '{"name":"' + name + '","full_name":"' + full_name + '","owner":{"login":"' + owner.login + '","type":"' + owner.type + '"},"description":"' + description + '","url":"' + url + '"}'
+    console.log(json)
+    Taro.setClipboardData({
+      data: json
+    })
+  }
+
   render() {
-    const { repo, hasStar, isShare, readme, baseUrl, posterData } = this.state
+    const { repo, hasStar, isShare, readme, baseUrl, posterData, isShowCopyRepoJson } = this.state
+    console.log('isShowCopyRepoJson', isShowCopyRepoJson)
     return (
       <View className='content'>
         <View className='repo_bg_view'>
@@ -620,6 +632,13 @@ class Repo extends Component {
             <View className='list_title'>Contributors</View>
             <AtIcon prefixClass='ion' value='ios-arrow-forward' size='18' color='#7f7f7f' />
           </View>
+          {
+            repo && repo.isShowCopyRepoJson &&
+            <View className='repo_info_list' onClick={this.onClickCopyJson.bind(this)}>
+              <View className='list_title'>Copy Json</View>
+              <AtIcon prefixClass='ion' value='ios-arrow-forward' size='18' color='#7f7f7f' />
+            </View>
+          }
         </View>
         {
           readme &&
