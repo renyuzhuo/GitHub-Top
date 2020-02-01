@@ -34,7 +34,7 @@ class Repo extends Component {
       isShare: false,
       baseUrl: null,
       posterData: null,
-      isShowCopyRepoJson: false
+      isShowCopyRepoJson: Taro.getStorageSync('myId') === 7275046
     }
   }
 
@@ -118,8 +118,7 @@ class Repo extends Component {
             owner: {
               login: project.owner.login,
               type: project.owner.type
-            },
-            isShowCopyRepoJson: Taro.getStorageSync('myId') === 7275046
+            }
           },
           baseUrl: baseUrl
         }, () => {
@@ -518,7 +517,6 @@ class Repo extends Component {
 
   render() {
     const { repo, hasStar, isShare, readme, baseUrl, posterData, isShowCopyRepoJson } = this.state
-    console.log('isShowCopyRepoJson', isShowCopyRepoJson)
     return (
       <View className='content'>
         <View className='repo_bg_view'>
@@ -633,7 +631,7 @@ class Repo extends Component {
             <AtIcon prefixClass='ion' value='ios-arrow-forward' size='18' color='#7f7f7f' />
           </View>
           {
-            repo && repo.isShowCopyRepoJson &&
+            isShowCopyRepoJson &&
             <View className='repo_info_list' onClick={this.onClickCopyJson.bind(this)}>
               <View className='list_title'>Copy Json</View>
               <AtIcon prefixClass='ion' value='ios-arrow-forward' size='18' color='#7f7f7f' />

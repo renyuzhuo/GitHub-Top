@@ -23,12 +23,25 @@ class AddIssue extends Component {
       repo: null,
       title: '',
       comment: '',
-      checkedList: checkedList ? checkedList : ['open']
+      checkedList: checkedList ? checkedList : ['open'],
+      checkedListHot: [],
+      checkedListTop: [],
+      isHot: false,
+      isTop: false,
+      isShowCopyRepoJson: Taro.getStorageSync('myId') === 7275046
     }
 
     this.checkboxOption = [{
       value: 'open',
       label: '末尾自动添加: 提交自 GitHub Top'
+    }]
+    this.checkboxOptionHot = [{
+      value: 'hot',
+      label: 'Hot'
+    }]
+    this.checkboxOptionTop = [{
+      value: 'top',
+      label: 'Top'
     }]
   }
 
@@ -64,7 +77,7 @@ class AddIssue extends Component {
   }
 
   handleSubmit() {
-    const { title, comment, checkedList } = this.state
+    const { title, comment, checkedList, checkedListHot, checkedListTop } = this.state
     if (title.length === 0) {
       Taro.showToast({
         title: 'Please input title',
@@ -88,9 +101,17 @@ class AddIssue extends Component {
           body = source
         }
       }
+      let labels = []
+      if (checkedListHot.length > 0) {
+        labels.push('Hot')
+      }
+      if (checkedListTop.length > 0) {
+        labels.push('Top')
+      }
       let params = {
         title: title,
-        body: body
+        body: body,
+        labels: labels
       }
       api.post(url, params).then((res) => {
         if (res.statusCode === HTTP_STATUS.CREATED) {
@@ -113,7 +134,21 @@ class AddIssue extends Component {
     })
   }
 
+  onChangeTop(value) {
+    let that = this
+    this.setState({
+      checkedListTop: value
+    })
+  }
+
+  onChangeHot(value) {
+    this.setState({
+      checkedListHot: value
+    })
+  }
+
   render() {
+    const { isShowCopyRepoJson } = this.state
     return (
       <View className='content'>
         <View className='issue_title'>
@@ -145,6 +180,22 @@ class AddIssue extends Component {
             selectedList={this.state.checkedList}
             onChange={this.onChangeEnd.bind(this)}
           />
+          {
+            isShowCopyRepoJson &&
+            <AtCheckbox
+              options={this.checkboxOptionHot}
+              selectedList={this.state.checkedListHot}
+              onChange={this.onChangeHot.bind(this)}
+            />
+          }
+          {
+            isShowCopyRepoJson &&
+            <AtCheckbox
+              options={this.checkboxOptionTop}
+              selectedList={this.state.checkedListTop}
+              onChange={this.onChangeTop.bind(this)}
+            />
+          }
         </View>
         <View className='submit' onClick={this.handleSubmit.bind(this)}>
           提交

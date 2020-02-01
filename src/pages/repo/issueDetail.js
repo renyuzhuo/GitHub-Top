@@ -1,7 +1,7 @@
 import Taro, { Component } from '@tarojs/taro'
 import { View, Text } from '@tarojs/components'
 import { GLOBAL_CONFIG } from '../../constants/globalConfig'
-import { AtIcon } from 'taro-ui'
+import { AtIcon, AtButton } from 'taro-ui'
 import IssueCommentItem from '../../components/account/issueCommentItem'
 import Markdown from '../../components/repo/markdown'
 
@@ -26,11 +26,11 @@ class IssueDetail extends Component {
       issue: null,
       page: 1,
       comments: [],
-      refresh_status: REFRESH_STATUS.NORMAL
+      refresh_status: REFRESH_STATUS.NORMAL,
     }
   }
 
-  componentWillReceiveProps (nextProps) {
+  componentWillReceiveProps(nextProps) {
     console.log(this.props, nextProps)
   }
 
@@ -42,21 +42,21 @@ class IssueDetail extends Component {
   }
 
   componentDidMount() {
-    Taro.showLoading({title: GLOBAL_CONFIG.LOADING_TEXT})
+    Taro.showLoading({ title: GLOBAL_CONFIG.LOADING_TEXT })
     this.getIssue()
   }
 
-  componentWillUnmount () { }
+  componentWillUnmount() { }
 
-  componentDidShow () { }
+  componentDidShow() { }
 
-  componentDidHide () { }
+  componentDidHide() { }
 
   onPullDownRefresh() {
     let that = this
     this.setState({
       page: 1
-    }, ()=>{
+    }, () => {
       that.getIssue()
     })
   }
@@ -67,7 +67,7 @@ class IssueDetail extends Component {
       let that = this
       this.setState({
         page: page + 1
-      }, ()=>{
+      }, () => {
         that.getComments()
       })
     }
@@ -88,7 +88,7 @@ class IssueDetail extends Component {
       page: page,
       per_page: GLOBAL_CONFIG.PER_PAGE
     }
-    api.get(comments_url, params).then((res)=>{
+    api.get(comments_url, params).then((res) => {
       if (page === 1) {
         that.setState({
           comments: res.data
@@ -110,10 +110,10 @@ class IssueDetail extends Component {
   getIssue() {
     const { url } = this.state
     let that = this
-    api.get(url).then((res)=>{
+    api.get(url).then((res) => {
       that.setState({
         issue: res.data
-      }, ()=>{
+      }, () => {
         that.getComments()
       })
       Taro.hideLoading()
@@ -127,7 +127,7 @@ class IssueDetail extends Component {
     })
   }
 
-  render () {
+  render() {
     const { issue, comments, refresh_status } = this.state
     if (!issue) return <View />
     return (
@@ -142,10 +142,10 @@ class IssueDetail extends Component {
                 </View>
               </View>
             ) : (
-              <Text className='description'>
-                no description
+                <Text className='description'>
+                  no description
               </Text>
-            )
+              )
           }
         </View>
         {
@@ -158,9 +158,9 @@ class IssueDetail extends Component {
         <LoadMore status={refresh_status} />
         <View className='add_comment' onClick={this.addComment.bind(this)}>
           <AtIcon prefixClass='ion'
-                  value='ios-add'
-                  size='40'
-                  color='#fff' />
+            value='ios-add'
+            size='40'
+            color='#fff' />
         </View>
       </View>
     )

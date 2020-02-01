@@ -74,7 +74,6 @@ class Repo extends Component {
       if (json.data.length > 0) {
         let notice = json.data[0]
         let lastNoticeId = Taro.getStorageSync('lastNoticeId')
-        console.log('ryz', notice)
         if (notice.id > lastNoticeId) {
           that.setState({
             notification: {
