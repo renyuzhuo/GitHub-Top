@@ -196,7 +196,7 @@ class Repo extends Component {
         this.setState({
           readme: base64_decode(readme)
         })
-      }else{
+      } else {
         this.setState({
           readme: null
         })
@@ -373,6 +373,13 @@ class Repo extends Component {
 
   generatePoster(imgUrl) {
     const { repo } = this.state
+    let goodsWords = [
+      'Stay hungry. Stay foolish.',
+      'Talk is cheap. Show me the code.',
+      '生活除了工作，还有诗和远方',
+      '愿你出走半生，归来仍是少年',
+      'E=mc²'
+    ]
     const data = {
       background: '#f7f7f7',
       width: '750rpx',
@@ -507,7 +514,7 @@ class Repo extends Component {
         },
         {
           type: 'text',
-          text: '开源的世界，有你才更精彩',
+          text: goodsWords[Math.floor((Math.random() * 5))],
           css: {
             bottom: '60rpx',
             left: '375rpx',

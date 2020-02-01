@@ -17,9 +17,9 @@ GitHub 小程序有很多，但推荐热点项目的往往是拉取 [GitHub Tren
 5. 你可以方便 Star 或 Fork 你所感兴趣的项目，提 Issues 或针对 Issues 进行评论，也可方便 Follow 某人，相关邮箱或主页虽不可在小程序内直接操作，但点击后都可复制邮箱或主页链接，方便操作。
 6. 请您自己去发现
 
-## 小程序码（近期开发完成，暂未审核通过，先请试用体验版）
+## 小程序码
 
-<img width='200' src='https://api.renyuzhuo.cn/code.jpg'><br/><img width='200' src='https://user-images.githubusercontent.com/7275046/73512828-14679480-4426-11ea-8870-096d6e52f82c.png'>
+<img width='200' src='https://api.renyuzhuo.cn/code.jpg'>
 
 ## 预览截图
 
