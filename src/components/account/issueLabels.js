@@ -25,7 +25,7 @@ export default class IssueLabels extends Component {
           items.map((item, index) => {
             return (
               <View key={item.id} className='tag'>
-                <AtTag circle active type='primary' size='small' customStyle={customStyle}>
+                <AtTag circle active type='primary' size='small' customStyle={customStyle} >
                   {item.name}
                 </AtTag>
               </View>
