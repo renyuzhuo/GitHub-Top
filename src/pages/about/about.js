@@ -1,12 +1,12 @@
 import Taro, { Component } from '@tarojs/taro'
-import { View, Navigator, Image, Text, Ad } from '@tarojs/components'
+import { View, Navigator, Image, Text } from '@tarojs/components'
 
 import './about.less'
 
 class About extends Component {
 
   config = {
-    navigationBarTitleText: '关于',
+    navigationBarTitleText: 'About',
     navigationBarBackgroundColor: '#ef5350',
     navigationBarTextStyle: 'white'
   }
@@ -59,7 +59,7 @@ class About extends Component {
           className='logo'
           src={require('../../assets/images/logo.png')} />
         <Text className='version'>
-          GitHub Top V1.1.1
+          GitHub Top V1.1.2
         </Text>
         <Navigator url={url}>
           <Text className='link'>

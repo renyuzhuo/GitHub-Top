@@ -8,7 +8,7 @@ import { baseUrl } from '../../service/config'
 import userAction from '../../actions/user'
 import { hasLogin } from '../../utils/common'
 
-import './index.less'
+import './account.less'
 import api from "../../service/api";
 
 class Index extends Component {
@@ -107,7 +107,7 @@ class Index extends Component {
         break
       case NAVIGATE_TYPE.ISSUES: {
         Taro.navigateTo({
-          url: '/pages/repo/issues?url=/user/issues'
+          url: '/pages/issue/issues?url=/user/issues'
         })
       }
         break

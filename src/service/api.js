@@ -65,9 +65,5 @@ export default {
   delete(url, data = '') {
     let option = { url, data }
     return this.baseOptions(option, 'DELETE')
-  },
-  patch(url, data = '') {
-    let option = { url, data }
-    return this.baseOptions(option, 'PATCH')
   }
 }

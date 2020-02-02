@@ -5,7 +5,7 @@ import ContentListItem from '../../components/account/contentListItem'
 
 import api from '../../service/api'
 
-import './contentList.less'
+import './folder.less'
 
 class ContentList extends Component {
 
@@ -72,14 +72,12 @@ class ContentList extends Component {
 
   handleItemClick(item) {
     if (item.type === 'dir') {
-      // 文件夹
       Taro.navigateTo({
-        url: '/pages/repo/contentList?repo=' + this.state.repo + '&path=' + item.path + '&name=' + item.name
+        url: '/pages/code/folder?repo=' + this.state.repo + '&path=' + item.path + '&name=' + item.name
       })
     } else if (item.type === 'file') {
-      // 文件
       Taro.navigateTo({
-        url: '/pages/repo/file?url=' + item.url
+        url: '/pages/code/file?url=' + item.url
       })
     }
   }

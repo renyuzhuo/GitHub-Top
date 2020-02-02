@@ -8,7 +8,7 @@ import LoadMore from '../../components/common/loadMore'
 
 import api from '../../service/api'
 
-import './contentList.less'
+import '../code/folder.less'
 
 class Contributors extends Component {
 

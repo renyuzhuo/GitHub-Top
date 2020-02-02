@@ -124,7 +124,7 @@ class IssueDetail extends Component {
   addComment() {
     const { url } = this.state
     Taro.navigateTo({
-      url: '/pages/repo/addComment?url=' + encodeURI(url + '/comments')
+      url: '/pages/issue/addComment?url=' + encodeURI(url + '/comments')
     })
   }
 

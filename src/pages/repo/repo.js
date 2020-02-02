@@ -275,12 +275,12 @@ class Repo extends Component {
         break
       case NAVIGATE_TYPE.REPO_CONTENT_LIST: {
         Taro.navigateTo({
-          url: '/pages/repo/contentList?repo=' + repo.full_name
+          url: '/pages/code/folder?repo=' + repo.full_name
         })
       }
         break
       case NAVIGATE_TYPE.ISSUES: {
-        let url = '/pages/repo/issues?url=/repos/' + repo.full_name + '/issues&repo=' + repo.full_name
+        let url = '/pages/issue/issues?url=/repos/' + repo.full_name + '/issues&repo=' + repo.full_name
         Taro.navigateTo({
           url: url
         })

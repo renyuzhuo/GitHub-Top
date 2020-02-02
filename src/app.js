@@ -22,20 +22,22 @@ class App extends Component {
       'pages/activity/activity',
       'pages/login/login',
 
-      'pages/account/index',
+      'pages/account/account',
 
       'pages/about/about',
 
-      'pages/repo/issues',
+      'pages/code/file',
+      'pages/code/folder',
+
+      'pages/issue/issues',
+      'pages/issue/issueDetail',
+      'pages/issue/addIssue',
+      'pages/issue/addComment',
+
       'pages/repo/repo',
-      'pages/repo/contentList',
-      'pages/repo/issueDetail',
-      'pages/repo/addIssue',
-      'pages/repo/addComment',
       'pages/repo/repoList',
       'pages/repo/contributors',
       'pages/repo/starredRepo',
-      'pages/repo/file',
       'pages/repo/repoEvents',
 
       'pages/account/follow',
@@ -78,7 +80,7 @@ class App extends Component {
           selectedIconPath: './assets/images/tab_news_s.png'
         },
         {
-          pagePath: 'pages/account/index',
+          pagePath: 'pages/account/account',
           text: 'Me',
           iconPath: './assets/images/tab_me.png',
           selectedIconPath: './assets/images/tab_me_s.png'

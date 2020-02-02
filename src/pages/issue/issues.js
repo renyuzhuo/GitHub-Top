@@ -187,7 +187,7 @@ class Issues extends Component {
 
   addIssue() {
     Taro.navigateTo({
-      url: '/pages/repo/addIssue?repo=' + this.state.repo
+      url: '/pages/issue/addIssue?repo=' + this.state.repo
     })
   }
 
