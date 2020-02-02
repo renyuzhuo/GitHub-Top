@@ -640,12 +640,6 @@ class Repo extends Component {
             <View className='list_title'>Code</View>
             <AtIcon prefixClass='ion' value='ios-arrow-forward' size='18' color='#7f7f7f' />
           </View>
-          <View className='repo_info_list'>
-            <View className='list_title'>Branch</View>
-            <View className='list_content'>
-              <Text className='list_content_title'>{repo.default_branch}</Text>
-            </View>
-          </View>
           {
             repo && repo.homepage &&
             <View className='repo_info_list'>
