@@ -18,11 +18,11 @@ export default class IssueLabels extends Component {
   render() {
     const { items } = this.props
     if (items.length === 0) return <View />
+    let customStyle = 'background-color: #ffffff;border-color:#f0f0f0; color: #7f7f7f;'
     return (
       <View className='content'>
         {
           items.map((item, index) => {
-            let customStyle = 'background-color: #ffffff;border-color:#f0f0f0; color: #7f7f7f;'
             return (
               <View key={item.id} className='tag'>
                 <AtTag circle active type='primary' size='small' customStyle={customStyle}>
