@@ -121,6 +121,12 @@ class Index extends Component {
         this.handleStar()
       }
         break
+      case NAVIGATE_TYPE.NOTIFICATION:{
+        Taro.navigateTo({
+          url: '/pages/notification/notification'
+        })
+      }
+      break
       default: {
       }
     }
@@ -208,6 +214,10 @@ class Index extends Component {
                 </View>
                 <View className='list' onClick={this.handleNavigate.bind(this, NAVIGATE_TYPE.ISSUES)}>
                   <View className='list_title'>Issues</View>
+                  <AtIcon prefixClass='ion' value='ios-arrow-forward' size='18' color='#7f7f7f' />
+                </View>
+                <View className='list' onClick={this.handleNavigate.bind(this, NAVIGATE_TYPE.NOTIFICATION)}>
+                  <View className='list_title'>Notifications</View>
                   <AtIcon prefixClass='ion' value='ios-arrow-forward' size='18' color='#7f7f7f' />
                 </View>
               </View>

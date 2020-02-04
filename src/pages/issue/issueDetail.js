@@ -15,7 +15,7 @@ import IssueLabels from '../../components/account/issueLabels'
 class IssueDetail extends Component {
 
   config = {
-    navigationBarTitleText: 'Issue Comments',
+    navigationBarTitleText: 'Issue Detail',
     navigationBarBackgroundColor: '#ef5350',
     navigationBarTextStyle: 'white',
     enablePullDownRefresh: true
