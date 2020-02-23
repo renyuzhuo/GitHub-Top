@@ -193,14 +193,36 @@ class Repo extends Component {
       console.log(res.data)
       let readme = res.data.content
       if (readme) {
-        this.setState({
-          readme: base64_decode(readme)
-        })
+        let con = base64_decode(readme)
+        if (con.length > 3500) {
+          con = con.slice(0, 3000) + '\n\n---\n**README 过长，由于内存会占用过多，小程序闪退，因此无法完全显示，仅显示前 3000 字符。\n如仍需查看，请到上面 Code 中查看 README 文件。 😞**\n*—— By GitHub Top*'
+          this.setState({
+            readme: con
+          })
+        } else {
+          this.setState({
+            readme: con
+          })
+        }
+
       } else {
         this.setState({
           readme: null
         })
       }
+
+
+      // console.log(res.data)
+      // let readme = res.data.content
+      // if (readme) {
+      //   this.setState({
+      //     readme: base64_decode(readme)
+      //   })
+      // } else {
+      //   this.setState({
+      //     readme: null
+      //   })
+      // }
     })
   }
 

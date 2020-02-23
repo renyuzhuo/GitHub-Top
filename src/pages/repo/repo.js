@@ -148,8 +148,8 @@ class Repo extends Component {
       let readme = res.data.content
       if (readme) {
         let con = base64_decode(readme)
-        if (con.length > 16000) {
-          con = con.slice(0, 15000) + '\n\n---\n**README 过长，由于内存会占用过多，小程序闪退，因此无法完全显示，仅显示前 15000 字符。\n如仍需查看，请到上面 Code 中查看 README 文件。 😞**\n*—— By GitHub Top*'
+        if (con.length > 3500) {
+          con = con.slice(0, 3000) + '\n\n---\n**README 过长，由于内存会占用过多，小程序闪退，因此无法完全显示，仅显示前 3000 字符。\n如仍需查看，请到上面 Code 中查看 README 文件。 😞**\n*—— By GitHub Top*'
           this.setState({
             readme: con
           })
