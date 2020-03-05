@@ -30,9 +30,6 @@ class Index extends Component {
     }
   }
 
-  componentWillReceiveProps(nextProps) {
-  }
-
   componentDidMount() {
     Taro.showLoading({ title: GLOBAL_CONFIG.LOADING_TEXT })
     this.getRepos(1)
@@ -57,15 +54,8 @@ class Index extends Component {
     }
   }
 
-  componentWillUnmount() { }
-
-  componentDidShow() {
-  }
-
-  componentDidHide() { }
-
   getRepos(index){
-    const { repo, page, status } = this.state
+    const { repos } = this.state
 
     let that = this
     this.state.page = index
@@ -76,7 +66,7 @@ class Index extends Component {
       per_page: 10
     }
 
-    let projects = index == 1 ? [] : repo
+    let projects = index == 1 ? [] : repos
 
     api.get('https://api.github.com/repos/renyuzhuo/GitHub-Top/issues', params).then(json=>{
       Taro.stopPullDownRefresh()
