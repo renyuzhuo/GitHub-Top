@@ -18,19 +18,6 @@ class About extends Component {
     }
   }
 
-  componentWillReceiveProps(nextProps) {
-    console.log(this.props, nextProps)
-  }
-
-  componentWillMount() {
-  }
-
-  componentWillUnmount() { }
-
-  componentDidShow() { }
-
-  componentDidHide() { }
-
   logout() {
     Taro.showModal({
       title: '你确定要退出登录吗',

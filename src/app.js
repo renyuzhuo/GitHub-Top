@@ -48,6 +48,7 @@ class App extends Component {
       'pages/search/searchResult',
 
       'pages/notification/notification',
+      'pages/contact/contact',
     ],
     window: {
       backgroundTextStyle: 'dark',

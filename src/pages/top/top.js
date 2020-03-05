@@ -36,7 +36,8 @@ class Repo extends Component {
       baseUrl: null,
       posterData: null,
       body: null,
-      notification: null
+      notification: null,
+      isShowIssues: true
     }
   }
 
@@ -138,8 +139,23 @@ class Repo extends Component {
         let repo = JSON.parse(json.data[0].body)
         this.state.url = repo.url
 
+        let isShowIssues = repo.isShowIssues
+        if(isShowIssues == undefined){
+          Taro.setStorage({
+            key: "isShowIssues",
+            data: true
+          })
+        }else{
+          Taro.setStorage({
+            key: "isShowIssues",
+            data: isShowIssues
+          })
+        }
+        
+
         this.setState({
-          repo: repo
+          repo: repo,
+          isShowIssues: isShowIssues
         })
 
         let that = this
@@ -210,19 +226,6 @@ class Repo extends Component {
           readme: null
         })
       }
-
-
-      // console.log(res.data)
-      // let readme = res.data.content
-      // if (readme) {
-      //   this.setState({
-      //     readme: base64_decode(readme)
-      //   })
-      // } else {
-      //   this.setState({
-      //     readme: null
-      //   })
-      // }
     })
   }
 
@@ -581,7 +584,7 @@ class Repo extends Component {
   }
 
   render() {
-    const { repo, hasStar, isShare, readme, baseUrl, posterData, notification } = this.state
+    const { repo, hasStar, isShare, readme, isShowIssues, posterData, notification } = this.state
     return (
       <View className='content'>
         <View className='repo_bg_view'>
@@ -679,7 +682,9 @@ class Repo extends Component {
           </View>
         </View>
         <View className='repo_info_list_view'>
-          <View className='repo_info_list' onClick={this.handleNavigate.bind(this, NAVIGATE_TYPE.ISSUES)}>
+          {
+            isShowIssues &&
+            <View className='repo_info_list' onClick={this.handleNavigate.bind(this, NAVIGATE_TYPE.ISSUES)}>
             <View className='list_title'>Issues</View>
             <View className='list_content'>
               {
@@ -689,6 +694,7 @@ class Repo extends Component {
               <AtIcon prefixClass='ion' value='ios-arrow-forward' size='18' color='#7f7f7f' />
             </View>
           </View>
+          }
           <View className='repo_info_list' onClick={this.handleNavigate.bind(this, NAVIGATE_TYPE.REPO_EVENTS_LIST)}>
             <View className='list_title'>Events</View>
             <AtIcon prefixClass='ion' value='ios-arrow-forward' size='18' color='#7f7f7f' />

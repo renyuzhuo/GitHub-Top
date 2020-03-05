@@ -34,7 +34,8 @@ class Repo extends Component {
       isShare: false,
       baseUrl: null,
       posterData: null,
-      isShowCopyRepoJson: Taro.getStorageSync('myId') === 7275046
+      isShowCopyRepoJson: Taro.getStorageSync('myId') === 7275046,
+      isShowIssues: false
     }
   }
 
@@ -50,6 +51,17 @@ class Repo extends Component {
   }
 
   componentDidMount() {
+    let that = this
+    Taro.getStorage({
+      key: "isShowIssues",
+      success: (result) => {
+        console.log('result', result)
+        that.setState({
+          isShowIssues: result.data
+        })
+      }
+    })
+
     Taro.showLoading({ title: GLOBAL_CONFIG.LOADING_TEXT })
     this.setState({
       repo: null
@@ -523,7 +535,8 @@ class Repo extends Component {
   }
 
   render() {
-    const { repo, hasStar, isShare, readme, baseUrl, posterData, isShowCopyRepoJson } = this.state
+    const { repo, hasStar, isShare, readme, isShowIssues, posterData, isShowCopyRepoJson } = this.state
+
     return (
       <View className='content'>
         <View className='repo_bg_view'>
@@ -613,16 +626,19 @@ class Repo extends Component {
           </View>
         </View>
         <View className='repo_info_list_view'>
-          <View className='repo_info_list' onClick={this.handleNavigate.bind(this, NAVIGATE_TYPE.ISSUES)}>
-            <View className='list_title'>Issues</View>
-            <View className='list_content'>
-              {
-                repo.issue > 0 &&
-                <View className='tag'>{repo.issue}</View>
-              }
-              <AtIcon prefixClass='ion' value='ios-arrow-forward' size='18' color='#7f7f7f' />
+          {
+            isShowIssues &&
+            <View className='repo_info_list' onClick={this.handleNavigate.bind(this, NAVIGATE_TYPE.ISSUES)}>
+              <View className='list_title'>Issues</View>
+              <View className='list_content'>
+                {
+                  repo.issue > 0 &&
+                  <View className='tag'>{repo.issue}</View>
+                }
+                <AtIcon prefixClass='ion' value='ios-arrow-forward' size='18' color='#7f7f7f' />
+              </View>
             </View>
-          </View>
+          }
           <View className='repo_info_list' onClick={this.handleNavigate.bind(this, NAVIGATE_TYPE.REPO_EVENTS_LIST)}>
             <View className='list_title'>Events</View>
             <AtIcon prefixClass='ion' value='ios-arrow-forward' size='18' color='#7f7f7f' />
