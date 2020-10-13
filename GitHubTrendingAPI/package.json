@@ -1,0 +1,8 @@
+{
+  "name": "GitHubTrendingAPI",
+  "version": "1.0.0",
+  "dependencies": {},
+  "devDependencies": {
+    "trending-github": "^2.0.4"
+  }
+}
