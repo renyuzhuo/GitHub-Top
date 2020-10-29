@@ -1,0 +1,252 @@
+[
+  {
+    author: 'huanzi-qch',
+    name: 'base-admin',
+    href: 'https://github.com/huanzi-qch/base-admin',
+    description: 'Base Admin一套简单通用的后台管理系统，主要功能有：权限管理、菜单管理、用户管理，系统设置、实时日志，实时监控，API加密，以及登录用户修改密码、配置个性菜单等',
+    language: 'Java',
+    stars: 1438,
+    forks: 740,
+    starsInPeriod: 910
+  },
+  {
+    author: 'mengshukeji',
+    name: 'Luckysheet',
+    href: 'https://github.com/mengshukeji/Luckysheet',
+    description: 'Luckysheet is an online spreadsheet like excel that is powerful, simple to configure, and completely open source.',
+    language: 'JavaScript',
+    stars: 5436,
+    forks: 452,
+    starsInPeriod: 3423
+  },
+  {
+    author: 'lxk0301',
+    name: 'scripts',
+    href: 'https://github.com/lxk0301/scripts',
+    description: '京东薅羊毛工具, 京东水果、宠物、种豆等等',
+    language: 'JavaScript',
+    stars: 1634,
+    forks: 1758,
+    starsInPeriod: 1287
+  },
+  {
+    author: 'TheAlgorithms',
+    name: 'Python',
+    href: 'https://github.com/TheAlgorithms/Python',
+    description: 'All Algorithms implemented in Python',
+    language: 'Python',
+    stars: 90571,
+    forks: 26674,
+    starsInPeriod: 4737
+  },
+  {
+    author: 'v2fly',
+    name: 'v2ray-core',
+    href: 'https://github.com/v2fly/v2ray-core',
+    description: 'A platform for building proxies to bypass network restrictions.',
+    language: 'Go',
+    stars: 4142,
+    forks: 648,
+    starsInPeriod: 1525
+  },
+  {
+    author: 'firstcontributions',
+    name: 'first-contributions',
+    href: 'https://github.com/firstcontributions/first-contributions',
+    description: '🚀✨ Help beginners to contribute to open source projects',
+    language: '',
+    stars: 12321,
+    forks: 32435,
+    starsInPeriod: 847
+  },
+  {
+    author: 'tailwindlabs',
+    name: 'headlessui',
+    href: 'https://github.com/tailwindlabs/headlessui',
+    description: 'Completely unstyled, fully accessible UI components, designed to integrate beautifully with Tailwind CSS.',
+    language: 'TypeScript',
+    stars: 2817,
+    forks: 60,
+    starsInPeriod: 1735
+  },
+  {
+    author: 'TeamNewPipe',
+    name: 'NewPipe',
+    href: 'https://github.com/TeamNewPipe/NewPipe',
+    description: 'A libre lightweight streaming front-end for Android.',
+    language: 'Java',
+    stars: 11198,
+    forks: 1534,
+    starsInPeriod: 846
+  },
+  {
+    author: '30-seconds',
+    name: '30-seconds-of-code',
+    href: 'https://github.com/30-seconds/30-seconds-of-code',
+    description: 'Short JavaScript code snippets for all your development needs',
+    language: 'JavaScript',
+    stars: 64880,
+    forks: 7176,
+    starsInPeriod: 2716
+  },
+  {
+    author: 'robertdavidgraham',
+    name: 'masscan',
+    href: 'https://github.com/robertdavidgraham/masscan',
+    description: 'TCP port scanner, spews SYN packets asynchronously, scanning entire Internet in under 5 minutes.',
+    language: 'C',
+    stars: 14107,
+    forks: 2233,
+    starsInPeriod: 989
+  },
+  {
+    author: 'hyb1996',
+    name: 'Auto.js',
+    href: 'https://github.com/hyb1996/Auto.js',
+    description: 'A UiAutomator on android, does not need root access(安卓平台上的JavaScript自动化工具)',
+    language: 'Java',
+    stars: 8294,
+    forks: 2302,
+    starsInPeriod: 807
+  },
+  {
+    author: 'home-assistant',
+    name: 'core',
+    href: 'https://github.com/home-assistant/core',
+    description: '🏡 Open source home automation that puts local control and privacy first',
+    language: 'Python',
+    stars: 36795,
+    forks: 11993,
+    starsInPeriod: 1071
+  },
+  {
+    author: 'pcm-dpc',
+    name: 'COVID-19',
+    href: 'https://github.com/pcm-dpc/COVID-19',
+    description: 'COVID-19 Italia - Monitoraggio situazione',
+    language: '',
+    stars: 3568,
+    forks: 1999,
+    starsInPeriod: 134
+  },
+  {
+    author: 'elunez',
+    name: 'eladmin',
+    href: 'https://github.com/elunez/eladmin',
+    description: '项目基于 Spring Boot 2.1.0 、 Jpa、 Spring Security、redis、Vue的前后端分离的后台管理系统，项目采用分模块开发方式， 权限控制采用 RBAC，支持数据字典与数据权限管理，支持一键生成前后端代码，支持动态路由',
+    language: 'Java',
+    stars: 11628,
+    forks: 4306,
+    starsInPeriod: 810
+  },
+  {
+    author: 'evanw',
+    name: 'esbuild',
+    href: 'https://github.com/evanw/esbuild',
+    description: 'An extremely fast JavaScript bundler and minifier',
+    language: 'Go',
+    stars: 14908,
+    forks: 315,
+    starsInPeriod: 2195
+  },
+  {
+    author: 'jonasschmedtmann',
+    name: 'complete-javascript-course',
+    href: 'https://github.com/jonasschmedtmann/complete-javascript-course',
+    description: 'Starter files, final projects and FAQ for my Complete JavaScript course',
+    language: 'JavaScript',
+    stars: 5165,
+    forks: 6607,
+    starsInPeriod: 582
+  },
+  {
+    author: 'gofiber',
+    name: 'fiber',
+    href: 'https://github.com/gofiber/fiber',
+    description: '⚡️ Express inspired web framework written in Go',
+    language: 'Go',
+    stars: 9509,
+    forks: 419,
+    starsInPeriod: 1353
+  },
+  {
+    author: 'google-research',
+    name: 'football',
+    href: 'https://github.com/google-research/football',
+    description: 'Check out the new game server:',
+    language: 'Python',
+    stars: 2456,
+    forks: 742,
+    starsInPeriod: 196
+  },
+  {
+    author: 'PaddlePaddle',
+    name: 'PaddleOCR',
+    href: 'https://github.com/PaddlePaddle/PaddleOCR',
+    description: 'Awesome multilingual OCR toolkits based on PaddlePaddle （multilingual recognition: English, Chinese, Korean, Japanese, German, French etc. 3.5M practical ultra lightweight OCR system, support training and deployment among server, mobile, embedded and IoT devices）',
+    language: 'C++',
+    stars: 5664,
+    forks: 1048,
+    starsInPeriod: 1674
+  },
+  {
+    author: 'Impostor',
+    name: 'Impostor',
+    href: 'https://github.com/Impostor/Impostor',
+    description: 'Impostor - An open source reimplementation of the Among Us Server',
+    language: 'C#',
+    stars: 996,
+    forks: 107,
+    starsInPeriod: 538
+  },
+  {
+    author: 'PyTorchLightning',
+    name: 'pytorch-lightning',
+    href: 'https://github.com/PyTorchLightning/pytorch-lightning',
+    description: 'The lightweight PyTorch wrapper for high-performance AI research. Scale your models, not the boilerplate.',
+    language: 'Python',
+    stars: 9578,
+    forks: 1109,
+    starsInPeriod: 1046
+  },
+  {
+    author: 'foxlet',
+    name: 'macOS-Simple-KVM',
+    href: 'https://github.com/foxlet/macOS-Simple-KVM',
+    description: 'Tools to set up a quick macOS VM in QEMU, accelerated by KVM.',
+    language: 'Shell',
+    stars: 8234,
+    forks: 642,
+    starsInPeriod: 739
+  },
+  {
+    author: 'soimort',
+    name: 'you-get',
+    href: 'https://github.com/soimort/you-get',
+    description: '⏬ Dumb downloader that scrapes the web',
+    language: 'Python',
+    stars: 36059,
+    forks: 7341,
+    starsInPeriod: 998
+  },
+  {
+    author: 'topjohnwu',
+    name: 'Magisk',
+    href: 'https://github.com/topjohnwu/Magisk',
+    description: 'The Magic Mask for Android',
+    language: 'C++',
+    stars: 13890,
+    forks: 2268,
+    starsInPeriod: 795
+  },
+  {
+    author: 'facebook',
+    name: 'infer',
+    href: 'https://github.com/facebook/infer',
+    description: 'A static analyzer for Java, C, C++, and Objective-C',
+    language: 'OCaml',
+    stars: 11681,
+    forks: 1568,
+    starsInPeriod: 436
+  }
+]

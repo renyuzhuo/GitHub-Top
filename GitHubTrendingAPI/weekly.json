@@ -1,0 +1,252 @@
+[
+  {
+    author: 'TeamNewPipe',
+    name: 'NewPipe',
+    href: 'https://github.com/TeamNewPipe/NewPipe',
+    description: 'A libre lightweight streaming front-end for Android.',
+    language: 'Java',
+    stars: 11198,
+    forks: 1534,
+    starsInPeriod: 492
+  },
+  {
+    author: 'sherlock-project',
+    name: 'sherlock',
+    href: 'https://github.com/sherlock-project/sherlock',
+    description: '🔎 Hunt down social media accounts by username across social networks',
+    language: 'Python',
+    stars: 16499,
+    forks: 1692,
+    starsInPeriod: 1360
+  },
+  {
+    author: 'tomer8007',
+    name: 'widevine-l3-decryptor',
+    href: 'https://github.com/tomer8007/widevine-l3-decryptor',
+    description: 'A Chrome extension that demonstrates bypassing Widevine L3 DRM',
+    language: 'JavaScript',
+    stars: 623,
+    forks: 119,
+    starsInPeriod: 321
+  },
+  {
+    author: 'foxlet',
+    name: 'macOS-Simple-KVM',
+    href: 'https://github.com/foxlet/macOS-Simple-KVM',
+    description: 'Tools to set up a quick macOS VM in QEMU, accelerated by KVM.',
+    language: 'Shell',
+    stars: 8234,
+    forks: 642,
+    starsInPeriod: 603
+  },
+  {
+    author: 'soimort',
+    name: 'you-get',
+    href: 'https://github.com/soimort/you-get',
+    description: '⏬ Dumb downloader that scrapes the web',
+    language: 'Python',
+    stars: 36059,
+    forks: 7341,
+    starsInPeriod: 623
+  },
+  {
+    author: 'jonasschmedtmann',
+    name: 'complete-javascript-course',
+    href: 'https://github.com/jonasschmedtmann/complete-javascript-course',
+    description: 'Starter files, final projects and FAQ for my Complete JavaScript course',
+    language: 'JavaScript',
+    stars: 5165,
+    forks: 6607,
+    starsInPeriod: 360
+  },
+  {
+    author: 'hyb1996',
+    name: 'Auto.js',
+    href: 'https://github.com/hyb1996/Auto.js',
+    description: 'A UiAutomator on android, does not need root access(安卓平台上的JavaScript自动化工具)',
+    language: 'Java',
+    stars: 8294,
+    forks: 2302,
+    starsInPeriod: 504
+  },
+  {
+    author: 'hollischuang',
+    name: 'toBeTopJavaer',
+    href: 'https://github.com/hollischuang/toBeTopJavaer',
+    description: 'To Be Top Javaer - Java工程师成神之路',
+    language: 'Java',
+    stars: 17914,
+    forks: 4114,
+    starsInPeriod: 518
+  },
+  {
+    author: 'commaai',
+    name: 'openpilot',
+    href: 'https://github.com/commaai/openpilot',
+    description: 'openpilot is an open source driver assistance system. openpilot performs the functions of Automated Lane Centering and Adaptive Cruise Control for over 85 supported car makes and models.',
+    language: 'C++',
+    stars: 18999,
+    forks: 4249,
+    starsInPeriod: 1601
+  },
+  {
+    author: 'kangvcar',
+    name: 'InfoSpider',
+    href: 'https://github.com/kangvcar/InfoSpider',
+    description: 'INFO-SPIDER 是一个集众多数据源于一身的爬虫工具箱🧰，旨在安全快捷的帮助用户拿回自己的数据，工具代码开源，流程透明。支持数据源包括GitHub、QQ邮箱、网易邮箱、阿里邮箱、新浪邮箱、Hotmail邮箱、Outlook邮箱、京东、淘宝、支付宝、中国移动、中国联通、中国电信、知乎、哔哩哔哩、网易云音乐、QQ好友、QQ群、生成朋友圈相册、浏览器浏览历史、12306、博客园、CSDN博客、开源中国博客、简书。',
+    language: 'Python',
+    stars: 2836,
+    forks: 529,
+    starsInPeriod: 261
+  },
+  {
+    author: 'ibireme',
+    name: 'yyjson',
+    href: 'https://github.com/ibireme/yyjson',
+    description: 'The fastest JSON library in C',
+    language: 'C',
+    stars: 1138,
+    forks: 46,
+    starsInPeriod: 491
+  },
+  {
+    author: 'GitSquared',
+    name: 'edex-ui',
+    href: 'https://github.com/GitSquared/edex-ui',
+    description: 'A cross-platform, customizable science fiction terminal emulator with advanced monitoring & touchscreen support.',
+    language: 'JavaScript',
+    stars: 19042,
+    forks: 1072,
+    starsInPeriod: 1897
+  },
+  {
+    author: 'jiayiwang5',
+    name: 'TaoBaoScripts',
+    href: 'https://github.com/jiayiwang5/TaoBaoScripts',
+    description: '淘宝/支付宝/京东/拼多多，双十一任务脚本，auto.js适用安卓',
+    language: 'JavaScript',
+    stars: 263,
+    forks: 154,
+    starsInPeriod: 68
+  },
+  {
+    author: 'CSSEGISandData',
+    name: 'COVID-19',
+    href: 'https://github.com/CSSEGISandData/COVID-19',
+    description: 'Novel Coronavirus (COVID-19) Cases, provided by JHU CSSE',
+    language: '',
+    stars: 24515,
+    forks: 15554,
+    starsInPeriod: 107
+  },
+  {
+    author: 'dylanaraps',
+    name: 'pure-bash-bible',
+    href: 'https://github.com/dylanaraps/pure-bash-bible',
+    description: '📖 A collection of pure bash alternatives to external processes.',
+    language: 'Shell',
+    stars: 25586,
+    forks: 2206,
+    starsInPeriod: 110
+  },
+  {
+    author: 'nodejs',
+    name: 'node',
+    href: 'https://github.com/nodejs/node',
+    description: 'Node.js JavaScript runtime ✨🐢🚀✨',
+    language: 'JavaScript',
+    stars: 74387,
+    forks: 18359,
+    starsInPeriod: 534
+  },
+  {
+    author: 'PaddlePaddle',
+    name: 'PaddleOCR',
+    href: 'https://github.com/PaddlePaddle/PaddleOCR',
+    description: 'Awesome multilingual OCR toolkits based on PaddlePaddle （multilingual recognition: English, Chinese, Korean, Japanese, German, French etc. 3.5M practical ultra lightweight OCR system, support training and deployment among server, mobile, embedded and IoT devices）',
+    language: 'C++',
+    stars: 5664,
+    forks: 1048,
+    starsInPeriod: 1187
+  },
+  {
+    author: 'pytorch',
+    name: 'fairseq',
+    href: 'https://github.com/pytorch/fairseq',
+    description: 'Facebook AI Research Sequence-to-Sequence Toolkit written in Python.',
+    language: 'Python',
+    stars: 10076,
+    forks: 2494,
+    starsInPeriod: 397
+  },
+  {
+    author: 'lxk0301',
+    name: 'scripts',
+    href: 'https://github.com/lxk0301/scripts',
+    description: '京东薅羊毛工具, 京东水果、宠物、种豆等等',
+    language: 'JavaScript',
+    stars: 1634,
+    forks: 1758,
+    starsInPeriod: 713
+  },
+  {
+    author: 'aristocratos',
+    name: 'bpytop',
+    href: 'https://github.com/aristocratos/bpytop',
+    description: 'Linux/OSX/FreeBSD resource monitor',
+    language: 'Python',
+    stars: 3629,
+    forks: 131,
+    starsInPeriod: 232
+  },
+  {
+    author: 'jwasham',
+    name: 'coding-interview-university',
+    href: 'https://github.com/jwasham/coding-interview-university',
+    description: 'A complete computer science study plan to become a software engineer.',
+    language: '',
+    stars: 140788,
+    forks: 39687,
+    starsInPeriod: 2427
+  },
+  {
+    author: 'google-research',
+    name: 'google-research',
+    href: 'https://github.com/google-research/google-research',
+    description: 'Google Research',
+    language: 'Jupyter Notebook',
+    stars: 13668,
+    forks: 2716,
+    starsInPeriod: 582
+  },
+  {
+    author: 'grafana',
+    name: 'loki',
+    href: 'https://github.com/grafana/loki',
+    description: 'Like Prometheus, but for logs.',
+    language: 'Go',
+    stars: 11285,
+    forks: 1208,
+    starsInPeriod: 104
+  },
+  {
+    author: 'axios',
+    name: 'axios',
+    href: 'https://github.com/axios/axios',
+    description: 'Promise based HTTP client for the browser and node.js',
+    language: 'JavaScript',
+    stars: 78325,
+    forks: 7354,
+    starsInPeriod: 295
+  },
+  {
+    author: 'crowdsecurity',
+    name: 'crowdsec',
+    href: 'https://github.com/crowdsecurity/crowdsec',
+    description: 'Crowdsec - An open-source, lightweight agent to detect and respond to bad behaviours. It also automatically benefits from our global community-wide IP reputation database.',
+    language: 'Go',
+    stars: 1548,
+    forks: 59,
+    starsInPeriod: 411
+  }
+]
