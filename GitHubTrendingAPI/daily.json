@@ -1,0 +1,252 @@
+[
+  {
+    author: 'vercel',
+    name: 'commerce',
+    href: 'https://github.com/vercel/commerce',
+    description: 'Next.js Commerce',
+    language: 'TypeScript',
+    stars: 1219,
+    forks: 160,
+    starsInPeriod: 338
+  },
+  {
+    author: 'MrS0m30n3',
+    name: 'youtube-dl-gui',
+    href: 'https://github.com/MrS0m30n3/youtube-dl-gui',
+    description: 'A cross platform front-end GUI of the popular youtube-dl written in wxPython.',
+    language: 'Python',
+    stars: 5495,
+    forks: 1002,
+    starsInPeriod: 160
+  },
+  {
+    author: 'lrvick',
+    name: 'youtube-dl',
+    href: 'https://github.com/lrvick/youtube-dl',
+    description: 'RIAA: Please go die in a fire.',
+    language: 'Python',
+    stars: 428,
+    forks: 216,
+    starsInPeriod: 264
+  },
+  {
+    author: 'fzaninotto',
+    name: 'Faker',
+    href: 'https://github.com/fzaninotto/Faker',
+    description: 'Faker is a PHP library that generates fake data for you',
+    language: 'PHP',
+    stars: 25048,
+    forks: 2830,
+    starsInPeriod: 53
+  },
+  {
+    author: 'donnemartin',
+    name: 'system-design-primer',
+    href: 'https://github.com/donnemartin/system-design-primer',
+    description: 'Learn how to design large-scale systems. Prep for the system design interview. Includes Anki flashcards.',
+    language: 'Python',
+    stars: 110346,
+    forks: 19971,
+    starsInPeriod: 102
+  },
+  {
+    author: 'CyC2018',
+    name: 'CS-Notes',
+    href: 'https://github.com/CyC2018/CS-Notes',
+    description: '📚 技术面试必备基础知识、Leetcode、计算机操作系统、计算机网络、系统设计、Java、Python、C++',
+    language: 'Java',
+    stars: 113568,
+    forks: 37046,
+    starsInPeriod: 96
+  },
+  {
+    author: 'google-research',
+    name: 'google-research',
+    href: 'https://github.com/google-research/google-research',
+    description: 'Google Research',
+    language: 'Jupyter Notebook',
+    stars: 13668,
+    forks: 2715,
+    starsInPeriod: 290
+  },
+  {
+    author: 'grafana',
+    name: 'tempo',
+    href: 'https://github.com/grafana/tempo',
+    description: 'Grafana Tempo is a high volume, minimal dependency trace storage.',
+    language: 'Go',
+    stars: 676,
+    forks: 20,
+    starsInPeriod: 217
+  },
+  {
+    author: 'hoppscotch',
+    name: 'hoppscotch',
+    href: 'https://github.com/hoppscotch/hoppscotch',
+    description: '👽 A free, fast and beautiful API request builder used by 100k+ developers. https://hoppscotch.io',
+    language: 'Vue',
+    stars: 24639,
+    forks: 1613,
+    starsInPeriod: 130
+  },
+  {
+    author: 'danielgindi',
+    name: 'Charts',
+    href: 'https://github.com/danielgindi/Charts',
+    description: 'Beautiful charts for iOS/tvOS/OSX! The Apple side of the crossplatform MPAndroidChart.',
+    language: 'Swift',
+    stars: 23474,
+    forks: 4667,
+    starsInPeriod: 9
+  },
+  {
+    author: 'hollischuang',
+    name: 'toBeTopJavaer',
+    href: 'https://github.com/hollischuang/toBeTopJavaer',
+    description: 'To Be Top Javaer - Java工程师成神之路',
+    language: 'Java',
+    stars: 17914,
+    forks: 4114,
+    starsInPeriod: 186
+  },
+  {
+    author: 'freefq',
+    name: 'free',
+    href: 'https://github.com/freefq/free',
+    description: '免费科学上网,免费翻墙,免费ssr,免费v2ray,免费vmess节点,免费节点,翻墙,蓝灯,谷歌商店',
+    language: '',
+    stars: 1299,
+    forks: 256,
+    starsInPeriod: 209
+  },
+  {
+    author: 'trekhleb',
+    name: 'javascript-algorithms',
+    href: 'https://github.com/trekhleb/javascript-algorithms',
+    description: '📝 Algorithms and data structures implemented in JavaScript with explanations and links to further readings',
+    language: 'JavaScript',
+    stars: 83223,
+    forks: 14049,
+    starsInPeriod: 260
+  },
+  {
+    author: 'UnityTechnologies',
+    name: 'open-project-1',
+    href: 'https://github.com/UnityTechnologies/open-project-1',
+    description: 'Unity Open Project #1: Action-adventure',
+    language: 'C#',
+    stars: 1647,
+    forks: 670,
+    starsInPeriod: 73
+  },
+  {
+    author: 'keep3r-network',
+    name: 'keep3r.network',
+    href: 'https://github.com/keep3r-network/keep3r.network',
+    description: 'An incentivized keeper network for anonymous keeper and job registration',
+    language: 'Solidity',
+    stars: 70,
+    forks: 23,
+    starsInPeriod: 18
+  },
+  {
+    author: 'foxlet',
+    name: 'macOS-Simple-KVM',
+    href: 'https://github.com/foxlet/macOS-Simple-KVM',
+    description: 'Tools to set up a quick macOS VM in QEMU, accelerated by KVM.',
+    language: 'Shell',
+    stars: 8233,
+    forks: 642,
+    starsInPeriod: 125
+  },
+  {
+    author: 'danistefanovic',
+    name: 'build-your-own-x',
+    href: 'https://github.com/danistefanovic/build-your-own-x',
+    description: '🤓 Build your own (insert technology here)',
+    language: '',
+    stars: 84815,
+    forks: 7222,
+    starsInPeriod: 158
+  },
+  {
+    author: 'paritytech',
+    name: 'polkadot',
+    href: 'https://github.com/paritytech/polkadot',
+    description: 'Polkadot Node Implementation',
+    language: 'Rust',
+    stars: 1610,
+    forks: 377,
+    starsInPeriod: 17
+  },
+  {
+    author: 'kamranahmedse',
+    name: 'developer-roadmap',
+    href: 'https://github.com/kamranahmedse/developer-roadmap',
+    description: 'Roadmap to becoming a web developer in 2020',
+    language: '',
+    stars: 132223,
+    forks: 20022,
+    starsInPeriod: 493
+  },
+  {
+    author: 'labuladong',
+    name: 'fucking-algorithm',
+    href: 'https://github.com/labuladong/fucking-algorithm',
+    description: '刷算法全靠套路，认准 labuladong 就够了！English version supported! Crack LeetCode, not only how, but also why.',
+    language: '',
+    stars: 67837,
+    forks: 12567,
+    starsInPeriod: 459
+  },
+  {
+    author: 'vercel',
+    name: 'next.js',
+    href: 'https://github.com/vercel/next.js',
+    description: 'The React Framework',
+    language: 'JavaScript',
+    stars: 55280,
+    forks: 9229,
+    starsInPeriod: 154
+  },
+  {
+    author: 'puppeteer',
+    name: 'puppeteer',
+    href: 'https://github.com/puppeteer/puppeteer',
+    description: 'Headless Chrome Node.js API',
+    language: 'TypeScript',
+    stars: 66155,
+    forks: 6828,
+    starsInPeriod: 47
+  },
+  {
+    author: 'l1ving',
+    name: 'youtube-dl',
+    href: 'https://github.com/l1ving/youtube-dl',
+    description: 'A copyright-respecting fork of youtube-dl',
+    language: 'Python',
+    stars: 1223,
+    forks: 675,
+    starsInPeriod: 208
+  },
+  {
+    author: 'srcrs',
+    name: 'BilibiliTask',
+    href: 'https://github.com/srcrs/BilibiliTask',
+    description: '哔哩哔哩(B站)自动完成每日任务，投币，点赞，直播签到，自动兑换银瓜子为硬币，自动送出即将过期礼物，漫画App签到。',
+    language: 'Java',
+    stars: 308,
+    forks: 260,
+    starsInPeriod: 41
+  },
+  {
+    author: 'microsoft',
+    name: 'beginners-intro-javascript-node',
+    href: 'https://github.com/microsoft/beginners-intro-javascript-node',
+    description: "Beginner's Series: Introduction to JavaScript (Node.js)",
+    language: 'JavaScript',
+    stars: 833,
+    forks: 70,
+    starsInPeriod: 8
+  }
+]
