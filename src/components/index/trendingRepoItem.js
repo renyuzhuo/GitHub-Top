@@ -23,11 +23,11 @@ export default class TrendingRepoItem extends Component {
 
     let currentPeriod = null
     if (categoryType === 0) {
-      currentPeriod = item.currentPeriodStars + ' stars today'
+      currentPeriod = item.starsInPeriod + ' stars today'
     }else if (categoryType === 1) {
-      currentPeriod = item.currentPeriodStars + ' stars this week'
+      currentPeriod = item.starsInPeriod + ' stars this week'
     }else if (categoryType === 2) {
-      currentPeriod = item.currentPeriodStars + ' stars this month'
+      currentPeriod = item.starsInPeriod + ' stars this month'
     }
 
     return (

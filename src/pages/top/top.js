@@ -136,6 +136,7 @@ class Repo extends Component {
 
     api.get('https://api.github.com/repos/renyuzhuo/GitHub-Top/issues', params)
       .then(json => {
+        console.log(typeof (json.data[0].body))
         let repo = JSON.parse(json.data[0].body)
         this.state.url = repo.url
 
@@ -725,6 +726,7 @@ class Repo extends Component {
         {
           posterData && <Painter style='position:fixed;top:-9999rpx' data={posterData} save onPainterFinished={this.onPainterFinished.bind(this)} />
         }
+        <official-account></official-account>
         <LoadMore status={REFRESH_STATUS.NO_MORE_DATA} />
       </View>
     )

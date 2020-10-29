@@ -26,7 +26,7 @@ class Tending extends Component {
       current: 0,
       category: {
         'name': 'Today',
-        'value': 'daily'
+        'value': 'daily.json'
       },
       animation: null,
       isHidden: false,
@@ -38,15 +38,15 @@ class Tending extends Component {
       range: [
         [{
           'name': 'Today',
-          'value': 'daily'
+          'value': 'daily.json'
         },
         {
           'name': 'Week',
-          'value': 'weekly'
+          'value': 'weekly.json'
         },
         {
           'name': 'Month',
-          'value': 'monthly'
+          'value': 'monthly.json'
         }]
       ]
     }
@@ -125,13 +125,12 @@ class Tending extends Component {
     const { current, category } = this.state
     let that = this
     console.log(category)
+    let apiUrl = 'https://api.renyuzhuo.cn/GitHubTrendingAPI/' + category.value
+    console.log(apiUrl)
     Taro.request({
-      url: 'https://github-trending-api.now.sh/repositories',
-      data: {
-        since: category.value
-      }
+      url: apiUrl
     }).then(json => {
-      console.log(json)
+      console.log(json.data)
       that.setState({
         repos: json.data
       }, () => {
