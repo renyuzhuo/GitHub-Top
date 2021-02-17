@@ -1,4 +1,6 @@
 echo "Begin"
+git pull
+echo "Git Pull Finish"
 node daily.js -> daily.json
 echo "Finish Daily"
 node month.js -> monthly.json
