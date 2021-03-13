@@ -11,3 +11,4 @@ git add .
 git commit -m "[feat]Update Json"
 git push origin master
 echo "End"
+date > ~/Desktop/time.txt
