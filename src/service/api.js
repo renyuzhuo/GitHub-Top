@@ -13,6 +13,7 @@ export default {
       url: url.indexOf('http') !== -1 ? url : baseUrl + url,
       data: data,
       method: method,
+      timeout: 10000,
       header: {
         'content-type': contentType,
         'Authorization': Taro.getStorageSync('Authorization')

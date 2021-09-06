@@ -1,61 +1,60 @@
 {
-	"miniprogramRoot": "dist/",
-	"projectname": "GitHub Top",
-	"description": "GitHub 热点项目推荐。热点事件发生时，GitHub 是程序员的主战场，我们会做出我们的努力，让这个世界更美好。",
-	"appid": "wxaec6f747fd3e7171",
-	"setting": {
-		"urlCheck": true,
-		"es6": false,
-		"postcss": false,
-		"minified": false,
-		"newFeature": true,
-		"coverView": true,
-		"autoAudits": false,
-		"showShadowRootInWxmlPanel": true,
-		"scopeDataCheck": false,
-		"checkInvalidKey": true,
-		"checkSiteMap": true,
-		"uploadWithSourceMap": true,
-		"babelSetting": {
-			"ignore": [],
-			"disablePlugins": [],
-			"outputPath": ""
-		}
-	},
-	"compileType": "miniprogram",
-	"libVersion": "2.10.1",
-	"simulatorType": "wechat",
-	"simulatorPluginLibVersion": {},
-	"scripts": {
-		"beforeCompile": "rm -fr dist/components/towxml/;cp -R src/components/towxml/ ./dist/components/towxml;",
-		"beforePreview": "",
-		"beforeUpload": ""
-	},
-	"condition": {
-		"search": {
-			"current": -1,
-			"list": []
-		},
-		"conversation": {
-			"current": -1,
-			"list": []
-		},
-		"plugin": {
-			"current": -1,
-			"list": []
-		},
-		"game": {
-			"list": []
-		},
-		"miniprogram": {
-			"current": 0,
-			"list": [
-				{
-					"id": -1,
-					"name": "模拟更新",
-					"pathName": "pages/index/index"
-				}
-			]
-		}
-	}
+  "miniprogramRoot": "dist/",
+  "projectname": "GitHub Top",
+  "description": "GitHub 热点项目推荐。热点事件发生时，GitHub 是程序员的主战场，我们会做出我们的努力，让这个世界更美好。",
+  "appid": "wxaec6f747fd3e7171",
+  "setting": {
+    "urlCheck": true,
+    "es6": false,
+    "postcss": false,
+    "minified": false,
+    "newFeature": true,
+    "coverView": true,
+    "autoAudits": false,
+    "showShadowRootInWxmlPanel": true,
+    "scopeDataCheck": false,
+    "checkInvalidKey": true,
+    "checkSiteMap": true,
+    "uploadWithSourceMap": true,
+    "babelSetting": {
+      "ignore": [],
+      "disablePlugins": [],
+      "outputPath": ""
+    },
+    "useMultiFrameRuntime": true,
+    "useApiHook": true,
+    "useApiHostProcess": false
+  },
+  "compileType": "miniprogram",
+  "libVersion": "2.10.1",
+  "simulatorType": "wechat",
+  "simulatorPluginLibVersion": {},
+  "scripts": {
+    "beforeCompile": "rm -fr dist/components/towxml/;cp -R src/components/towxml/ ./dist/components/towxml;",
+    "beforePreview": "",
+    "beforeUpload": ""
+  },
+  "condition": {
+    "search": {
+      "list": []
+    },
+    "conversation": {
+      "list": []
+    },
+    "plugin": {
+      "list": []
+    },
+    "game": {
+      "list": []
+    },
+    "miniprogram": {
+      "list": [
+        {
+          "id": -1,
+          "name": "模拟更新",
+          "pathName": "pages/index/index"
+        }
+      ]
+    }
+  }
 }
