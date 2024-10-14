@@ -1,26 +1,22 @@
-import Taro, { Component } from '@tarojs/taro'
-import { View } from '@tarojs/components'
-import { AtIcon } from 'taro-ui'
-import { GLOBAL_CONFIG } from '../../constants/globalConfig'
-import { REFRESH_STATUS } from '../../constants/status'
-
-import IssueList from '../../components/account/issueList'
-import Segment from '../../components/index/segment'
-import Empty from '../../components/index/empty'
-import LoadMore from '../../components/common/loadMore'
+import Taro, {getCurrentInstance} from '@tarojs/taro';
+import {AtIcon} from 'taro-ui'
+import {View} from '@tarojs/components'
 
 import api from '../../service/api'
+
+import {GLOBAL_CONFIG} from '../../constants/globalConfig'
+import {REFRESH_STATUS} from '../../constants/status'
+
+import Empty from '../../components/index/empty'
+import IssueList from '../../components/account/issueList'
+import LoadMore from '../../components/common/loadMore'
+import React, {Component} from 'react';
+import Segment from '../../components/index/segment'
 
 import './issues.less'
 
 class Issues extends Component {
-
-  config = {
-    navigationBarTitleText: 'Issues',
-    navigationBarBackgroundColor: '#ef5350',
-    navigationBarTextStyle: 'white',
-    enablePullDownRefresh: true
-  }
+  $instance = getCurrentInstance();
 
   constructor(props) {
     super(props)
@@ -40,12 +36,12 @@ class Issues extends Component {
     }
   }
 
-  componentWillReceiveProps (nextProps) {
+  componentWillReceiveProps(nextProps) {
     console.log(this.props, nextProps)
   }
 
   componentWillMount() {
-    let params = this.$router.params
+    let params = this.$instance.router.params
     this.setState({
       url: params.url,
       isUser: params.url.indexOf('user') !== -1,
@@ -59,14 +55,17 @@ class Issues extends Component {
     this.getClosedIssuesList()
   }
 
-  componentWillUnmount () { }
+  componentWillUnmount() {
+  }
 
-  componentDidShow () { }
+  componentDidShow() {
+  }
 
-  componentDidHide () { }
+  componentDidHide() {
+  }
 
   onPageScroll(obj) {
-    const { fixed } = this.state
+    const {fixed} = this.state
     if (obj.scrollTop > 0) {
       if (!fixed) {
         this.setState({
@@ -82,17 +81,17 @@ class Issues extends Component {
 
   onPullDownRefresh() {
     let that = this
-    const { current } = this.state
+    const {current} = this.state
     if (current === 0) {
       this.setState({
         open_page: 1
-      }, ()=>{
+      }, () => {
         that.getOpenIssuesList()
       })
     } else {
       this.setState({
         close_page: 1
-      }, ()=>{
+      }, () => {
         that.getClosedIssuesList()
       })
     }
@@ -100,12 +99,12 @@ class Issues extends Component {
 
   onReachBottom() {
     let that = this
-    const { current, open_page, close_page, open_status, close_status } = this.state
+    const {current, open_page, close_page, open_status, close_status} = this.state
     if (current === 0) {
       if (open_status !== REFRESH_STATUS.NO_MORE_DATA) {
         this.setState({
           open_page: open_page + 1
-        }, ()=>{
+        }, () => {
           that.getOpenIssuesList()
         })
       }
@@ -113,7 +112,7 @@ class Issues extends Component {
       if (close_status !== REFRESH_STATUS.NO_MORE_DATA) {
         this.setState({
           close_page: close_page + 1
-        }, ()=>{
+        }, () => {
           that.getClosedIssuesList()
         })
       }
@@ -122,7 +121,7 @@ class Issues extends Component {
 
   getOpenIssuesList() {
     let that = this
-    const { url, openList, open_page } = this.state
+    const {url, openList, open_page} = this.state
     if (open_page !== 1) {
       that.setState({
         open_status: REFRESH_STATUS.REFRESHING
@@ -133,7 +132,7 @@ class Issues extends Component {
       page: open_page,
       per_page: GLOBAL_CONFIG.PER_PAGE
     }
-    api.get(url, params).then((res)=>{
+    api.get(url, params).then((res) => {
       if (open_page === 1) {
         that.setState({
           openList: res.data
@@ -154,7 +153,7 @@ class Issues extends Component {
 
   getClosedIssuesList() {
     let that = this
-    const { url, closedList, close_page } = this.state
+    const {url, closedList, close_page} = this.state
     if (close_page !== 1) {
       that.setState({
         close_status: REFRESH_STATUS.REFRESHING
@@ -166,7 +165,7 @@ class Issues extends Component {
       state: 'closed',
       per_page: GLOBAL_CONFIG.PER_PAGE
     }
-    api.get(url, params).then((res)=>{
+    api.get(url, params).then((res) => {
       if (close_page === 1) {
         that.setState({
           closedList: res.data
@@ -197,8 +196,8 @@ class Issues extends Component {
     })
   }
 
-  render () {
-    const { openList, closedList, isUser, fixed, current, open_status, close_status } = this.state
+  render() {
+    const {openList, closedList, isUser, fixed, current, open_status, close_status} = this.state
     const count = current === 0 ? openList.length : closedList.length
     return (
       <View className='content'>
@@ -210,20 +209,20 @@ class Issues extends Component {
         </View>
         {
           fixed &&
-          <View className='segment-placeholder' />
+          <View className='segment-placeholder'/>
         }
         {count === 0 ?
-          <Empty /> : (
-            current === 0 ? <IssueList itemList={openList} /> : <IssueList itemList={closedList} />
-        )}
-        <LoadMore status={current === 0 ? open_status : close_status} />
+          <Empty/> : (
+            current === 0 ? <IssueList itemList={openList}/> : <IssueList itemList={closedList}/>
+          )}
+        <LoadMore status={current === 0 ? open_status : close_status}/>
         {
           !isUser &&
           <View className='add_issue' onClick={this.addIssue.bind(this)}>
             <AtIcon prefixClass='ion'
                     value='ios-add'
                     size='40'
-                    color='#fff' />
+                    color='#fff'/>
           </View>
         }
       </View>

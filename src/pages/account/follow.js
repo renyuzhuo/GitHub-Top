@@ -1,4 +1,5 @@
-import Taro, { Component } from '@tarojs/taro'
+import React, { Component } from 'react';
+import Taro, { getCurrentInstance } from '@tarojs/taro';
 import { View } from '@tarojs/components'
 import { GLOBAL_CONFIG } from '../../constants/globalConfig'
 import FollowItem from '../../components/account/followItem'
@@ -10,12 +11,7 @@ import './follow.less'
 import api from "../../service/api";
 
 class Follow extends Component {
-
-  config = {
-    enablePullDownRefresh: true,
-    navigationBarBackgroundColor: '#ef5350',
-    navigationBarTextStyle: 'white'
-  }
+  $instance = getCurrentInstance();
 
   constructor(props) {
     super(props)
@@ -32,7 +28,7 @@ class Follow extends Component {
   }
 
   componentWillMount() {
-    let params = this.$router.params
+    let params = this.$instance.router.params
     let type = params.type
     let username = params.username
     let url = ''

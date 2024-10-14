@@ -151,5 +151,6 @@ export const formatNumber = n => {
 }
 
 export const hasLogin = () => {
-  return Taro.getStorageSync('Authorization').length > 0
+  false
+  // return Taro.getStorageSync('Authorization').length > 0
 }

@@ -1,4 +1,5 @@
-import Taro, { Component } from '@tarojs/taro'
+import React, { Component } from 'react';
+import Taro from '@tarojs/taro';
 import { View} from '@tarojs/components'
 
 import {AtList, AtListItem} from "taro-ui"
@@ -6,13 +7,6 @@ import {AtList, AtListItem} from "taro-ui"
 import './contact.less'
 
 class About extends Component {
-
-  config = {
-    navigationBarTitleText: '与我联系',
-    navigationBarBackgroundColor: '#ef5350',
-    navigationBarTextStyle: 'white'
-  }
-
   handleClickEmail(){
     Taro.setClipboardData({
       data: 'renyuzhuo@foxmail.com'

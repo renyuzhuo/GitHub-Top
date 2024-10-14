@@ -1,4 +1,5 @@
-import Taro, { Component } from '@tarojs/taro'
+import React, { Component } from 'react';
+import Taro, { getCurrentInstance } from '@tarojs/taro';
 import { View } from '@tarojs/components'
 import { GLOBAL_CONFIG } from '../../constants/globalConfig'
 import { AtTextarea, AtCheckbox } from 'taro-ui'
@@ -9,12 +10,7 @@ import api from '../../service/api'
 import './addComment.less'
 
 class AddComment extends Component {
-
-  config = {
-    navigationBarTitleText: 'Comment',
-    navigationBarBackgroundColor: '#ef5350',
-    navigationBarTextStyle: 'white'
-  }
+  $instance = getCurrentInstance();
 
   constructor(props) {
     super(props)
@@ -34,7 +30,7 @@ class AddComment extends Component {
   }
 
   componentWillMount() {
-    let params = this.$router.params
+    let params = this.$instance.router.params
     this.setState({
       url: decodeURI(params.url)
     })

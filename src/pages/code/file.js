@@ -1,4 +1,5 @@
-import Taro, { Component } from '@tarojs/taro'
+import React, { Component } from 'react';
+import Taro, { getCurrentInstance } from '@tarojs/taro';
 import {Text, View} from '@tarojs/components'
 import { GLOBAL_CONFIG } from '../../constants/globalConfig'
 import { base64_decode } from '../../utils/base64'
@@ -9,12 +10,7 @@ import api from '../../service/api'
 import './file.less'
 
 class File extends Component {
-
-  config = {
-    navigationBarTitleText: 'Code',
-    navigationBarBackgroundColor: '#ef5350',
-    navigationBarTextStyle: 'white'
-  }
+  $instance = getCurrentInstance();
 
   constructor(props) {
     super(props)
@@ -29,7 +25,7 @@ class File extends Component {
   }
 
   componentWillMount() {
-    let params = this.$router.params
+    let params = this.$instance.router.params
     this.setState({
       url: params.url
     })

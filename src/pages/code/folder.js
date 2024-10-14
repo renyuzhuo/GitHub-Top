@@ -1,4 +1,5 @@
-import Taro, { Component } from '@tarojs/taro'
+import React, { Component } from 'react';
+import Taro, { getCurrentInstance } from '@tarojs/taro';
 import { View } from '@tarojs/components'
 import { GLOBAL_CONFIG } from '../../constants/globalConfig'
 import ContentListItem from '../../components/account/contentListItem'
@@ -8,12 +9,7 @@ import api from '../../service/api'
 import './folder.less'
 
 class ContentList extends Component {
-
-  config = {
-    navigationBarTitleText: 'Code',
-    navigationBarBackgroundColor: '#ef5350',
-    navigationBarTextStyle: 'white'
-  }
+  $instance = getCurrentInstance();
 
   constructor(props) {
     super(props)
@@ -30,7 +26,7 @@ class ContentList extends Component {
   }
 
   componentWillMount() {
-    let params = this.$router.params
+    let params = this.$instance.router.params
     let path = params.path || null
     let name = params.name || null
     this.setState({

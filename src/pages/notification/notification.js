@@ -1,13 +1,11 @@
-import Taro, { Component } from '@tarojs/taro'
-import { View, Text } from '@tarojs/components'
-import { GLOBAL_CONFIG } from '../../constants/globalConfig'
-import { REFRESH_STATUS } from '../../constants/status'
+import React, {Component} from 'react';
+import Taro from '@tarojs/taro';
+import {View} from '@tarojs/components'
+import {GLOBAL_CONFIG} from '../../constants/globalConfig'
 
 import './notification.less'
-
-import Empty from '../../components/index/empty'
 import Item from '../../components/notification/notificationItem'
-
+import Empty from '../../components/index/empty'
 import api from "../../service/api";
 
 class Notification extends Component {
@@ -27,10 +25,11 @@ class Notification extends Component {
     }
   }
 
-  componentWillMount() { }
+  componentWillMount() {
+  }
 
   componentDidMount() {
-    Taro.showLoading({ title: GLOBAL_CONFIG.LOADING_TEXT })
+    Taro.showLoading({title: GLOBAL_CONFIG.LOADING_TEXT})
     this.loadNotification()
   }
 
@@ -38,7 +37,7 @@ class Notification extends Component {
     this.loadNotification()
   }
 
-  loadNotification(){
+  loadNotification() {
     let that = this
     api.get('/notifications').then(json => {
       console.log(json)
@@ -52,36 +51,42 @@ class Notification extends Component {
     })
   }
 
-  componentWillUnmount() { }
+  componentWillUnmount() {
+  }
 
-  componentDidShow() { }
+  componentDidShow() {
+  }
 
-  componentDidHide() { }
+  componentDidHide() {
+  }
 
-  handleClickedNoticeItem(item) { }
+  handleClickedNoticeItem(item) {
+  }
 
   onClickItem(item) {
     console.log(item)
   }
 
   render() {
-    const { notices, count } = this.state
+    const {notices, count} = this.state
     if (!notices) {
-      return <Empty />
+      return <Empty/>
     }
     let list = notices.map((item, index) => {
       return (
         <View onClick={this.handleClickedNoticeItem.bind(this, item)} key={item.id}>
-          <Item item={item} onClick={this.onClickItem.bind(this)} />
+          <Item item={item} onClick={this.onClickItem.bind(this)}/>
         </View>
       )
     })
 
     return (
       <View className='content'>
-        {count === 0 ? <Empty /> : list}
-        <View className='bottom' />
+        {count === 0 ? <Empty/> : list}
+        <View className='bottom'/>
       </View>
     )
   }
 }
+
+export default Notification

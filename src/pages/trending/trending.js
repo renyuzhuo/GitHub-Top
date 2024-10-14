@@ -1,4 +1,5 @@
-import Taro, { Component } from '@tarojs/taro'
+import React, { Component } from 'react';
+import Taro from '@tarojs/taro';
 import { View, Picker, Text, Swiper, SwiperItem, ScrollView } from '@tarojs/components'
 import { GLOBAL_CONFIG } from '../../constants/globalConfig'
 import { HTTP_STATUS, REFRESH_STATUS } from '../../constants/status'
@@ -12,14 +13,6 @@ import LoadMore from '../../components/common/loadMore'
 import './trending.less'
 
 class Tending extends Component {
-
-  config = {
-    navigationBarTitleText: 'Trending',
-    enablePullDownRefresh: true,
-    navigationBarBackgroundColor: '#ef5350',
-    navigationBarTextStyle: 'white'
-  }
-
   constructor(props) {
     super(props)
     this.state = {

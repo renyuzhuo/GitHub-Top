@@ -1,12 +1,13 @@
-import Taro, { Component } from '@tarojs/taro'
-import { View, Image, Text } from '@tarojs/components'
-import { connect } from '@tarojs/redux'
-import { AtAvatar, AtIcon } from 'taro-ui'
-import { NAVIGATE_TYPE } from '../../constants/navigateType'
-import { GLOBAL_CONFIG } from '../../constants/globalConfig'
-import { baseUrl } from '../../service/config'
+import {Component} from 'react';
+import Taro from '@tarojs/taro';
+import {Image, Text, View} from '@tarojs/components'
+import {connect} from '@tarojs/redux'
+import {AtAvatar, AtIcon} from 'taro-ui'
+import {NAVIGATE_TYPE} from '../../constants/navigateType'
+import {GLOBAL_CONFIG} from '../../constants/globalConfig'
+import {baseUrl} from '../../service/config'
 import userAction from '../../actions/user'
-import { hasLogin } from '../../utils/common'
+import {hasLogin} from '../../utils/common'
 
 import './account.less'
 import api from "../../service/api";
@@ -33,7 +34,7 @@ class Index extends Component {
   }
 
   componentDidMount() {
-    Taro.showLoading({ title: GLOBAL_CONFIG.LOADING_TEXT })
+    Taro.showLoading({title: GLOBAL_CONFIG.LOADING_TEXT})
     this.getUserInfo()
   }
 
@@ -121,12 +122,12 @@ class Index extends Component {
         this.handleStar()
       }
         break
-      case NAVIGATE_TYPE.NOTIFICATION:{
+      case NAVIGATE_TYPE.NOTIFICATION: {
         Taro.navigateTo({
           url: '/pages/notification/notification'
         })
       }
-      break
+        break
       default: {
       }
     }
@@ -139,7 +140,7 @@ class Index extends Component {
   }
 
   handleStar() {
-    Taro.showLoading({ title: GLOBAL_CONFIG.LOADING_TEXT })
+    Taro.showLoading({title: GLOBAL_CONFIG.LOADING_TEXT})
     let url = '/user/starred/renyuzhuo/GitHub-Top'
     api.put(url).then((res) => {
       Taro.hideLoading()
@@ -156,8 +157,8 @@ class Index extends Component {
   }
 
   render() {
-    const { isLogin, hasStar } = this.state
-    const { userInfo } = this.props
+    const {isLogin, hasStar} = this.state
+    const {userInfo} = this.props
 
     let repo_counts = userInfo ? Number(userInfo.public_repos) : 0
     if (userInfo && userInfo.owned_private_repos > 0) {
@@ -169,9 +170,9 @@ class Index extends Component {
         {
           isLogin ? (
             <View className='content'>
-              <Image className='account_bg' src={require('../../assets/images/account_bg.png')} />
+              <Image className='account_bg' src={require('../../assets/images/account_bg.png')}/>
               <View className='user_info'>
-                <AtAvatar className='avatar' circle image={userInfo ? userInfo.avatar_url : ''} />
+                <AtAvatar className='avatar' circle image={userInfo ? userInfo.avatar_url : ''}/>
                 {
                   userInfo.name.length > 0 &&
                   <Text className='username'>{userInfo.name}</Text>
@@ -185,12 +186,12 @@ class Index extends Component {
                     <View className='title'>{userInfo ? repo_counts : ''}</View>
                     <View className='desc'>Repos</View>
                   </View>
-                  <View className='line' />
+                  <View className='line'/>
                   <View className='item' onClick={this.handleNavigate.bind(this, NAVIGATE_TYPE.FOLLOWERS)}>
                     <View className='title'>{userInfo.followers}</View>
                     <View className='desc'>Followers</View>
                   </View>
-                  <View className='line' />
+                  <View className='line'/>
                   <View className='item' onClick={this.handleNavigate.bind(this, NAVIGATE_TYPE.FOLLOWING)}>
                     <View className='title'>{userInfo.following}</View>
                     <View className='desc'>Following</View>
@@ -202,7 +203,7 @@ class Index extends Component {
                   <View className='list_view'>
                     <View className='list' onClick={this.handleNavigate.bind(this, NAVIGATE_TYPE.STAR)}>
                       <View className='list_title'>Star GitHub Top ❤️</View>
-                      <AtIcon prefixClass='ion' value='ios-arrow-forward' size='18' color='#7f7f7f' />
+                      <AtIcon prefixClass='ion' value='ios-arrow-forward' size='18' color='#7f7f7f'/>
                     </View>
                   </View>
                 )
@@ -210,15 +211,15 @@ class Index extends Component {
               <View className='list_view'>
                 <View className='list' onClick={this.handleNavigate.bind(this, NAVIGATE_TYPE.STARRED_REPOS)}>
                   <View className='list_title'>Starred Repos</View>
-                  <AtIcon prefixClass='ion' value='ios-arrow-forward' size='18' color='#7f7f7f' />
+                  <AtIcon prefixClass='ion' value='ios-arrow-forward' size='18' color='#7f7f7f'/>
                 </View>
                 <View className='list' onClick={this.handleNavigate.bind(this, NAVIGATE_TYPE.ISSUES)}>
                   <View className='list_title'>Issues</View>
-                  <AtIcon prefixClass='ion' value='ios-arrow-forward' size='18' color='#7f7f7f' />
+                  <AtIcon prefixClass='ion' value='ios-arrow-forward' size='18' color='#7f7f7f'/>
                 </View>
                 <View className='list' onClick={this.handleNavigate.bind(this, NAVIGATE_TYPE.NOTIFICATION)}>
                   <View className='list_title'>Notifications</View>
-                  <AtIcon prefixClass='ion' value='ios-arrow-forward' size='18' color='#7f7f7f' />
+                  <AtIcon prefixClass='ion' value='ios-arrow-forward' size='18' color='#7f7f7f'/>
                 </View>
               </View>
               <View className='list_view'>
@@ -242,22 +243,22 @@ class Index extends Component {
               <View className='list_view'>
                 <View className='list' onClick={this.handleNavigate.bind(this, NAVIGATE_TYPE.ABOUT)}>
                   <View className='list_title'>About</View>
-                  <AtIcon prefixClass='ion' value='ios-arrow-forward' size='18' color='#7f7f7f' />
+                  <AtIcon prefixClass='ion' value='ios-arrow-forward' size='18' color='#7f7f7f'/>
                 </View>
               </View>
-              <View className='bottom_view' />
+              <View className='bottom_view'/>
             </View>
           ) : (
-              <View className='content'>
-                <Image mode='aspectFit'
-                  className='logo'
-                  src={require('../../assets/images/octocat.png')} />
-                <View className='login_button'
-                  onClick={this.login.bind(this)}>
-                  Login
+            <View className='content'>
+              <Image mode='aspectFit'
+                     className='logo'
+                     src={require('../../assets/images/octocat.png')}/>
+              <View className='login_button'
+                    onClick={this.login.bind(this)}>
+                Login
               </View>
-              </View>
-            )
+            </View>
+          )
         }
       </View>
     )

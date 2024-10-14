@@ -1,11 +1,12 @@
-import Taro, { Component } from '@tarojs/taro'
-import { View, Image, Text } from '@tarojs/components'
-import { AtInput, AtButton } from 'taro-ui'
-import { connect } from '@tarojs/redux'
-import { GLOBAL_CONFIG } from '../../constants/globalConfig'
-import { HTTP_STATUS } from '../../constants/status'
+import {Component} from 'react';
+import Taro from '@tarojs/taro';
+import {Image, Text, View} from '@tarojs/components'
+import {AtInput} from 'taro-ui'
+import {connect} from '@tarojs/redux'
+import {GLOBAL_CONFIG} from '../../constants/globalConfig'
+import {HTTP_STATUS} from '../../constants/status'
 import userAction from '../../actions/user'
-import { base64_encode } from '../../utils/base64'
+import {base64_encode} from '../../utils/base64'
 
 import './login.less'
 
@@ -52,71 +53,72 @@ class Login extends Component {
     })
   }
 
-  handleTokenChange (value) {
+  handleTokenChange(value) {
     this.setState({
       token: value
     })
   }
 
-  handleUsernameChange (value) {
+  handleUsernameChange(value) {
     this.setState({
       username: value
     })
   }
 
-  handlePasswordChange (value) {
+  handlePasswordChange(value) {
     this.setState({
       password: value
     })
   }
 
-  getUserInfo () {
-    const { current, token, username, password } = this.state
-    let authorization = ''
-    if (current === 0) {
-      if (token.length === 0) {
-        Taro.showToast({
-          title: 'Please input token',
-          icon: 'none'
-        })
-      } else {
-        authorization = 'token ' + token
-      }
-    } else {
-      if (username.length === 0) {
-        Taro.showToast({
-          title: 'Please input username',
-          icon: 'none'
-        })
-      } else if (password.length === 0) {
-        Taro.showToast({
-          title: 'Please input password',
-          icon: 'none'
-        })
-      } else {
-        authorization = 'Basic ' + base64_encode(username + ':' + password)
-      }
-    }
-
-    if (authorization.length !== 0) {
-      Taro.setStorageSync('Authorization', authorization)
-      Taro.showLoading({title: GLOBAL_CONFIG.LOADING_TEXT})
-      userAction.getUserInfo().then((res)=>{
-        Taro.hideLoading()
-        if (res.statusCode !== HTTP_STATUS.SUCCESS) {
-          Taro.showToast({
-            title: res.data.message,
-            icon: 'none'
-          })
-          Taro.setStorageSync('Authorization', '')
-        } else {
-          Taro.eventCenter.trigger('login_success')
-          Taro.setStorageSync('login', res.data.login)
-          Taro.setStorageSync('myId', res.data.id)
-          Taro.navigateBack()
-        }
-      })
-    }
+  getUserInfo() {
+    return
+    // const {current, token, username, password} = this.state
+    // let authorization = ''
+    // if (current === 0) {
+    //   if (token.length === 0) {
+    //     Taro.showToast({
+    //       title: 'Please input token',
+    //       icon: 'none'
+    //     })
+    //   } else {
+    //     authorization = 'token ' + token
+    //   }
+    // } else {
+    //   if (username.length === 0) {
+    //     Taro.showToast({
+    //       title: 'Please input username',
+    //       icon: 'none'
+    //     })
+    //   } else if (password.length === 0) {
+    //     Taro.showToast({
+    //       title: 'Please input password',
+    //       icon: 'none'
+    //     })
+    //   } else {
+    //     authorization = 'Basic ' + base64_encode(username + ':' + password)
+    //   }
+    // }
+    //
+    // if (authorization.length !== 0) {
+    //   Taro.setStorageSync('Authorization', authorization)
+    //   Taro.showLoading({title: GLOBAL_CONFIG.LOADING_TEXT})
+    //   userAction.getUserInfo().then((res) => {
+    //     Taro.hideLoading()
+    //     if (res.statusCode !== HTTP_STATUS.SUCCESS) {
+    //       Taro.showToast({
+    //         title: res.data.message,
+    //         icon: 'none'
+    //       })
+    //       Taro.setStorageSync('Authorization', '')
+    //     } else {
+    //       Taro.eventCenter.trigger('login_success')
+    //       Taro.setStorageSync('login', res.data.login)
+    //       Taro.setStorageSync('myId', res.data.id)
+    //       Taro.navigateBack()
+    //     }
+    //   })
+    // }
   }
 
   handleclickedTokenAddress() {
@@ -126,7 +128,7 @@ class Login extends Component {
   }
 
   render() {
-    const { current } = this.state
+    const {current} = this.state
     return (
       <View className='content'>
         <View className='logo_bg'>
@@ -146,17 +148,17 @@ class Login extends Component {
             </View>
           </View>
           {current === 0 ?
-              <View className='input_view'>
-                <AtInput
-                  className='input_bar'
-                  name='token'
-                  title='Token:'
-                  type='text'
-                  placeholder='please input token'
-                  value={this.state.token}
-                  onChange={this.handleTokenChange.bind(this)} />
-              </View>
-              : (<View className='input_view'>
+            <View className='input_view'>
+              <AtInput
+                className='input_bar'
+                name='token'
+                title='Token:'
+                type='text'
+                placeholder='please input token'
+                value={this.state.token}
+                onChange={this.handleTokenChange.bind(this)}/>
+            </View>
+            : (<View className='input_view'>
                 <AtInput
                   className='input_bar'
                   name='username'
@@ -164,7 +166,7 @@ class Login extends Component {
                   type='text'
                   placeholder='please input username'
                   value={this.state.username}
-                  onChange={this.handleUsernameChange.bind(this)} />
+                  onChange={this.handleUsernameChange.bind(this)}/>
                 <AtInput
                   className='input_bar'
                   name='password'
@@ -172,7 +174,7 @@ class Login extends Component {
                   type='password'
                   placeholder='please input password'
                   value={this.state.password}
-                  onChange={this.handlePasswordChange.bind(this)} />
+                  onChange={this.handlePasswordChange.bind(this)}/>
               </View>
             )
           }

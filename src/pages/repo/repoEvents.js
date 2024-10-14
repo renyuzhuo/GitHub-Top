@@ -1,4 +1,5 @@
-import Taro, { Component } from '@tarojs/taro'
+import React, { Component } from 'react';
+import Taro, { getCurrentInstance } from '@tarojs/taro';
 import { View } from '@tarojs/components'
 import { GLOBAL_CONFIG } from '../../constants/globalConfig'
 import { REFRESH_STATUS } from '../../constants/status'
@@ -12,13 +13,7 @@ import api from '../../service/api'
 import './repoEvents.less'
 
 class RepoEvents extends Component {
-
-  config = {
-    navigationBarTitleText: 'Events',
-    navigationBarBackgroundColor: '#ef5350',
-    navigationBarTextStyle: 'white',
-    enablePullDownRefresh: true
-  }
+  $instance = getCurrentInstance();
 
   constructor(props) {
     super(props)
@@ -35,7 +30,7 @@ class RepoEvents extends Component {
   }
 
   componentWillMount() {
-    let params = this.$router.params
+    let params = this.$instance.router.params
     this.setState({
       url: params.url,
     })

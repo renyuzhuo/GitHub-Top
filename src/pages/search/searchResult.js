@@ -1,4 +1,5 @@
-import Taro, {Component} from '@tarojs/taro'
+import React, { Component } from 'react';
+import Taro, { getCurrentInstance } from '@tarojs/taro';
 import {Text, View} from '@tarojs/components'
 import {GLOBAL_CONFIG} from '../../constants/globalConfig'
 import { REFRESH_STATUS } from '../../constants/status'
@@ -13,12 +14,7 @@ import './searchResult.less'
 import api from "../../service/api";
 
 class SearchResult extends Component {
-
-  config = {
-    enablePullDownRefresh: true,
-    navigationBarBackgroundColor: '#ef5350',
-    navigationBarTextStyle: 'white'
-  }
+  $instance = getCurrentInstance();
 
   constructor(props) {
     super(props)
@@ -44,7 +40,7 @@ class SearchResult extends Component {
   }
 
   componentWillMount() {
-    let params = this.$router.params
+    let params = this.$instance.router.params
     this.setState({
       value: decodeURI(params.value),
     })

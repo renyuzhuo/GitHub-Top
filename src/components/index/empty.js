@@ -1,7 +1,6 @@
-import Taro, { Component } from '@tarojs/taro'
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { View, Image, Text } from '@tarojs/components'
-
 
 import './empty.less'
 

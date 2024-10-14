@@ -1,8 +1,10 @@
-import {Component} from '@tarojs/taro'
-import PropTypes from 'prop-types';
 import { View } from '@tarojs/components'
 import { AtActivityIndicator } from 'taro-ui'
+
 import { REFRESH_STATUS } from '../../constants/status'
+
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 
 import './loadMore.less'
 

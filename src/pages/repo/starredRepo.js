@@ -1,4 +1,5 @@
-import Taro, { Component } from '@tarojs/taro'
+import React, { Component } from 'react';
+import Taro, { getCurrentInstance } from '@tarojs/taro';
 import { View } from '@tarojs/components'
 import { GLOBAL_CONFIG } from '../../constants/globalConfig'
 import { REFRESH_STATUS } from '../../constants/status'
@@ -10,13 +11,7 @@ import './starredRepo.less'
 import api from "../../service/api";
 
 class StarredRepo extends Component {
-
-  config = {
-    navigationBarTitleText: 'Starred Repos',
-    navigationBarBackgroundColor: '#ef5350',
-    navigationBarTextStyle: 'white',
-    enablePullDownRefresh: true
-  }
+  $instance = getCurrentInstance();
 
   constructor(props) {
     super(props)
@@ -33,7 +28,7 @@ class StarredRepo extends Component {
   }
 
   componentWillMount() {
-    let params = this.$router.params
+    let params = this.$instance.router.params
     let url = '/user/starred'
     if (params.username) {
       url = '/users/' + params.username + '/starred'

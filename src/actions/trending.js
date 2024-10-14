@@ -1,11 +1,7 @@
-import { bindActionCreators } from 'redux'
-import {
-  REPOSTRENDING,
-  DEVELOPERSTRENDING,
-  LANGUAGE
-} from '../constants/trending'
+import {bindActionCreators} from 'redux'
+import {DEVELOPERSTRENDING, LANGUAGE, REPOSTRENDING} from '../constants/trending'
 import store from '../store'
-import { createApiAction } from './index'
+import {createApiAction} from './index'
 import api from '../service/api'
 
 // 请求api

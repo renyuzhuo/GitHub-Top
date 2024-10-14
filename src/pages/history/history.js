@@ -1,16 +1,16 @@
-import Taro, { Component } from '@tarojs/taro'
-import { View, Input } from '@tarojs/components'
-import { GLOBAL_CONFIG } from '../../constants/globalConfig'
-import { REFRESH_STATUS } from '../../constants/status'
-
-import { AtIcon } from 'taro-ui'
 import RepoItem from '../../components/account/repoItem'
 import LoadMore from '../../components/common/loadMore'
 import Empty from '../../components/index/empty'
 
-import api from '../../service/api'
+import React, {Component} from 'react';
+import Taro from '@tarojs/taro';
+import {Input, View} from '@tarojs/components'
+import {AtIcon} from 'taro-ui'
+import {GLOBAL_CONFIG} from '../../constants/globalConfig'
+import {REFRESH_STATUS} from '../../constants/status'
 
 import './history.less'
+import api from '../../service/api'
 
 class Index extends Component {
 
@@ -31,7 +31,7 @@ class Index extends Component {
   }
 
   componentDidMount() {
-    Taro.showLoading({ title: GLOBAL_CONFIG.LOADING_TEXT })
+    Taro.showLoading({title: GLOBAL_CONFIG.LOADING_TEXT})
     this.getRepos(1)
   }
 
@@ -44,7 +44,7 @@ class Index extends Component {
 
   onReachBottom() {
     let that = this
-    const { repo, page, status } = this.state
+    const {repo, page, status} = this.state
     if (status !== REFRESH_STATUS.NO_MORE_DATA) {
       this.setState({
         page: page + 1
@@ -54,8 +54,8 @@ class Index extends Component {
     }
   }
 
-  getRepos(index){
-    const { repos } = this.state
+  getRepos(index) {
+    const {repos} = this.state
 
     let that = this
     this.state.page = index
@@ -68,15 +68,15 @@ class Index extends Component {
 
     let projects = index == 1 ? [] : repos
 
-    api.get('https://api.github.com/repos/renyuzhuo/GitHub-Top/issues', params).then(json=>{
+    api.get('https://api.github.com/repos/renyuzhuo/GitHub-Top/issues', params).then(json => {
       Taro.stopPullDownRefresh()
 
       let issues = json.data
-      if(issues.length == 0){
+      if (issues.length == 0) {
         that.setState({
           status: REFRESH_STATUS.NO_MORE_DATA
         })
-      }else{
+      } else {
         issues.forEach((issue, index) => {
           projects.push(JSON.parse(issue.body))
         })
@@ -89,13 +89,13 @@ class Index extends Component {
     })
   }
 
-  onClick(){
+  onClick() {
     Taro.navigateTo({
       url: '../search/index'
     })
   }
 
-  handleClickedRepoItem(item){
+  handleClickedRepoItem(item) {
     let url = '/pages/repo/repo?url=' + encodeURI(item.url)
     Taro.navigateTo({
       url: url
@@ -103,11 +103,11 @@ class Index extends Component {
   }
 
   render() {
-    const { repos, status } = this.state
+    const {repos, status} = this.state
     let list = repos.map((item, index) => {
       return (
         <View onClick={this.handleClickedRepoItem.bind(this, item)} key={item.id}>
-          <RepoItem item={item} />
+          <RepoItem item={item}/>
         </View>
       )
     })
@@ -117,21 +117,23 @@ class Index extends Component {
           <View className='search-bar-fixed'>
             <View className='content'>
               <View className='search-bar-bg'>
-                <AtIcon className='icon' value='search' size='18' color='#666' />
+                <AtIcon className='icon' value='search' size='18' color='#666'/>
                 <Input className='search-bar'
-                  disabled='true'
-                  placeholder='Search All GitHub'
-                  onClick={this.onClick.bind(this)}
+                       disabled='true'
+                       placeholder='Search All GitHub'
+                       onClick={this.onClick.bind(this)}
                 />
               </View>
             </View>
           </View>
         </View>
         {
-          repos && repos.length > 0 ? list : <Empty />
+          repos && repos.length > 0 ? list : <Empty/>
         }
         <LoadMore status={status}/>
       </View>
     )
   }
 }
+
+export default Index

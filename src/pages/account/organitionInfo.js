@@ -1,4 +1,5 @@
-import Taro, { Component } from '@tarojs/taro'
+import React, { Component } from 'react';
+import Taro, { getCurrentInstance } from '@tarojs/taro';
 import { Image, Text, View, Button } from '@tarojs/components'
 import { GLOBAL_CONFIG } from '../../constants/globalConfig'
 import { AtAvatar, AtIcon } from 'taro-ui'
@@ -10,13 +11,7 @@ import './organitionInfo.less'
 import { baseUrl } from "../../service/config";
 
 class OrganitionInfo extends Component {
-
-  config = {
-    navigationBarTitleText: '',
-    navigationBarBackgroundColor: '#ef5350',
-    navigationBarTextStyle: 'white',
-    enablePullDownRefresh: true
-  }
+  $instance = getCurrentInstance();
 
   constructor(props) {
     super(props)
@@ -32,7 +27,7 @@ class OrganitionInfo extends Component {
   }
 
   componentWillMount() {
-    let params = this.$router.params
+    let params = this.$instance.router.params
     this.setState({
       username: params.username,
       isShare: params.share

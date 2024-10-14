@@ -1,16 +1,10 @@
-import Taro, { Component } from '@tarojs/taro'
+import React, { Component } from 'react';
+import Taro from '@tarojs/taro';
 import { View, Navigator, Image, Text } from '@tarojs/components'
 
 import './about.less'
 
 class About extends Component {
-
-  config = {
-    navigationBarTitleText: 'About',
-    navigationBarBackgroundColor: '#ef5350',
-    navigationBarTextStyle: 'white'
-  }
-
   constructor(props) {
     super(props)
     this.state = {

@@ -1,4 +1,5 @@
-import Taro, { Component } from '@tarojs/taro'
+import React, { Component } from 'react';
+import Taro from '@tarojs/taro';
 import {Image, View} from '@tarojs/components'
 import { GLOBAL_CONFIG } from '../../constants/globalConfig'
 import { hasLogin } from '../../utils/common'
@@ -13,14 +14,6 @@ import api from '../../service/api'
 import './activity.less'
 
 class Index extends Component {
-
-  config = {
-    navigationBarTitleText: 'Activity',
-    navigationBarBackgroundColor: '#ef5350',
-    navigationBarTextStyle: 'white',
-    enablePullDownRefresh: true
-  }
-
   constructor(props) {
     super(props)
     this.state = {

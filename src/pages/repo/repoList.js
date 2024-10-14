@@ -1,4 +1,5 @@
-import Taro, { Component } from '@tarojs/taro'
+import React, { Component } from 'react';
+import Taro, { getCurrentInstance } from '@tarojs/taro';
 import { View } from '@tarojs/components'
 import { GLOBAL_CONFIG } from '../../constants/globalConfig'
 
@@ -11,13 +12,7 @@ import './repoList.less'
 import api from "../../service/api";
 
 class RepoList extends Component {
-
-  config = {
-    navigationBarTitleText: 'Repos',
-    navigationBarBackgroundColor: '#ef5350',
-    navigationBarTextStyle: 'white',
-    enablePullDownRefresh: true,
-  }
+  $instance = getCurrentInstance();
 
   constructor(props) {
     super(props)
@@ -34,7 +29,7 @@ class RepoList extends Component {
 
   componentWillMount() {
     this.setState({
-      url: decodeURI(this.$router.params.url)
+      url: decodeURI(this.$instance.router.params.url)
     })
   }
 

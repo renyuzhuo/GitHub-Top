@@ -1,4 +1,5 @@
-import Taro, { Component } from '@tarojs/taro'
+import React, { Component } from 'react';
+import Taro from '@tarojs/taro';
 import PropTypes from 'prop-types';
 import { View, Text, Navigator } from '@tarojs/components'
 import { AtIcon, AtTag } from 'taro-ui'

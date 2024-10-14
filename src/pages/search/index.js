@@ -1,4 +1,5 @@
-import Taro, { Component } from '@tarojs/taro'
+import React, { Component } from 'react';
+import Taro from '@tarojs/taro';
 import { View } from '@tarojs/components'
 import { GLOBAL_CONFIG } from '../../constants/globalConfig'
 
@@ -8,13 +9,6 @@ import SearchHistory from '../../components/search/searchHistory'
 import './index.less'
 
 class Index extends Component {
-
-  config = {
-    navigationBarTitleText: 'Search',
-    navigationBarBackgroundColor: '#ef5350',
-    navigationBarTextStyle: 'white'
-  }
-
   constructor(props) {
     super(props)
     this.state = {
@@ -105,25 +99,25 @@ class Index extends Component {
     })
   }
 
-    render () {
-    const { history } = this.state
-    return (
-      <View className='content'>
-        <View className='search-bar-fixed'>
-          <SearchBar onClickSearch={this.onClickSearch.bind(this)} />
-        </View>
-        {
-          history.length > 0 &&
-          <View className='search-history-bg'>
-            <View className='search-history'>
-              <SearchHistory items={history} onTagClick={this.onTagClick.bind(this)}/>
-            </View>
-            <View className='clear' onClick={this.clear_history.bind(this)}>Clear All</View>
-          </View>
-        }
+  render () {
+  const { history } = this.state
+  return (
+    <View className='content'>
+      <View className='search-bar-fixed'>
+        <SearchBar onClickSearch={this.onClickSearch.bind(this)} />
       </View>
-    )
-  }
+      {
+        history.length > 0 &&
+        <View className='search-history-bg'>
+          <View className='search-history'>
+            <SearchHistory items={history} onTagClick={this.onTagClick.bind(this)}/>
+          </View>
+          <View className='clear' onClick={this.clear_history.bind(this)}>Clear All</View>
+        </View>
+      }
+    </View>
+  )
+}
 }
 
 export default Index
