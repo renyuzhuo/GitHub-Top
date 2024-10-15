@@ -1,0 +1,51 @@
+{
+  "name": "GitHubHot",
+  "version": "1.0.0",
+  "private": true,
+  "description": "GitHub 热点项目推荐。热点事件发生时，GitHub 是程序员的主战场，我们会做出我们的努力，让这个世界更美好。",
+  "templateInfo": {
+    "name": "default",
+    "typescript": false,
+    "css": "Sass",
+    "framework": "React"
+  },
+  "scripts": {
+    "build:weapp": "taro build --type weapp"
+  },
+  "browserslist": [
+    "defaults and fully supports es6-module",
+    "maintained node versions"
+  ],
+  "author": "",
+  "dependencies": {
+    "@babel/runtime": "7.24.4",
+    "@tarojs/components": "4.0.2",
+    "@tarojs/helper": "4.0.2",
+    "@tarojs/plugin-framework-react": "4.0.2",
+    "@tarojs/plugin-platform-weapp": "4.0.2",
+    "@tarojs/react": "4.0.2",
+    "@tarojs/runtime": "4.0.2",
+    "@tarojs/taro": "4.0.2",
+    "react": "18.0.0",
+    "react-dom": "18.0.0",
+    "taro-ui": "2.3.4"
+  },
+  "devDependencies": {
+    "@babel/core": "7.24.4",
+    "@babel/plugin-proposal-class-properties": "7.14.5",
+    "@babel/preset-react": "7.24.1",
+    "@pmmmwh/react-refresh-webpack-plugin": "0.5.5",
+    "@tarojs/cli": "4.0.2",
+    "@tarojs/taro-loader": "4.0.2",
+    "@tarojs/webpack5-runner": "4.0.2",
+    "@types/node": "18",
+    "@types/react": "18.0.0",
+    "@types/webpack-env": "1.13.6",
+    "babel-preset-taro": "4.0.2",
+    "postcss": "8.4.38",
+    "react-refresh": "0.14.0",
+    "sass": "1.75.0",
+    "stylelint": "16.4.0",
+    "webpack": "5.91.0"
+  }
+}
