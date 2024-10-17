@@ -33,6 +33,7 @@ GitHub 小程序有很多，但推荐热点项目的往往是拉取 [GitHub Tren
 - Trending 数据来自 [github-trending-api](https://github.com/huchenme/github-trending-api)
 - Markdown 解析采用 [towxml](https://github.com/sbfkcel/towxml) 2.x，暂不考虑升级为 3.x，可能是我使用的问题，3.x 一直有错误，已经提 Issues 给原项目。
 - 项目构建采用京东开源项目 [Taro 2.0.2](https://taro.aotu.io/) 版本。
+- node v8.4.0
 - 无自建云端服务器。
 
 ## 说明及感谢

@@ -26,35 +26,30 @@
     "useApiHostProcess": false
   },
   "compileType": "miniprogram",
-  "libVersion": "2.10.1",
+  "libVersion": "3.6.2",
   "simulatorType": "wechat",
   "simulatorPluginLibVersion": {},
   "scripts": {
-    "beforeCompile": "rm -fr dist/components/towxml/;cp -R src/components/towxml/ ./dist/components/towxml;",
-    "beforePreview": "",
-    "beforeUpload": ""
+    "beforeCompile": "rm -fr dist/components/towxml/;cp -R src/components/towxml/ ./dist/components/towxml;"
   },
   "condition": {
-    "search": {
-      "list": []
-    },
-    "conversation": {
-      "list": []
-    },
-    "plugin": {
-      "list": []
-    },
-    "game": {
-      "list": []
-    },
     "miniprogram": {
       "list": [
         {
-          "id": -1,
           "name": "模拟更新",
-          "pathName": "pages/index/index"
+          "pathName": "pages/index/index",
+          "query": ""
         }
       ]
     }
+  },
+  "srcMiniprogramRoot": "dist/",
+  "packOptions": {
+    "ignore": [],
+    "include": []
+  },
+  "editorSetting": {
+    "tabIndent": "insertSpaces",
+    "tabSize": 2
   }
 }

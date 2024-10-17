@@ -71,18 +71,6 @@ class App extends Component {
           selectedIconPath: './assets/images/tab_history_s.png'
         },
         {
-          pagePath: 'pages/trending/trending',
-          text: 'Trending',
-          iconPath: './assets/images/tab_trending.png',
-          selectedIconPath: './assets/images/tab_trending_s.png'
-        },
-        {
-          pagePath: 'pages/activity/activity',
-          text: 'Activity',
-          iconPath: './assets/images/tab_news.png',
-          selectedIconPath: './assets/images/tab_news_s.png'
-        },
-        {
           pagePath: 'pages/account/account',
           text: 'Me',
           iconPath: './assets/images/tab_me.png',
