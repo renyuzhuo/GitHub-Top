@@ -708,7 +708,7 @@ class Repo extends Component {
         {
           readme &&
           <View className='markdown'>
-            <Text className='md_title'>README</Text>
+            <Text className='md_title'>项目简介</Text>
             <View className='repo_md'>
               <Markdown md={readme} />
             </View>
