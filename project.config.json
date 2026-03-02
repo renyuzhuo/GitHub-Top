@@ -5,7 +5,7 @@
   "appid": "wxaec6f747fd3e7171",
   "setting": {
     "urlCheck": true,
-    "es6": false,
+    "es6": true,
     "postcss": false,
     "minified": false,
     "newFeature": true,
@@ -23,7 +23,8 @@
     },
     "useMultiFrameRuntime": true,
     "useApiHook": true,
-    "useApiHostProcess": false
+    "useApiHostProcess": false,
+    "enhance": true
   },
   "compileType": "miniprogram",
   "libVersion": "3.6.2",

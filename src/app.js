@@ -3,7 +3,7 @@ import Taro, { Component } from '@tarojs/taro'
 import { Provider } from '@tarojs/redux'
 import { get as getGlobalData, set as setGlobalData } from './utils/global_data'
 
-import Index from './pages/top'
+import Index from './pages/hot'
 
 import configStore from './store'
 
@@ -16,6 +16,7 @@ class App extends Component {
 
   config = {
     pages: [
+      'pages/hot/hot',
       'pages/top/top',
       'pages/history/history',
       'pages/trending/trending',
@@ -58,6 +59,12 @@ class App extends Component {
     },
     tabBar: {
       list: [
+        {
+          pagePath: 'pages/hot/hot',
+          text: 'Hot',
+          iconPath: './assets/images/tab_hot.png',
+          selectedIconPath: './assets/images/tab_hot_s.png'
+        },
         {
           pagePath: 'pages/top/top',
           text: 'Top',
