@@ -61,7 +61,7 @@ class Repo extends Component {
   }
 
   getReadme() {
-    let url = 'https://weibo.g.renyuzhuo.cn/README.md'
+    let url = 'https://weibo.g.renyuzhuo.cn/hot.md'
     api.get(url).then((res) => {
       console.log(res)
       console.log(res.data)
